@@ -1,1 +1,1 @@
-##This repository is for weekly meeting agenda##
+## This repository is for weekly meeting agenda.
