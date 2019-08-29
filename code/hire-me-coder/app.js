@@ -16,10 +16,11 @@ var transporter = nodemailer.createTransport({
   }
 });
 
-var mailAddress;
+var sender = 'noreply@maptek.com';
+var addressee = 'ying86y6@gmail.com';
 var mailOptions = {
-  from: 'hiremecoder.pg5@gmail.com',
-  to: 'ying86y6@gmail.com',
+  from: sender,
+  to: addressee,
   subject: 'HireMeCoder Invitation!',
   text: 'Wellcome to Hire Me Coder\n\n' + 
         'We have kindly created an account for you, and with this account ' +
