@@ -15,106 +15,43 @@
                 
                 
                 
-                 
-                    <label for="email">Email</label>
-                    <input
-                      type="email"
-                      id="email"
+    <div class="login-group" id="login-group">
+        <label for="email" id="emailLabel">Email</label>
+            <input
+                type="email"
+                id="email"
                       
                       
-                      placeholder="Enter Email"
-                    />
+                placeholder="Enter Email"
+            />
                   
               
-                    <label for="password">Password</label>
-                    <input
-                      type="password"
-                      id="password"
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
                       
                       
-                      placeholder="Enter Password"
-                    />
+                placeholder="Enter Password"
+            />
                  
-                  <button id="btnLogin" class="btn btn-action">Log in</button>
+            <button id="btnLogin" class="btn btn-action">Log in</button>
 
-                  <button id="btnLogout" class="btn btn-action" style="display: none;">Log out</button>
+        </div>
+        <div class="logout-group"  id="logout-group">
+            <button id="btnLogout" class="btn btn-action">Log out</button>
                   
-                  <button id="btnAdmin" class="btn btn-action" style="display: none;">Go Admin</button>
-
+            <button id="btnAdmin" class="btn btn-action">Go Admin</button>
+        </div>
 
                 
                 
-              </div>
+    </div>
             
          
         
 
-    <script>
-    (function() {
-
-    
-    
-    
-// Web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyC49UseYKNdFnCuUV7Fpq-4ZjkIEL1IDCI",
-    authDomain: "sep-2019-pg5-39ccb.firebaseapp.com",
-    databaseURL: "https://sep-2019-pg5-39ccb.firebaseio.com",
-    projectId: "sep-2019-pg5-39ccb",
-    storageBucket: "sep-2019-pg5-39ccb.appspot.com",
-    messagingSenderId: "989504657582",
-    appId: "1:989504657582:web:2d2dc47a72c6ae77"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-
-// Get elements
-const txtEmail = document.getElementById('email');
-const txtPassword = document.getElementById('password');
-const btnLogin = document.getElementById('btnLogin');
-const btnLogout = document.getElementById('btnLogout');
-const btnAdmin = document.getElementById('btmAdmin');
-
-// Add login event
-btnLogin.addEventListener('click', e => {
-    // Get email and pwd
-    const email = txtEmail.value;
-    const password = txtPassword.value;
-    const auth = firebase.auth();
-    
-    // Sign in
-    const promise = auth.signInWithEmailAndPassword(email, password);
-    promise.catch(e => console.log(e.message));
-}); 
-
-
-//Add logout event
-btnLogout.addEventListener('click', e=> {
-    firebase.auth().signOut();
-});
-
-
-
-// Add a realtime listner
-firebase.auth().onAuthStateChanged(firebaseUser => {
-    if(firebaseUser) {
-        console.log('logged in');
-        btnLogout.style.display="block";
-        // btnAdmin.style.display="block";
-        
-    } else {
-        console.log('not logged in');
-        btnLogout.style.display="none";
-        
-    }
-
-});
-
-}());
-    </script>
-
-
+    <script src="/js/auth.js" ></script>
 
     
 </body>
