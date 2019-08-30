@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    .main.container
+        .row
+            .col-md-6.col-md-offset-3
+                h1.display-4.m-b-2 Send Assessment Invitation
+                
+            form(method='POST' action='/email/send-invitation')
+                div.form-group
+                    label(for='emailAddress') Email Address:
+                    input#email.form-control(type='text', name='email')
+                button.btn.btn-primary(type='submit') Send Invitation
