@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "login": "node ./login.js",
-    "devlogin": "nodemon ./login.js"
+    
+    "devlogin": "nodemon ./bin/www"
   },
   "dependencies": {
     "@firebase/auth": "^0.11.8",

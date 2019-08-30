@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .main.container
+            
+        form(method="POST", action='/login')
+            div.form-group
+                label(for='email') Email:
+                input(type='email', name='email', id='email', placeholder='Enter Email')
+            div.form-group
+                label(for='password') Password:
+                input(type='password', name='password', id='password', placeholder='Enter Password')
+            
+
+
+            button.btn.btn-primary(type='submit', id='btnLogin') Log in
+            button.btn.btn-primary(type='submit', id='btnLogout') Log out
+            button.btn.btn-primary(type='submit', id='btnAdmin') Go Admin
+        
+    //- script(src="/js/auth.js")
+

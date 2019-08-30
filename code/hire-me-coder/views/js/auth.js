@@ -54,11 +54,11 @@
     });
 
 
-    //Add go admin
-    btnAdmin.addEventListener('click', e=>{
-        login
-        res.redirect('http://google.com')
-    })
+    // //Add go admin
+    // btnAdmin.addEventListener('click', e=>{
+    //     login
+    //     res.redirect('http://google.com')
+    // })
 
 
     

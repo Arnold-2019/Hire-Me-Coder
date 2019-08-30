@@ -3,15 +3,18 @@ var expressLayouts = require('express-ejs-layouts');
 var firebase = require('firebase');
 var logger = require('morgan')
 
+
+
 var login = express();
 
 
 
-//EJS layout
-login.use(expressLayouts);
-login.set('view engine', 'ejs');
 
-login.use(express.static('views'))
+//EJS layout
+
+// login.set('view engine', 'pug');
+// // login.set('views', path.join(__dirname, 'views'));
+// login.use(express.static('views'))
 
 //Routes
 login.use('/login', require('./routes/login'));
