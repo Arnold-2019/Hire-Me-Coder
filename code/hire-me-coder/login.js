@@ -14,7 +14,7 @@ login.set('view engine', 'ejs');
 login.use(express.static('views'))
 
 //Routes
-login.use('/users', require('./routes/users'));
+login.use('/login', require('./routes/login'));
 
 
 
