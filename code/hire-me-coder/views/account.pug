@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title= title
+    script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase.js") 
+    link(rel='stylesheet', href='https://bootswatch.com/4/darkly/bootstrap.min.css')
+  body
+
+    .main.container
+                    
+            button.btn.btn-primary(type='submit', id='btnLogout') Log out
+            button.btn.btn-primary(type='submit', id='btnUpdatePassword') Update Password
+            button.btn.btn-primary(type='submit', id='btnAdmin') Go Admin
+            
+
+  script(src='/js/account.js')

@@ -10,8 +10,12 @@ router.get('/', function(req, res, next) {
   res.render('login', { layout: false });
 });
 
-router.get('/changePassword', function(req,res,next) {
-  res.send('change passwrod');
+router.get('/account', function(req, res, next){
+  res.render('account', { layout: false });
+})
+
+router.get('/updatePassword', function(req,res,next) {
+  res.render('updatePassword', { layout: false });
 })
 
 

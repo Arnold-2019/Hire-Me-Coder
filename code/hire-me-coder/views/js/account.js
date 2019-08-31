@@ -31,29 +31,31 @@
     const loginGroup = document.getElementsByClassName('login-group')[0];
     const logoutGroup = document.getElementsByClassName('logout-group')[0];
     
-    // Add login event
-    btnLogin.addEventListener('click', e => {
-        // Get email and pwd
-        const email = txtEmail.value;
-        const password = txtPassword.value;
-        const auth = firebase.auth();
-        
-        // Sign in
-        const promise = auth.signInWithEmailAndPassword(email, password);
-        promise.catch(e => console.log(e.message));
-
-    }); 
-      
     
+      
+    //Add logout event
+    btnLogout.addEventListener('click', e=> {
+        firebase.auth().signOut();
+    });
+
+    //Go Admin
+    btnAdmin.addEventListener('click', e=> {
+        location.href='/users';
+    })
+
+    // Change pwd
+    btnUpdatepassword.addEventListener('click', e=> {
+        location.href='/login/updatePassword';
+    })
 
     // Add a realtime listner
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser) {
             console.log('logged in');
-            location.href='/login/account';
+            // location.href='/login/account';
         } else {
             console.log('not logged in');
-            // location.href='/login'
+            location.href='/login'
         }
     });
     
