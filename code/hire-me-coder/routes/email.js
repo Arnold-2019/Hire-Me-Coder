@@ -8,10 +8,11 @@ router.get('/', function (req, res, next) {
 
 router.post('/send-invitation', function (req, res, next) {
     var sender = 'noreply@maptek.com';
-    var addressee = req.param('email');
+    var mails = req.param('email');
+    var maillist = mails.split(",");
+    var numMails = maillist.length;
 
-    var numPasswords = 1;
-    var passwords = generator.generateMultiple(numPasswords, {
+    var passwords = generator.generateMultiple(numMails, {
         length: 10,
         numbers: true
     });
@@ -25,30 +26,33 @@ router.post('/send-invitation', function (req, res, next) {
         }
     });
 
-    var mailOptions = {
-        from: sender,
-        to: addressee,
-        subject: 'HireMeCoder Invitation!',
-        text: 'Wellcome to Hire Me Coder\n\n' + 
-                'We have kindly created an account for you, and with this account ' +
-                'you can access your invitation assgnments.\n\n' +
-                'Your Account name is your email address and the defult initial Password ' +
-                'is attached below. You should update your Password after logging in.\n\n' +
-                'User name: ' + addressee + '\n' +
-                'Password: ' + passwords + '\n\n' +
-                'Please click the link below to login to Hime Me Coder\n\n' +
-                '\" THE LINK TO LOGIN TO HIRE ME CODER \"    \n\n' +
-                'Best regards,\n' +
-                'Hire Me Coder Team'
-    };
+    for (var i = 0; i < numMails; i++) {
+        var mailOptions = {
+            from: sender,
+            to: maillist[i],
+            subject: 'HireMeCoder Invitation!',
+            text: 'Wellcome to Hire Me Coder\n\n' + 
+                    'We have kindly created an account for you, and with this account ' +
+                    'you can access your invitation assgnments.\n\n' +
+                    'Your Account name is your email address and the defult initial Password ' +
+                    'is attached below. You should update your Password after logging in.\n\n' +
+                    'User name: ' + maillist[i] + '\n' +
+                    'Password: ' + passwords[i] + '\n\n' +
+                    'Please click the link below to login to Hime Me Coder\n\n' +
+                    '\" THE LINK TO LOGIN TO HIRE ME CODER \"    \n\n' +
+                    'Best regards,\n' +
+                    'Hire Me Coder Team'
+        };
 
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    }
+    res.redirect('/email');
 });
 
 module.exports = router;
