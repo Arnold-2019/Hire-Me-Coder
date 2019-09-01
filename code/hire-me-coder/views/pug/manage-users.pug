@@ -1,0 +1,92 @@
+extends layouts/_layout.pug
+
+
+block variables
+	- var activePage = 'users'
+	- var activeGroup = 'pages'
+	- var users = result
+
+block title
+	title Manage Users - Map Tek Admin
+
+block content
+	.app-title
+		div
+			h1
+				i.fa.fa-user-circle
+				|  Manage Admin Users
+			p Manage the admin user profile
+
+		ul.app-breadcrumb.breadcrumb
+			li.breadcrumb-item
+				i.fa.fa-user-circle.fa-lg
+			li.breadcrumb-item
+				a(href='#') Manage Admin Users 
+	.row
+		.col-lg-7
+			p.bs-component
+				button.btn.btn-primary(type='button' data-toggle="modal" data-target="#registerModal") Add Admin User
+
+	.row
+		.col-md-12
+			.tile
+				.div(id='res')
+				.tile-body
+					table.table.table-hover.table-bordered#sampleTable
+						thead
+							tr
+								th First Name
+								th Last Name
+								th Email
+								th Role
+						tbody
+							each user in users
+								tr
+									td=user.firstName
+									td=user.lastName
+									td=user.email
+									td=user.role
+
+	// Add Admin User Modal
+	.bs-component
+		//.modal(style="position: relative; top: auto; right: auto; left: auto; bottom: auto; z-index: 1;")
+		form(id='addAdminForm')
+			//- .overlay
+				.m-loader.mr-4.
+					<svg class="m-circular" viewBox="25 25 50 50">
+						<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"/>
+					</svg>
+			.modal(id='registerModal' role='dialog')
+				.modal-dialog.modal-dialog-centered(role='document')
+					.modal-content
+						.modal-header
+							h5.modal-title Add Admin User
+							button.close(type='button', data-dismiss='modal', aria-label='Close')
+								span(aria-hidden='true') ×
+						.modal-body
+							.form-horizontal
+								.form-group.row
+									label.control-label.col-md-3 First Name
+									.col-md-8
+										input.form-control(id='firstName' type="text", placeholder="Enter first name" required)
+								.form-group.row
+									label.control-label.col-md-3 Last Name
+									.col-md-8
+										input.form-control(id='lastName' type="text", placeholder="Enter last name" required)
+								.form-group.row
+									label.control-label.col-md-3 Email Address
+									.col-md-8
+										input.form-control(id='email' type="email", placeholder="Enter emaill address" required)
+						.modal-footer
+							button.btn.btn-primary(type='submit') Submit
+							button.btn.btn-secondary(type='button', data-dismiss='modal' id='cancelBtn') Cancel
+
+block specific-js
+	script(src='/javascripts/users.js')
+	script(type='text/javascript', src="/js/plugins/bootstrap-notify.min.js")
+	script(type='text/javascript', src="/js/plugins/sweetalert.min.js")
+	// Data table plugin
+	script(type='text/javascript', src="/js/plugins/jquery.dataTables.min.js")
+	script(type='text/javascript', src="/js/plugins/dataTables.bootstrap.min.js")
+	script(type='text/javascript').
+		$('#sampleTable').DataTable();
