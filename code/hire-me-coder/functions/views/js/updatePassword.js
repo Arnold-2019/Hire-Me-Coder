@@ -29,6 +29,7 @@
             // Update successful.           
             console.log('new password ' + newPasswordValue);
             location.href='/login/account';
+            return newPasswordValue;
             }).catch(function(error) {
             // An error happened.
             console.log(e.message);
