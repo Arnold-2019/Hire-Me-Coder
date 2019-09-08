@@ -50,11 +50,11 @@
                 description_array.push(doc.data().description);
                 // photoUrl_array.push(doc.data().photoUrl);
             }
-            // else{
-            //     if(questions_id_array.includes(doc.id)){
-            //         questions_id_array.splice(questions_id_array.indexOf(doc.id),1);
-            //     }
-            // }
+            else{
+                if(questions_id_array.includes(doc.id)){
+                    questions_id_array.splice(questions_id_array.indexOf(doc.id),1);
+                }
+            }
         })
     }
 

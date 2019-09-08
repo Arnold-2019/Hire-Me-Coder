@@ -63,11 +63,11 @@
                 questions_name_array.push(doc.data().questions_name);
                 description_array.push(doc.data().description);
             }
-            // else{
-            //     if(selected_tests_array.includes(doc.id)){
-            //         selected_tests_array.splice(selected_tests_array.indexOf(doc.id),1);
-            //     }
-            // }
+            else{
+                if(selected_tests_array.includes(doc.id)){
+                    selected_tests_array.splice(selected_tests_array.indexOf(doc.id),1);
+                }
+            }
         })
         
     }
