@@ -1,0 +1,192 @@
+doctype html
+html
+	head
+		title Create test
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase.js")
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js")
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-firestore.js")
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-storage.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js")
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+
+		// Main CSS
+		link(rel='stylesheet', type='text/css', href='/css/main.css')
+		// Font-icon css
+		link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+
+	body.app.sidebar-mini.rtl
+
+		// Navbar
+		header.app-header
+			a.app-header__logo(href='index.html') Hire-me Coder
+
+			// Sidebar toggle button
+			a.app-sidebar__toggle(href='#', data-toggle='sidebar', aria-label="Hide Sidebar")
+
+			// Navbar Right Menu
+			ul.app-nav
+
+				li.app-search
+					input.app-search__input(type="search", placeholder="Search")
+					button.app-search__button: i.fa.fa-search
+
+				
+				// User Menu
+				li.dropdown
+					a.app-nav__item(href='#', data-toggle='dropdown' aria-label="Open Profile Menu")
+						i.fa.fa-user.fa-lg
+					ul.dropdown-menu.settings-menu.dropdown-menu-right
+						li
+							a.dropdown-item(href='page-user.html')
+								i.fa.fa-cog.fa-lg
+								|  Settings
+						li
+							a.dropdown-item(href='page-user.html')
+								i.fa.fa-user.fa-lg
+								|  Profile
+						li
+							a.dropdown-item(href='page-login.html')
+								i.fa.fa-sign-out.fa-lg
+								|  Logout
+
+		// Sidebar menu
+		.app-sidebar__overlay(data-toggle="sidebar")
+			aside.app-sidebar
+
+				.app-sidebar__user
+					div
+						p.app-sidebar__user-name Map Tek
+						p.app-sidebar__user-designation Admin user
+
+				ul.app-menu
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'ManageUsers'})
+							i.app-menu__icon.fa.fa-pie-chart
+							span.app-menu__label Manage Users
+
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'CreateQuestions'})
+							i.app-menu__icon.fa.fa-pie-chart
+							span.app-menu__label Create Questions
+
+					li
+						a.app-menu__item(href='/test/manage-test' class={'active': activePage == 'ManageTests'})
+							i.app-menu__icon.fa.fa-pie-chart
+							span.app-menu__label Manage Tests
+
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'CreateTests'})
+							i.app-menu__icon.fa.fa-pie-chart
+							span.app-menu__label Create Tests
+
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'SendAssessment'})
+							i.app-menu__icon.fa.fa-pie-chart
+							span.app-menu__label Send Assessment
+
+					
+
+		main.app-content
+
+			.app-title
+				div
+					h1
+						i.fa.fa-pie-chart
+						|  Create Test Questionnaire
+					
+
+				ul.app-breadcrumb.breadcrumb
+					li.breadcrumb-item
+						i.fa.fa-home.fa-lg
+					li.breadcrumb-item
+						a(href='/test') test
+					li.breadcrumb-item
+						a(href='#') create-test
+
+			.row
+				.col-md-12
+					.tile
+						.row
+							.col-lg-6
+										.tile-body
+											form 
+												.form-group
+													label.control-label Create Test Name
+													input.form-control(type="createTestName", id="test_name", name="test_name", placeholder="New test name")
+
+
+				
+			.row
+				.col-md-6
+					.tile
+						h3.tile-title Theoretical Questions
+						table.table-questions
+							thead
+								tr
+									th Select
+									th Question Name
+									th Description
+								
+							tbody(id='theoreticalQuestions')
+								//- tr
+								//- 	td     
+								//- 		input.form-check-input(type='checkbox')
+								//- 	td 
+								//- 		//- ul(id='questions')
+								//- 	td 
+								//- 		//- ul(id='description')
+								
+								
+							
+
+				.col-md-6
+					.tile
+						h3.tile-title Coding Questions
+						table.table-questions
+							thead
+								tr
+									th Select
+									th Question Name
+									th Description
+							tbody(id='codingQuestions')
+								//- tr
+								//- 	td     
+								//- 		input.form-check-input(type='checkbox')
+								//- 	td 
+								//- 		//- ul(id='questions')
+								//- 	td 
+								//- 		//- ul(id='description')
+
+
+
+			.row
+				.col-md-12
+					.tile
+						.row
+							.col-lg-6
+										.tile-body
+											
+
+										.tile-footer
+											button.btn.btn-primary(type="button", id="createTest")
+												i.fa.fa-fw.fa-lg.fa-check-circle
+												| Create
+											| &nbsp;&nbsp;&nbsp;
+											a.btn.btn-secondary(href="/test/manage-test")
+												i.fa.fa-fw.fa-lg.fa-times-circle
+												| Cancel
+											| &nbsp;&nbsp;&nbsp;
+											a.btn.btn-primary(href="/test/manage-test")
+												i.fa.fa-fw.fa-lg.fa-times-circle
+												| Manage Existing Tests
+			
+				
+								
+										
+
+		//- Javascripts
+		script(src='/js/create-test.js')
+		
+

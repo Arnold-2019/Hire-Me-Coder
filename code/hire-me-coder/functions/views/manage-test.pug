@@ -1,0 +1,162 @@
+
+
+doctype html
+html
+	head
+		title Manage test
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js")
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-firestore.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js")
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+
+		// Main CSS
+		link(rel='stylesheet', type='text/css', href='/css/main.css')
+		// Font-icon css
+		link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+
+	body.app.sidebar-mini.rtl
+
+		// Navbar
+		header.app-header
+			a.app-header__logo(href='index.html') Hire-me Coder
+
+			// Sidebar toggle button
+			a.app-sidebar__toggle(href='#', data-toggle='sidebar', aria-label="Hide Sidebar")
+
+			// Navbar Right Menu
+			ul.app-nav
+
+				li.app-search
+					input.app-search__input(type="search", placeholder="Search")
+					button.app-search__button: i.fa.fa-search
+
+				
+				// User Menu
+				li.dropdown
+					a.app-nav__item(href='#', data-toggle='dropdown' aria-label="Open Profile Menu")
+						i.fa.fa-user.fa-lg
+					ul.dropdown-menu.settings-menu.dropdown-menu-right
+						li
+							a.dropdown-item(href='page-user.html')
+								i.fa.fa-cog.fa-lg
+								|  Settings
+						li
+							a.dropdown-item(href='page-user.html')
+								i.fa.fa-user.fa-lg
+								|  Profile
+						li
+							a.dropdown-item(href='page-login.html')
+								i.fa.fa-sign-out.fa-lg
+								|  Logout
+
+		// Sidebar menu
+		.app-sidebar__overlay(data-toggle="sidebar")
+			aside.app-sidebar
+
+				.app-sidebar__user
+					div
+						p.app-sidebar__user-name Map Tek
+						p.app-sidebar__user-designation Admin user
+
+				ul.app-menu
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'ManageUsers'})
+							i.app-menu__icon.fa.fa-pie-chart
+							span.app-menu__label Manage Users
+
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'CreateQuestions'})
+							i.app-menu__icon.fa.fa-pie-chart
+							span.app-menu__label Create Questions
+
+					li
+						a.app-menu__item(href='/test/manage-test' class={'active': activePage == 'ManageTests'})
+							i.app-menu__icon.fa.fa-pie-chart
+							span.app-menu__label Manage Tests
+
+					li
+						a.app-menu__item(href='/test/create-test' class={'active': activePage == 'CreateTests'})
+							i.app-menu__icon.fa.fa-pie-chart
+							span.app-menu__label Create Tests
+
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'SendAssessment'})
+							i.app-menu__icon.fa.fa-pie-chart
+							span.app-menu__label Send Assessment
+
+					
+
+		main.app-content
+
+			.app-title
+				div
+					h1
+						i.fa.fa-pie-chart
+						|  Manage Test Questionnaire
+					
+
+				ul.app-breadcrumb.breadcrumb
+					li.breadcrumb-item
+						i.fa.fa-home.fa-lg
+					li.breadcrumb-item
+						a(href='/test') test
+					li.breadcrumb-item
+						a(href='#') manage-test
+
+			.row
+				.col-md-12
+					.tile
+						h3.tile-title Existing Tests 
+					
+						table.table-questions
+							thead
+								tr
+									th Select
+									th Test Name
+	
+									
+									//- th Create Time
+									//- th Create Admin
+								
+							tbody(id='tests')
+
+			
+			.row
+				.col-md-12
+					.tile
+						.row
+						
+							.tile-footer
+								
+								
+								button.btn.btn-primary(type="button", id="openTest")
+									i.fa.fa-fw.fa-lg.fa-check-circle
+									| Open Selected Tests
+								| &nbsp;&nbsp;&nbsp;
+								button.btn.btn-secondary(type="button", id="deleteTest")
+									i.fa.fa-fw.fa-lg.fa-times-circle
+									| Delete Selected Tests
+								| &nbsp;&nbsp;&nbsp;
+								a.btn.btn-primary(href="/test/create-test")
+									i.fa.fa-fw.fa-lg.fa-check-circle
+									| Create New Tests
+								
+								
+								
+								
+											
+
+
+
+
+			
+				
+								
+										
+
+		//- Javascripts
+		script(src='/js/manage-test.js')
+		
+
