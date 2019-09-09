@@ -1,0 +1,673 @@
+[debug] [2019-09-09T05:47:15.276Z] ----------------------------------------------------------------------
+[debug] [2019-09-09T05:47:15.278Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Clean\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only functions,hosting
+[debug] [2019-09-09T05:47:15.278Z] CLI Version:   7.3.0
+[debug] [2019-09-09T05:47:15.278Z] Platform:      win32
+[debug] [2019-09-09T05:47:15.278Z] Node Version:  v10.16.3
+[debug] [2019-09-09T05:47:15.279Z] Time:          Mon Sep 09 2019 15:17:15 GMT+0930 (GMT+09:30)
+[debug] [2019-09-09T05:47:15.279Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-09-09T05:47:15.287Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-09-09T05:47:15.287Z] > authorizing via signed-in user
+[debug] [2019-09-09T05:47:15.287Z] [iam] checking project hireme-coder for permissions ["firebase.projects.get"]
+[debug] [2019-09-09T05:47:15.289Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-09-09T05:47:15.289Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-09-09T05:47:15.671Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-09T05:47:15.705Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/hireme-coder:testIamPermissions  
+
+[debug] [2019-09-09T05:47:18.303Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-09T05:47:18.306Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/hireme-coder  
+ 
+[debug] [2019-09-09T05:47:19.697Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-09T05:47:19.708Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/hireme-coder/webApps/-/config  
+ 
+[warn] !  Your requested "node" version "8" doesn't match your global version "10"
+[info] +  functions: Emulator started at http://localhost:5001
+[debug] [2019-09-09T05:47:21.216Z] <<< HTTP RESPONSE 200
+[info] i  functions: Watching "C:\Users\Clean\Documents\SEP_2019_PG5\code\hire-me-coder\functions" for Cloud Functions...
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+[debug] [2019-09-09T05:47:21.889Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[debug] [2019-09-09T05:47:21.890Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:47:21.893Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:47:21.894Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:21.895Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[info] +  functions[app]: http function initialized (http://localhost:5001/hireme-coder/us-central1/app).
+[info] [hosting] Rewriting /test/create-test to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:47:40.037Z] Accepted request GET /hireme-coder/us-central1/app/test/create-test --> app
+[debug] [2019-09-09T05:47:40.475Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:47:40.476Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:47:40.479Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:47:40.481Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:40.482Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:41.104Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:47:41.105Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:47:41.105Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:47:41.111Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\25360"}
+[debug] [2019-09-09T05:47:41.115Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\25360"}
+[debug] [2019-09-09T05:47:41.123Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:47:41.127Z] [runtime-status] Ephemeral server survived. {}
+[info] >  GET /hireme-coder/us-central1/app/test/create-test 200 1597.097 ms - 4746
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /css/main.css to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[info] [hosting] Rewriting /js/create-test.js to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:47:42.792Z] Accepted request GET /hireme-coder/us-central1/app/css/main.css --> app
+[debug] [2019-09-09T05:47:42.806Z] Accepted request GET /hireme-coder/us-central1/app/js/create-test.js --> app
+[debug] [2019-09-09T05:47:43.358Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:47:43.359Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:47:43.365Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:47:43.369Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:43.372Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:43.393Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:47:43.396Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:47:43.405Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:47:43.407Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:43.407Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:44.157Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:47:44.158Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:47:44.158Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:47:44.166Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\6372"}
+[debug] [2019-09-09T05:47:44.168Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\6372"}
+[debug] [2019-09-09T05:47:44.176Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:47:44.176Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:47:44.176Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:47:44.176Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:47:44.181Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-09-09T05:47:44.184Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\16192"}
+[debug] [2019-09-09T05:47:44.185Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\16192"}
+[debug] [2019-09-09T05:47:44.195Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:47:44.205Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "app" in ~1s
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /favicon.ico to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:47:44.430Z] Accepted request GET /hireme-coder/us-central1/app/favicon.ico --> app
+[debug] [2019-09-09T05:47:44.953Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:47:44.954Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:47:44.959Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:47:44.964Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:44.965Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:45.597Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:47:45.598Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:47:45.598Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:47:45.604Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\15708"}
+[debug] [2019-09-09T05:47:45.605Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\15708"}
+[debug] [2019-09-09T05:47:45.613Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:47:45.616Z] [runtime-status] Ephemeral server survived. {}
+[info] [hosting] Rewriting /test/manage-test to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:47:45.679Z] Accepted request GET /hireme-coder/us-central1/app/test/manage-test --> app
+[info] >  GET /hireme-coder/us-central1/app/favicon.ico 404 426.406 ms - 1511
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:47:46.172Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:47:46.174Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:47:46.176Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:47:46.178Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:46.179Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:46.838Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:47:46.839Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:47:46.839Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:47:46.846Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\4388"}
+[debug] [2019-09-09T05:47:46.847Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\4388"}
+[debug] [2019-09-09T05:47:46.856Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:47:46.860Z] [runtime-status] Ephemeral server survived. {}
+[info] >  GET /hireme-coder/us-central1/app/test/manage-test 200 484.382 ms - 3996
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /css/main.css to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[info] [hosting] Rewriting /js/manage-test.js to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:47:47.385Z] Accepted request GET /hireme-coder/us-central1/app/css/main.css --> app
+[debug] [2019-09-09T05:47:47.404Z] Accepted request GET /hireme-coder/us-central1/app/js/manage-test.js --> app
+[debug] [2019-09-09T05:47:47.970Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:47:47.971Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:47:47.975Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:47:47.978Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:47.980Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:47.997Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:47:47.998Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:47:48.001Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:47:48.003Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:48.004Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:47:48.761Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:47:48.762Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:47:48.762Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:47:48.769Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\22020"}
+[debug] [2019-09-09T05:47:48.770Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\22020"}
+[debug] [2019-09-09T05:47:48.778Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:47:48.782Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-09-09T05:47:48.793Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:47:48.793Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:47:48.793Z] [runtime-status] Running app in mode HTTPS {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:47:48.808Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\24012"}
+[debug] [2019-09-09T05:47:48.816Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\24012"}
+[debug] [2019-09-09T05:47:48.834Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:47:48.840Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:49:31.745Z] File C:\Users\Clean\Documents\SEP_2019_PG5\code\hire-me-coder\functions\views\js\manage-test.js changed, reloading triggers
+[debug] [2019-09-09T05:49:33.303Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[debug] [2019-09-09T05:49:33.303Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:49:33.307Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:49:33.308Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:49:33.309Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[info] [hosting] Rewriting /test/manage-test to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:49:40.583Z] Accepted request GET /hireme-coder/us-central1/app/test/manage-test --> app
+[debug] [2019-09-09T05:49:41.122Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:49:41.124Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:49:41.127Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:49:41.129Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:49:41.130Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:49:41.813Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:49:41.813Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:49:41.813Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:49:41.819Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\1124"}
+[debug] [2019-09-09T05:49:41.820Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\1124"}
+[debug] [2019-09-09T05:49:41.829Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:49:41.833Z] [runtime-status] Ephemeral server survived. {}
+[info] >  GET /hireme-coder/us-central1/app/test/manage-test 200 517.540 ms - 3996
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /css/main.css to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[info] [hosting] Rewriting /js/manage-test.js to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:49:42.410Z] Accepted request GET /hireme-coder/us-central1/app/css/main.css --> app
+[debug] [2019-09-09T05:49:42.417Z] Accepted request GET /hireme-coder/us-central1/app/js/manage-test.js --> app
+[debug] [2019-09-09T05:49:42.976Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:49:42.977Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:49:42.980Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:49:42.981Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:49:42.981Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:49:42.983Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:49:42.987Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:49:42.990Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:49:42.992Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:49:42.993Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:49:43.774Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:49:43.774Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:49:43.774Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:49:43.780Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\1380"}
+[debug] [2019-09-09T05:49:43.781Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\1380"}
+[debug] [2019-09-09T05:49:43.786Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:49:43.786Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:49:43.787Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:49:43.792Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:49:43.797Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\15856"}
+[debug] [2019-09-09T05:49:43.798Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\15856"}
+[debug] [2019-09-09T05:49:43.800Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-09-09T05:49:43.809Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:49:43.817Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "app" in ~1s
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:51:07.222Z] File C:\Users\Clean\Documents\SEP_2019_PG5\code\hire-me-coder\functions\views\js\manage-test.js changed, reloading triggers
+[debug] [2019-09-09T05:51:08.802Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[debug] [2019-09-09T05:51:08.802Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:51:08.806Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:51:08.808Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:51:08.808Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[info] [hosting] Rewriting /test/manage-test to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:51:11.856Z] Accepted request GET /hireme-coder/us-central1/app/test/manage-test --> app
+[debug] [2019-09-09T05:51:12.510Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:51:12.510Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:51:12.514Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:51:12.516Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:51:12.516Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:51:13.198Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:51:13.199Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:51:13.199Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:51:13.205Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\12728"}
+[debug] [2019-09-09T05:51:13.207Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\12728"}
+[debug] [2019-09-09T05:51:13.217Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:51:13.221Z] [runtime-status] Ephemeral server survived. {}
+[info] >  GET /hireme-coder/us-central1/app/test/manage-test 200 473.483 ms - 3996
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /css/main.css to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[info] [hosting] Rewriting /js/manage-test.js to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:51:13.732Z] Accepted request GET /hireme-coder/us-central1/app/css/main.css --> app
+[debug] [2019-09-09T05:51:13.766Z] Accepted request GET /hireme-coder/us-central1/app/js/manage-test.js --> app
+[debug] [2019-09-09T05:51:14.357Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:51:14.358Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:51:14.361Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:51:14.363Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:51:14.364Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:51:14.420Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:51:14.423Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:51:14.426Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:51:14.427Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:51:14.428Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:51:15.237Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:51:15.237Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:51:15.237Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:51:15.247Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\5744"}
+[debug] [2019-09-09T05:51:15.248Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\5744"}
+[debug] [2019-09-09T05:51:15.267Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:51:15.274Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-09-09T05:51:15.298Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:51:15.299Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:51:15.299Z] [runtime-status] Running app in mode HTTPS {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:51:15.311Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\17344"}
+[debug] [2019-09-09T05:51:15.312Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\17344"}
+[debug] [2019-09-09T05:51:15.330Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:51:15.341Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:54:23.611Z] File C:\Users\Clean\Documents\SEP_2019_PG5\code\hire-me-coder\functions\views\js\manage-test.js changed, reloading triggers
+[debug] [2019-09-09T05:54:25.177Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[debug] [2019-09-09T05:54:25.177Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:54:25.183Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:54:25.186Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:54:25.187Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[info] [hosting] Rewriting /test/manage-test to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:54:28.261Z] Accepted request GET /hireme-coder/us-central1/app/test/manage-test --> app
+[debug] [2019-09-09T05:54:28.810Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:54:28.811Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:54:28.817Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:54:28.818Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:54:28.819Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:54:29.554Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:54:29.554Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:54:29.554Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:54:29.560Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\8816"}
+[debug] [2019-09-09T05:54:29.561Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\8816"}
+[debug] [2019-09-09T05:54:29.570Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:54:29.574Z] [runtime-status] Ephemeral server survived. {}
+[info] >  GET /hireme-coder/us-central1/app/test/manage-test 200 478.920 ms - 3996
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /css/main.css to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[info] [hosting] Rewriting /js/manage-test.js to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:54:30.102Z] Accepted request GET /hireme-coder/us-central1/app/css/main.css --> app
+[debug] [2019-09-09T05:54:30.110Z] Accepted request GET /hireme-coder/us-central1/app/js/manage-test.js --> app
+[debug] [2019-09-09T05:54:30.692Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:54:30.693Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:54:30.700Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:54:30.704Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:54:30.706Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:54:30.710Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:54:30.711Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:54:30.719Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:54:30.724Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:54:30.725Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:54:31.475Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:54:31.475Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:54:31.475Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:54:31.482Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\12344"}
+[debug] [2019-09-09T05:54:31.483Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\12344"}
+[debug] [2019-09-09T05:54:31.493Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:54:31.497Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-09-09T05:54:31.504Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:54:31.504Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:54:31.504Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:54:31.514Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\5060"}
+[debug] [2019-09-09T05:54:31.515Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\5060"}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:54:31.533Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:54:31.537Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /css/main.css to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:54:39.266Z] Accepted request GET /hireme-coder/us-central1/app/css/main.css --> app
+[debug] [2019-09-09T05:54:39.701Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:54:39.703Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:54:39.706Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:54:39.708Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:54:39.708Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:54:40.374Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:54:40.374Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:54:40.374Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:54:40.383Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\23072"}
+[debug] [2019-09-09T05:54:40.384Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\23072"}
+[debug] [2019-09-09T05:54:40.392Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:54:40.397Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:55:00.938Z] File C:\Users\Clean\Documents\SEP_2019_PG5\code\hire-me-coder\functions\views\js\manage-test.js changed, reloading triggers
+[debug] [2019-09-09T05:55:02.493Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[debug] [2019-09-09T05:55:02.493Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:55:02.496Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:55:02.498Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:02.499Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:15.356Z] File C:\Users\Clean\Documents\SEP_2019_PG5\code\hire-me-coder\functions\views\js\manage-test.js changed, reloading triggers
+[debug] [2019-09-09T05:55:16.893Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[debug] [2019-09-09T05:55:16.893Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:55:16.897Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:55:16.898Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:16.899Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[info] [hosting] Rewriting /test/manage-test to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:55:17.903Z] Accepted request GET /hireme-coder/us-central1/app/test/manage-test --> app
+[debug] [2019-09-09T05:55:18.486Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:55:18.487Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:55:18.491Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:55:18.492Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:18.493Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:19.124Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:55:19.124Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:55:19.124Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:55:19.130Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\23408"}
+[debug] [2019-09-09T05:55:19.131Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\23408"}
+[debug] [2019-09-09T05:55:19.140Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:55:19.144Z] [runtime-status] Ephemeral server survived. {}
+[info] >  GET /hireme-coder/us-central1/app/test/manage-test 200 468.142 ms - 3996
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /css/main.css to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[info] [hosting] Rewriting /js/manage-test.js to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:55:19.635Z] Accepted request GET /hireme-coder/us-central1/app/css/main.css --> app
+[debug] [2019-09-09T05:55:19.660Z] Accepted request GET /hireme-coder/us-central1/app/js/manage-test.js --> app
+[debug] [2019-09-09T05:55:20.283Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:55:20.283Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:55:20.289Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:55:20.290Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:20.291Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:20.306Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:55:20.307Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:55:20.310Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:55:20.312Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:20.313Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:21.024Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:55:21.024Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:55:21.024Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:55:21.030Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\13992"}
+[debug] [2019-09-09T05:55:21.031Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\13992"}
+[debug] [2019-09-09T05:55:21.047Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:55:21.050Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-09-09T05:55:21.051Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:55:21.051Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:55:21.051Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:55:21.059Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\19044"}
+[debug] [2019-09-09T05:55:21.060Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\19044"}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:55:21.077Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:55:21.082Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:55:29.210Z] File C:\Users\Clean\Documents\SEP_2019_PG5\code\hire-me-coder\functions\views\js\manage-test.js changed, reloading triggers
+[debug] [2019-09-09T05:55:30.693Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[debug] [2019-09-09T05:55:30.693Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:55:30.696Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:55:30.698Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:30.699Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[info] [hosting] Rewriting /test/manage-test to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:55:31.364Z] Accepted request GET /hireme-coder/us-central1/app/test/manage-test --> app
+[debug] [2019-09-09T05:55:31.822Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:55:31.823Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:55:31.825Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:55:31.827Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:31.828Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:32.451Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:55:32.451Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:55:32.451Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:55:32.457Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\14800"}
+[debug] [2019-09-09T05:55:32.458Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\14800"}
+[debug] [2019-09-09T05:55:32.467Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:55:32.471Z] [runtime-status] Ephemeral server survived. {}
+[info] >  GET /hireme-coder/us-central1/app/test/manage-test 200 462.066 ms - 3996
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /css/main.css to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[info] [hosting] Rewriting /js/manage-test.js to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:55:32.950Z] Accepted request GET /hireme-coder/us-central1/app/css/main.css --> app
+[debug] [2019-09-09T05:55:32.966Z] Accepted request GET /hireme-coder/us-central1/app/js/manage-test.js --> app
+[debug] [2019-09-09T05:55:33.464Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:55:33.465Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:55:33.471Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:55:33.473Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:33.473Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:33.482Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:55:33.483Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:55:33.488Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:55:33.489Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:33.490Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:55:34.204Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:55:34.204Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:55:34.204Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:55:34.212Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\23148"}
+[debug] [2019-09-09T05:55:34.213Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\23148"}
+[debug] [2019-09-09T05:55:34.226Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:55:34.230Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-09-09T05:55:34.236Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:55:34.236Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:55:34.236Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:55:34.245Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\18888"}
+[debug] [2019-09-09T05:55:34.247Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\18888"}
+[debug] [2019-09-09T05:55:34.260Z] [runtime-status] Ephemeral server used! {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:55:34.264Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:56:17.795Z] File C:\Users\Clean\Documents\SEP_2019_PG5\code\hire-me-coder\functions\views\js\manage-test.js changed, reloading triggers
+[debug] [2019-09-09T05:56:19.362Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[debug] [2019-09-09T05:56:19.362Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:56:19.366Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:56:19.367Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:19.368Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[info] [hosting] Rewriting /test/manage-test to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:56:19.699Z] Accepted request GET /hireme-coder/us-central1/app/test/manage-test --> app
+[debug] [2019-09-09T05:56:20.146Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:56:20.147Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:56:20.150Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:56:20.152Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:20.153Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:20.788Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:56:20.789Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:56:20.789Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:56:20.795Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\9804"}
+[debug] [2019-09-09T05:56:20.796Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\9804"}
+[debug] [2019-09-09T05:56:20.804Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:56:20.809Z] [runtime-status] Ephemeral server survived. {}
+[info] >  GET /hireme-coder/us-central1/app/test/manage-test 200 492.344 ms - 3996
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /css/main.css to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[info] [hosting] Rewriting /js/manage-test.js to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:56:21.321Z] Accepted request GET /hireme-coder/us-central1/app/css/main.css --> app
+[debug] [2019-09-09T05:56:21.335Z] Accepted request GET /hireme-coder/us-central1/app/js/manage-test.js --> app
+[debug] [2019-09-09T05:56:21.938Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:56:21.939Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:56:21.944Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:56:21.946Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:21.947Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:21.959Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:56:21.960Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:56:21.963Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:56:21.965Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:21.966Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:22.687Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:56:22.687Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:56:22.687Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:56:22.694Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\21604"}
+[debug] [2019-09-09T05:56:22.695Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\21604"}
+[debug] [2019-09-09T05:56:22.704Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:56:22.705Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:56:22.705Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:56:22.705Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:56:22.708Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-09-09T05:56:22.714Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\2896"}
+[debug] [2019-09-09T05:56:22.715Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\2896"}
+[debug] [2019-09-09T05:56:22.726Z] [runtime-status] Ephemeral server used! {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:56:22.735Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:56:32.782Z] File C:\Users\Clean\Documents\SEP_2019_PG5\code\hire-me-coder\functions\views\js\manage-test.js changed, reloading triggers
+[debug] [2019-09-09T05:56:34.247Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[debug] [2019-09-09T05:56:34.247Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:56:34.251Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:56:34.253Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:34.253Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[info] [hosting] Rewriting /test/manage-test to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:56:39.198Z] Accepted request GET /hireme-coder/us-central1/app/test/manage-test --> app
+[debug] [2019-09-09T05:56:39.678Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:56:39.680Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:56:39.683Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:56:39.684Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:39.685Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:40.318Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:56:40.318Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:56:40.318Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:56:40.325Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\22696"}
+[debug] [2019-09-09T05:56:40.326Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\22696"}
+[debug] [2019-09-09T05:56:40.335Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:56:40.339Z] [runtime-status] Ephemeral server survived. {}
+[info] >  GET /hireme-coder/us-central1/app/test/manage-test 200 463.588 ms - 3996
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /css/main.css to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[info] [hosting] Rewriting /js/manage-test.js to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:56:40.822Z] Accepted request GET /hireme-coder/us-central1/app/css/main.css --> app
+[debug] [2019-09-09T05:56:40.841Z] Accepted request GET /hireme-coder/us-central1/app/js/manage-test.js --> app
+[debug] [2019-09-09T05:56:41.419Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:56:41.420Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:56:41.424Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:56:41.426Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:41.427Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:41.450Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:56:41.451Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:56:41.456Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:56:41.458Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:41.459Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:56:42.130Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:56:42.130Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:56:42.131Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:56:42.139Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\3760"}
+[debug] [2019-09-09T05:56:42.140Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\3760"}
+[debug] [2019-09-09T05:56:42.149Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:56:42.154Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-09-09T05:56:42.158Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:56:42.158Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:56:42.158Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:56:42.166Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\23912"}
+[debug] [2019-09-09T05:56:42.168Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\23912"}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:56:42.185Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:56:42.191Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:57:00.861Z] File C:\Users\Clean\Documents\SEP_2019_PG5\code\hire-me-coder\functions\views\js\manage-test.js changed, reloading triggers
+[debug] [2019-09-09T05:57:02.334Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[debug] [2019-09-09T05:57:02.335Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:57:02.338Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:57:02.340Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:57:02.341Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:57:22.354Z] File C:\Users\Clean\Documents\SEP_2019_PG5\code\hire-me-coder\functions\views\js\manage-test.js changed, reloading triggers
+[debug] [2019-09-09T05:57:23.867Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[debug] [2019-09-09T05:57:23.868Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:57:23.871Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:57:23.873Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:57:23.874Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[info] [hosting] Rewriting /test/manage-test to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:57:23.953Z] Accepted request GET /hireme-coder/us-central1/app/test/manage-test --> app
+[debug] [2019-09-09T05:57:24.459Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:57:24.460Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:57:24.466Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:57:24.467Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:57:24.468Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:57:25.122Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:57:25.123Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:57:25.123Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:57:25.129Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\19148"}
+[debug] [2019-09-09T05:57:25.130Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\19148"}
+[debug] [2019-09-09T05:57:25.139Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:57:25.142Z] [runtime-status] Ephemeral server survived. {}
+[info] >  GET /hireme-coder/us-central1/app/test/manage-test 200 467.662 ms - 3996
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /css/main.css to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[info] [hosting] Rewriting /js/manage-test.js to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:57:25.632Z] Accepted request GET /hireme-coder/us-central1/app/css/main.css --> app
+[debug] [2019-09-09T05:57:25.642Z] Accepted request GET /hireme-coder/us-central1/app/js/manage-test.js --> app
+[debug] [2019-09-09T05:57:26.117Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:57:26.118Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:57:26.121Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:57:26.123Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:57:26.124Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:57:26.147Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:57:26.149Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:57:26.156Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:57:26.158Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:57:26.159Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:57:26.959Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:57:26.959Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:57:26.959Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:57:26.966Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\16680"}
+[debug] [2019-09-09T05:57:26.967Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\16680"}
+[debug] [2019-09-09T05:57:26.977Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:57:26.983Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-09-09T05:57:27.001Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:57:27.002Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:57:27.002Z] [runtime-status] Running app in mode HTTPS {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:57:27.016Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\14728"}
+[debug] [2019-09-09T05:57:27.017Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\14728"}
+[debug] [2019-09-09T05:57:27.028Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:57:27.034Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-09-09T05:57:34.968Z] File C:\Users\Clean\Documents\SEP_2019_PG5\code\hire-me-coder\functions\views\js\manage-test.js changed, reloading triggers
+[debug] [2019-09-09T05:57:36.475Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[debug] [2019-09-09T05:57:36.476Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:57:36.480Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:57:36.482Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:57:36.482Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[info] [hosting] Rewriting /test/manage-test to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:58:07.426Z] Accepted request GET /hireme-coder/us-central1/app/test/manage-test --> app
+[debug] [2019-09-09T05:58:07.862Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:58:07.863Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:58:07.866Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:58:07.868Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:58:07.869Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:58:08.514Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:58:08.514Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:58:08.514Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:58:08.521Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\17276"}
+[debug] [2019-09-09T05:58:08.523Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\17276"}
+[debug] [2019-09-09T05:58:08.530Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:58:08.534Z] [runtime-status] Ephemeral server survived. {}
+[info] >  GET /hireme-coder/us-central1/app/test/manage-test 200 477.851 ms - 3996
+[info] i  functions: Finished "app" in ~1s
+[info] [hosting] Rewriting /css/main.css to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[info] [hosting] Rewriting /js/manage-test.js to http://localhost:5001/hireme-coder/us-central1/app for local Function app
+[debug] [2019-09-09T05:58:09.031Z] Accepted request GET /hireme-coder/us-central1/app/css/main.css --> app
+[debug] [2019-09-09T05:58:09.064Z] Accepted request GET /hireme-coder/us-central1/app/js/manage-test.js --> app
+[debug] [2019-09-09T05:58:09.615Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:58:09.616Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:58:09.620Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:58:09.625Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:58:09.626Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:58:09.627Z] [runtime-status] Functions runtime initialized. {"cwd":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions","node_version":"10.16.3"}
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-09-09T05:58:09.629Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-09T05:58:09.632Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.4.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2019-09-09T05:58:09.634Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:58:09.635Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2019-09-09T05:58:10.389Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:58:10.389Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:58:10.390Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:58:10.394Z] [runtime-status] Trigger "app" has been found, beginning invocation! {}
+[debug] [2019-09-09T05:58:10.395Z] [runtime-status]  {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2019-09-09T05:58:10.395Z] [runtime-status] Running app in mode HTTPS {}
+[debug] [2019-09-09T05:58:10.396Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\21112"}
+[debug] [2019-09-09T05:58:10.397Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\21112"}
+[debug] [2019-09-09T05:58:10.403Z] {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\12696"}
+[debug] [2019-09-09T05:58:10.404Z] [functions] Runtime ready! Sending request! {"socketPath":"\\\\?\\pipe\\C:\\Users\\Clean\\Documents\\SEP_2019_PG5\\code\\hire-me-coder\\functions\\12696"}
+[debug] [2019-09-09T05:58:10.407Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:58:10.411Z] [runtime-status] Ephemeral server survived. {}
+[debug] [2019-09-09T05:58:10.413Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-09-09T05:58:10.417Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "app" in ~1s
+[info] i  functions: Finished "app" in ~1s

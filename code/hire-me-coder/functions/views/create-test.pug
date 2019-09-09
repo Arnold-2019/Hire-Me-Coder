@@ -105,17 +105,7 @@ html
 					li.breadcrumb-item
 						a(href='#') create-test
 
-			.row
-				.col-md-12
-					.tile
-						.row
-							.col-lg-6
-										.tile-body
-											form 
-												.form-group
-													label.control-label Create Test Name
-													input.form-control(type="createTestName", id="test_name", name="test_name", placeholder="New test name")
-
+		
 
 				
 			.row
@@ -166,11 +156,17 @@ html
 					.tile
 						.row
 							.col-lg-6
-										.tile-body
-											
+										
+										form(id="create_test_form")
+											.form-group
+												label.control-label Create Test Name
+												input.form-control(type="createTestName", id="test_name", name="test_name", placeholder="New test name")
+												.form-control-error(id="name_error") Please enter new test name!
+												//- .form-control-error(id="blank_error") Please choose at least one question!
+												.form-control-feedback(id="create_success") Test created!
 
-										.tile-footer
-											button.btn.btn-primary(type="button", id="createTest")
+										
+											button.btn.btn-primary(type="submit", id="createTest")
 												i.fa.fa-fw.fa-lg.fa-check-circle
 												| Create
 											| &nbsp;&nbsp;&nbsp;

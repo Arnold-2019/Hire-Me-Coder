@@ -31,8 +31,7 @@
         let select = document.createElement('td');
         let checkBox = document.createElement('input');
         let test_name = document.createElement('td');
-
-        // let create_time = document.createElement('td');
+        let create_time = document.createElement('td');
         // let create_admin = document.createElement('td');
         
         checkBox.type = "checkbox";
@@ -41,15 +40,14 @@
         tr.setAttribute('data-id',doc.id);
 
         test_name.textContent = doc.data().test_name;
-    
-        // create_time.textContent = doc.data().create_time;
+        create_time.textContent = doc.data().create_time.toDate();        
+        create_time.textContent = create_time.textContent.substring(0,25);        
+
 
         select.appendChild(checkBox);
         tr.appendChild(select);
         tr.appendChild(test_name);
-
-        // tr.appendChild(deleteTest);
-        // tr.appendChild(create_time);
+        tr.appendChild(create_time);
         // tr.appendChild(create_admin);
  
         tests.appendChild(tr);

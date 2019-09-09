@@ -74,7 +74,7 @@
     }).catch(error => { console.log('error') });
     
     
-    var createTest = document.getElementById('createTest');
+    var createTest = document.getElementById('create_test_form');
     var test_name = document.getElementById('test_name');
     // createTest.addEventListener('click', (e)=> {
     //     e.preventDefault();
@@ -86,7 +86,7 @@
     //     location.href='/test/create-test';
     // })
 
-    createTest.addEventListener('click',(e)=>{
+    createTest.addEventListener('submit',(e)=>{
         e.preventDefault();
         // var doc = new jsPDF();
         // doc.text(10,10,"Test name: " + test_name.value);
@@ -102,22 +102,27 @@
         //     // doc.text(10,100,photoUrl_array[i],{maxWidth:150});
         // }
         // doc.save(test_name.value+ '.pdf');
+        
+        if (test_name.value === "") {
+            document.getElementById('name_error').style.display="block";
+        }
+        else{
+            db.collection('tests').add({
+                test_name: test_name.value,
+                create_time: firebase.firestore.Timestamp.fromDate(new Date()),
+                questions_name: questions_name_array,
+                description: description_array
+            });
+            document.getElementById('name_error').style.display="none";
+            document.getElementById('create_success').style.display="block";
+            location.href='/test/create-test';
+        }
 
-        db.collection('tests').add({
-            test_name: test_name.value,
-            create_time: firebase.firestore.Timestamp.fromDate(new Date()),
-            questions_name: questions_name_array,
-            description: description_array
-        });
-        location.href='/test/create-test';
 
         // var storageRef = firebase.storage().ref('tests/'+ test_name.value+ '.pdf');
         // storageRef.put(doc);
         
     })
-    
-   
-
 
     
 }());

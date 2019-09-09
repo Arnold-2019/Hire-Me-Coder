@@ -12,11 +12,11 @@ router.get('/', function(req, res, next) {
 
 router.get('/create-test', function(req, res, next){
   res.render('create-test', { layout: false });
-})
+});
 
 router.get('/manage-test', function(req, res, next){
   res.render('manage-test', { layout: false });
-})
+});
 
 
 

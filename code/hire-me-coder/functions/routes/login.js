@@ -2,7 +2,18 @@ var express = require('express');
 var router = express.Router();
 var firebase = require('firebase');
 
+// const flash = require('express-flash');
+// const session = require('express-session');
 
+// // initialise seession middleware - flash-express depends on it
+// router.use(session({
+//   secret : 'this is my long string',
+//   resave: false,
+//   saveUninitialized: true
+// }));
+
+// //initialise the flash middleware
+// router.use(flash());
 
 
 //Login page
@@ -12,11 +23,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/account', function(req, res, next){
   res.render('account', { layout: false });
-})
+});
 
-router.get('/updatePassword', function(req,res,next) {
-  res.render('updatePassword', { layout: false });
-})
 
 
 // var serviceAccount = require('../firebase-service-account-key.json');
