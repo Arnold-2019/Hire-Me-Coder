@@ -98,6 +98,23 @@
         }
     });
 
+
+    var close_view = document.getElementById('close_view');
+    close_view.addEventListener("click",(e)=>{
+        e.stopPropagation();
+        // $("#nick_modal_content p").remove();
+        nick_modal.style.display="none";
+        // update_password.style.display="none";
+    })
+
+    var btn_open_update =document.getElementById("btn_open_update");
+    btn_open_update.addEventListener("click",(e)=>{
+        e.stopPropagation();
+        nick_modal.style.display="block";
+    })
+
+
+
     
     
     }());

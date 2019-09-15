@@ -123,22 +123,13 @@ html
 							div
 								h3
 									
-									|  Reset Password
+									
 							.row
 								.col-lg-6
 											.tile-body
-												
-												form.form-group(id='update_password')
-														label.control-label New Password:
-														input.form-control(type='newPassword', name='newPassword', id='newPassword', placeholder='Enter Password')
-														label.control-label Confirm Password:
-														input.form-control(type='confirmPassword', name='confirmPassword', id='confirmPassword', placeholder='Enter Password')
-														.form-control-feedback(id="reset_success") Password is reset!
-														.form-control-error(id="digit_error") Password has to be at least 6 digits.
-														.form-control-error(id="different_error") Confirm password is different.
-														button.btn.btn-primary(type='submit', id='btnUpdate')
+													button.btn.btn-primary(type='button', id='btn_open_update')
 															i.fa.fa-fw.fa-lg.fa-check-circle
-															| Update
+															| Update Password
 			
 
 			
@@ -147,6 +138,23 @@ html
 					.tile
 						button.btn.btn-primary(type='submit', id='btnLogout') Log out
 						button.btn.btn-primary(type='submit', id='btnAdmin') Go Admin
+			
+			
+		div.modal-nick#nick_modal
+			div.modal-nick-content#nick_modal_content
+				div.modal-nick-close-bar
+					span#close_view X
+				form.form-group(id='update_password')
+					label.control-label New Password:
+					input.form-control(type='newPassword', name='newPassword', id='newPassword', placeholder='Enter Password')
+					label.control-label Confirm Password:
+					input.form-control(type='confirmPassword', name='confirmPassword', id='confirmPassword', placeholder='Enter Password')
+					.form-control-feedback(id="reset_success") Password is reset!
+					.form-control-error(id="digit_error") Password has to be at least 6 digits.
+					.form-control-error(id="different_error") Confirm password is different.
+					button.btn.btn-primary(type='submit', id='btnUpdate')
+						i.fa.fa-fw.fa-lg.fa-check-circle
+						| Update Password
 
 								
 						

@@ -6,6 +6,7 @@ html
 		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js")
 		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-firestore.js")
 		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-storage.js")
+		script(src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js")
 		meta(charset='utf-8')
 		meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -28,14 +29,12 @@ html
 			// Navbar Right Menu
 			ul.app-nav
 
-				li.app-search
-					input.app-search__input(type="search", placeholder="Search")
-					button.app-search__button: i.fa.fa-search
+				
 
 				
 				// User Menu
 				li.dropdown
-					a.app-nav__item(href='#', data-toggle='dropdown' aria-label="Open Profile Menu")
+					a.app-nav__item(href='/login/account', data-toggle='dropdown' aria-label="Open Profile Menu")
 						i.fa.fa-user.fa-lg
 					ul.dropdown-menu.settings-menu.dropdown-menu-right
 						li
@@ -63,27 +62,23 @@ html
 				ul.app-menu
 					li
 						a.app-menu__item(href='#' class={'active': activePage == 'ManageUsers'})
-							i.app-menu__icon.fa.fa-pie-chart
+							i.app-menu__icon.fa.fa.fa-th-list
 							span.app-menu__label Manage Users
 
 					li
 						a.app-menu__item(href='#' class={'active': activePage == 'CreateQuestions'})
-							i.app-menu__icon.fa.fa-pie-chart
-							span.app-menu__label Create Questions
+							i.app-menu__icon.fa.fa-th-list
+							span.app-menu__label Manage Questions
 
 					li
 						a.app-menu__item(href='/test/manage-test' class={'active': activePage == 'ManageTests'})
-							i.app-menu__icon.fa.fa-pie-chart
+							i.app-menu__icon.fa.fa-th-list
 							span.app-menu__label Manage Tests
 
-					li
-						a.app-menu__item(href='#' class={'active': activePage == 'CreateTests'})
-							i.app-menu__icon.fa.fa-pie-chart
-							span.app-menu__label Create Tests
 
 					li
 						a.app-menu__item(href='#' class={'active': activePage == 'SendAssessment'})
-							i.app-menu__icon.fa.fa-pie-chart
+							i.app-menu__icon.fa.fa-th-list
 							span.app-menu__label Send Assessment
 
 					
@@ -93,8 +88,8 @@ html
 			.app-title
 				div
 					h1
-						i.fa.fa-pie-chart
-						|  Create Test Questionnaire
+						i.fa.fa-th-list
+						|  Create Tests
 					
 
 				ul.app-breadcrumb.breadcrumb
@@ -105,84 +100,251 @@ html
 					li.breadcrumb-item
 						a(href='#') create-test
 
-		
-
-				
 			.row
 				.col-md-6
 					.tile
-						h3.tile-title Theoretical Questions
-						table.table-questions
+						form(id="create_test_form")
+							h3.tile-title Create test
+							.tile-body
+								form.form-horizontal
+									.form-group.row
+										label.control-label.col-md-3 Test Name
+										.col-md-8
+											input.form-control(type="text", id="test_name", name="test_name", placeholder="New test name")
+											.form-control-error(id="name_error") Please enter new test name!
+											//- .form-control-error(id="blank_error") Please choose at least one question!
+											.form-control-feedback(id="create_success") Test created!
+
+									.form-group.row
+										label.control-label.col-md-3 Created by
+										.col-md-8
+											input.form-control.col-md-8(type="text", id="created_by", name="created_by", placeholder="Your name")
+											.form-control-error(id="created_by_error") Please enter your name!
+
+									.form-group.row
+										label.control-label.col-md-3 Description
+										.col-md-8
+											textarea.form-control(rows="4",type="text", id="test_description",placeholder="Enter description")
+											.form-control-error(id="test_description_error") Please enter description!
+
+							.tile-footer
+								.row
+									.col-md-8.col-md-offset-3
+										button.btn.btn-primary(type="button", id="preview_test")
+											i.fa.fa-fw.fa-lg.fa-check-circle
+											| Preview
+										| &nbsp;&nbsp;&nbsp;
+										a.btn.btn-secondary(href="/test/manage-test")
+											i.fa.fa-fw.fa-lg.fa-times-circle
+											| Cancel
+										| &nbsp;&nbsp;&nbsp;
+										button.btn.btn-primary(type="button", id="createTest")
+											i.fa.fa-fw.fa-lg.fa-check-circle
+											| Create
+									
+	
+				.col-md-6
+					.tile
+						h3.tile-title Questions selected
+						table.table-nick.table-hover.table-bordered
 							thead
 								tr
-									th Select
-									th Question Name
-									th Description
+									th Question type
+									th Name
+									th 
+							tbody(id='questions_selected')
+
+			
+					
+			.row
+				.tile
+					//- ul.nav.nav-tabs
+						//- li.nav-item
+						//- 	a.nav-link.active#optionDescriptive(style="color:green") Descriptive
+						//- | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						//- li.nav-item
+						//- 	a.nav-link#optionCode Code
+
+					button.btn.btn-primary.active#optionDescriptive
+						|  Descriptive
+					button.btn.btn-primary#optionCode
+						|  Code
+
+					div#desciptive_table(style="display:block")
+						.col-md-12
+							.form-group.row
+								h3.tile-title Descriptive Questions
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 								
-							tbody(id='theoreticalQuestions')
-								//- tr
-								//- 	td     
-								//- 		input.form-check-input(type='checkbox')
-								//- 	td 
-								//- 		//- ul(id='questions')
-								//- 	td 
-								//- 		//- ul(id='description')
+								
+								label.control-label.col-md-0 Search:
+								.col-md-2
+									input.form-control.form-control-sm(type="text",id="search")
+
+							table.table-nick.table-hover.table-bordered
+								thead
+									tr
+										
+										th Question Name
+										th Description
+										th
+									
+								tbody(id='descriptiveQuestions')
+									//- tr
+									//- 	td     
+									//- 		input.form-check-input(type='checkbox')
+									//- 	td 
+									//- 		//- ul(id='questions')
+									//- 	td 
+									//- 		//- ul(id='description')
+							
+							//- .bs-component
+							//- 	div(class="pagination-container")
+							//- 		nav
+							//- 			ul.pagination#pagination
+							//- 					li.page-item.disabled
+							//- 						a.page-link(href='#') «
+							//- 					li.page-item.active
+							//- 						a.page-link(href='#') 1
+							//- 					li.page-item
+							//- 						a.page-link(href='#') 2
+							//- 					li.page-item
+							//- 						a.page-link(href='#') 3
+							//- 					li.page-item
+							//- 						a.page-link(href='#') 4
+							//- 					li.page-item
+							//- 						a.page-link(href='#') 5
+							//- 					li.page-item
+							//- 						a.page-link(href='#') »
 								
 								
 							
 
-				.col-md-6
-					.tile
-						h3.tile-title Coding Questions
-						table.table-questions
-							thead
-								tr
-									th Select
-									th Question Name
-									th Description
-							tbody(id='codingQuestions')
-								//- tr
-								//- 	td     
-								//- 		input.form-check-input(type='checkbox')
-								//- 	td 
-								//- 		//- ul(id='questions')
-								//- 	td 
-								//- 		//- ul(id='description')
-
-
-
-			.row
-				.col-md-12
-					.tile
-						.row
-							.col-lg-6
-										
-										form(id="create_test_form")
-											.form-group
-												label.control-label Create Test Name
-												input.form-control(type="createTestName", id="test_name", name="test_name", placeholder="New test name")
-												.form-control-error(id="name_error") Please enter new test name!
-												//- .form-control-error(id="blank_error") Please choose at least one question!
-												.form-control-feedback(id="create_success") Test created!
-
-										
-											button.btn.btn-primary(type="submit", id="createTest")
-												i.fa.fa-fw.fa-lg.fa-check-circle
-												| Create
-											| &nbsp;&nbsp;&nbsp;
-											a.btn.btn-secondary(href="/test/manage-test")
-												i.fa.fa-fw.fa-lg.fa-times-circle
-												| Cancel
-											| &nbsp;&nbsp;&nbsp;
-											a.btn.btn-primary(href="/test/manage-test")
-												i.fa.fa-fw.fa-lg.fa-times-circle
-												| Manage Existing Tests
-			
 				
+					div#code_table(style="display:none")
+						.col-md-12
+							.form-group.row
+								h3.tile-title Coding Questions
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;
+
 								
+								label.control-label.col-md-0 Search:
+								.col-md-2
+									input.form-control.form-control-sm(type="text",id="search2")
+						
+							table.table-nick.table-hover.table-bordered
+								thead
+									tr
 										
+										th Question Name
+										th Description
+										th
+								tbody(id='codingQuestions')
+									//- tr
+									//- 	td     
+									//- 		input.form-check-input(type='checkbox')
+									//- 	td 
+									//- 		//- ul(id='questions')
+									//- 	td 
+									//- 		//- ul(id='description')
+
+
+
+			//- .row
+			//- 	.col-md-12
+			//- 		.tile
+			//- 			.row
+			//- 				.col-lg-6
+										
+			//- 							form(id="create_test_form")
+			//- 								.form-group.row
+			//- 									label.control-label Create Test Name
+												
+			//- 									input.form-control(type="createTestName", id="test_name", name="test_name", placeholder="New test name")
+			//- 									.form-control-error(id="name_error") Please enter new test name!
+			//- 									//- .form-control-error(id="blank_error") Please choose at least one question!
+			//- 									.form-control-feedback(id="create_success") Test created!
+
+										
+			//- 								button.btn.btn-primary(type="submit", id="createTest")
+			//- 									i.fa.fa-fw.fa-lg.fa-check-circle
+			//- 									| Create
+			//- 								| &nbsp;&nbsp;&nbsp;
+			//- 								a.btn.btn-secondary(href="/test/manage-test")
+			//- 									i.fa.fa-fw.fa-lg.fa-times-circle
+			//- 									| Cancel
+			//- 								| &nbsp;&nbsp;&nbsp;
+			//- 								a.btn.btn-primary(href="/test/manage-test")
+			//- 									i.fa.fa-fw.fa-lg.fa-times-circle
+			//- 									| Manage Existing Tests
+			
+			
+			
+						
+									
+									
+		div.modal-nick#nick_modal
+			div.modal-nick-content#nick_modal_content
+				div.modal-nick-close-bar
+					span#close_view X									
 
 		//- Javascripts
 		script(src='/js/create-test.js')
+		//- Search buttonn
+		script.
+			$(document).ready(function(){
+				$('#search2').keyup(function(){
+					search_table($(this).val());
+				});
+
+				function search_table(value){
+					$('#codingQuestions tr').each(function(){
+						var found = 'false';
+						$(this).each(function(){
+							if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >=0){
+								found = 'true';
+							}
+						});
+						if(found == 'true'){
+							$(this).show();
+						}
+						else {
+							$(this).hide();
+						}
+					});
+				}
+			});
+		script.
+			$(document).ready(function(){
+				$('#search').keyup(function(){
+					search_table($(this).val());
+				});
+
+				function search_table(value){
+					$('#descriptiveQuestions tr').each(function(){
+						var found = 'false';
+						$(this).each(function(){
+							if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >=0){
+								found = 'true';
+							}
+						});
+						if(found == 'true'){
+							$(this).show();
+						}
+						else {
+							$(this).hide();
+						}
+					});
+				}
+			});
 		
 
