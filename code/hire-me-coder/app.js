@@ -7,9 +7,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var usersRouter = require('./routes/users');
+var invitationRouter = require('./routes/assessment');
 var questionsRouter = require('./routes/questions');
-
-
 var app = express();
 
 // view engine setup
@@ -25,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/users', usersRouter);
+app.use('/assessment', invitationRouter);
 app.use('/questions', questionsRouter);
 
 // firestore config
