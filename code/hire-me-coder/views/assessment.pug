@@ -1,0 +1,88 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = 'blank-page'
+	- var activeGroup = 'pages'
+
+block title
+	title Send Assessment Page - Maptek
+
+block content
+	.app-title
+		div
+			h1
+				i.fa.fa-dashboard
+				|  Assessment
+			p Assessment management
+
+		ul.app-breadcrumb.breadcrumb
+			li.breadcrumb-item
+				i.fa.fa-home.fa-lg
+			li.breadcrumb-item
+				a(href='#') Send assessment form
+
+	.row
+		.col-md-12
+			.tile
+				form(method='POST' action='/assessment/send-assessment')
+					.tile-body
+						.form-group
+							label.control-label Email
+							input.form-control(id='inputEmailBox', name='inputEmailBox', type="text", placeholder="Separate multiple addresses by comma \" , \"")
+
+						.form-group
+							label.control-label Select Assessment Form
+							input.form-control(id='inputAssBox', name='inputAssBox', type="text", placeholder="Input the NAME of assessment form")
+						
+						.form-group
+							label.control-label Set Due Date
+							input.form-control(id='inputDateBox', name='inputDateBox', type="text", placeholder="Example: 23:59 DD/MM/2019")
+
+					.tile-footer
+						button.btn.btn-primary(id='sendAssessButton', type="submit")
+							i.fa.fa-fw.fa-lg.fa-check-circle
+							| Send Assessment
+						| &nbsp;&nbsp;&nbsp;
+						button.btn.btn-primary(id='previewButton', type="button")
+							| Preview
+	
+	.row
+		.col-md-12
+			.tile
+				.tile-body
+					div(id='mails')
+					div(id='tests')
+					div(id='due')
+					p
+					div(id='status')
+
+block specific-js
+	script(src="jquery-3.2.1.min.js")
+	script(type='text/javascript').
+		$('#sendAssessButton').click(() => {
+			console.log('SendAssessment button clicked');
+			$('#status').html('Sending emails ...');
+		});
+
+		$(document).ready(() => {
+			$('#previewButton').click(() => {
+				$.ajax({
+					url: 'preview/',
+					type: 'GET',
+					dataType: 'text',
+					success: (data) => {
+						console.log('You received s ome data!', data);
+						var mails = 'Send to: ' + $('#inputEmailBox').val();
+						var tests = 'Assessment form name: ' + $('#inputAssBox').val();
+						var due = 'Due date: ' + $('#inputDateBox').val();
+						$('#mails').html(mails);
+						$('#tests').html(tests);
+						$('#due').html(due);
+					}
+				});
+			});
+
+			$(document).ajaxError(() => {
+				$('#status').html('Error: unknown ajaxError!');
+			});
+		});
