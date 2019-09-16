@@ -30,32 +30,36 @@ block content
 	.row
 		.col-md-12
 			.tile
-				.div(id='res')
 				.tile-body
-					table.table.table-hover.table-bordered#sampleTable
+					table.table.table-hover.table-bordered#adminTable
 						thead
 							tr
 								th First Name
 								th Last Name
 								th Email
-								th Role
+								th Status
+								th Action
 						tbody
 							each user in users
 								tr
 									td=user.firstName
 									td=user.lastName
 									td=user.email
-									td=user.role
+									if user.isActive == true
+										td Active
+										td 
+											button#editAdminInfo.btn.btn-info.btn-sm(type='button' style='margin-right: 5px' onclick=`updateAdminUserInfo(${JSON.stringify(user)})`) Edit
+											button#dectivateUser.btn.btn-danger.btn-sm(type='button' onclick=`udpateStatus(${JSON.stringify(user)}, 0)`) Deactivate
+									else
+										td Inactive
+										td 
+											button#dectivateUser.btn.btn-primary.btn-sm(type='button' onclick=`udpateStatus(${JSON.stringify(user)}, 1)`) Activate
+
 
 	// Add Admin User Modal
 	.bs-component
 		//.modal(style="position: relative; top: auto; right: auto; left: auto; bottom: auto; z-index: 1;")
 		form(id='addAdminForm')
-			//- .overlay
-				.m-loader.mr-4.
-					<svg class="m-circular" viewBox="25 25 50 50">
-						<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"/>
-					</svg>
 			.modal(id='registerModal' role='dialog')
 				.modal-dialog.modal-dialog-centered(role='document')
 					.modal-content
@@ -68,18 +72,47 @@ block content
 								.form-group.row
 									label.control-label.col-md-3 First Name
 									.col-md-8
-										input.form-control(id='firstName' type="text", placeholder="Enter first name" required)
+										input.form-control(id='firstName' type="text", placeholder="Enter first name" required, onkeypress='return textValidation(event)')
 								.form-group.row
 									label.control-label.col-md-3 Last Name
 									.col-md-8
-										input.form-control(id='lastName' type="text", placeholder="Enter last name" required)
+										input.form-control(id='lastName' type="text", placeholder="Enter last name" required, onkeypress='return textValidation(event)')
 								.form-group.row
 									label.control-label.col-md-3 Email Address
 									.col-md-8
-										input.form-control(id='email' type="email", placeholder="Enter emaill address" required)
+										input.form-control(id='email' type="email", placeholder="Enter email address" required)
 						.modal-footer
 							button.btn.btn-primary(type='submit') Submit
 							button.btn.btn-secondary(type='button', data-dismiss='modal' id='cancelBtn') Cancel
+
+	// Update Admin User Info
+	.bs-component
+		form(id='editAdminForm')
+			.modal(id='updateModal' role='dialog')
+				.modal-dialog.modal-dialog-centered(role='document')
+					.modal-content
+						.modal-header
+							h5.modal-title Edit Admin User
+							button.close(type='button', data-dismiss='modal', aria-label='Close', onclick='dismiss()')
+								span(aria-hidden='true') ×
+						.modal-body
+							.form-horizontal
+								.form-group.row
+									label.control-label.col-md-3 First Name
+									.col-md-8
+										input.form-control(id='updateFirstName' type="text", placeholder="Enter first name" required, onkeypress='return textValidation(event)')
+								.form-group.row
+									label.control-label.col-md-3 Last Name
+									.col-md-8
+										input.form-control(id='updateLastName' type="text", placeholder="Enter last name" required, onkeypress='return textValidation(event)')
+								.form-group.row
+									label.control-label.col-md-3 Email Address
+									.col-md-8
+										input.form-control(id='updateEmail' type="email", placeholder="Enter email address" disabled=true)
+						.modal-footer
+							button.btn.btn-primary(type='submit') Submit
+							button.btn.btn-secondary(type='button', data-dismiss='modal' id='cancelBtn' onclick='dismiss()') Cancel
+
 
 block specific-js
 	script(src='/javascripts/users.js')
@@ -89,4 +122,7 @@ block specific-js
 	script(type='text/javascript', src="/js/plugins/jquery.dataTables.min.js")
 	script(type='text/javascript', src="/js/plugins/dataTables.bootstrap.min.js")
 	script(type='text/javascript').
-		$('#sampleTable').DataTable();
+		$('#adminTable').DataTable();
+	script.
+		$('.bs-component [data-toggle="popover"]').popover();
+		$('.bs-component [data-toggle="tooltip"]').tooltip();

@@ -1,19 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const fb = require('../util/db');
 
-var firebase = require('firebase-admin');
-var serviceAccount = require('../firebase-service-account-key.json');
-
-firebase.initializeApp({
-  credential: firebase.credential.cert(serviceAccount),
-  databaseURL: 'https://hireme-coder.firebaseio.com'
-});
-
-// var db = firebase.database();
-var db = firebase.firestore();
+var db = fb.firestore();
 
 router.get('/manage-users', function (req, res, next) {
-  db.collection('users').get()
+  db.collection('admin_users').get()
     .then(function (snapshot) {
       if (snapshot.empty) {
         res.send("NO SERVERS AVAILABLE")
@@ -42,16 +34,16 @@ router.get('/admin-users', function (req, res, next) {
 });
 
 router.post('/register', function (req, res, next) {
-  // let firstName = req.param('firstName');
-  // let lastName = req.param('lastName');
-  // let email = req.param('email');
-  // let role = "admin";
-  // //TODO: generate random password
-  // let password = 'test123';
+  let firstName = req.param('firstName');
+  let lastName = req.param('lastName');
+  let email = req.param('email');
+  let role = "admin";
+  //TODO: generate random password
+  let password = 'test123';
   let user = req.body.user;
 
 
-  firebase.auth().createUser({
+  fb.auth().createUser({
     email: email,
     password: password,
     displayName: `${firstName} ${lastName}`
@@ -82,24 +74,24 @@ router.post('/save', function (req, res, next) {
   let email = req.body["email"];
   let password = "test123";
   let displayName = lastName + " " + lastName;
-  let role = "admin";
+  
 
 
-  firebase.auth().createUser({
+  fb.auth().createUser({
     email: email,
     password: password,
     displayName: displayName
   }).then(userRecord => {
-    let docRef = db.collection('users').doc(userRecord['uid']);
+    let docRef = db.collection('admin_users').doc(userRecord['uid']);
     docRef.set({
       firstName: firstName,
       lastName: lastName,
       email: email,
-      role: role
+      isActive: true
     });
   }).catch(err => {
     res.status(500);
-    res.render('error', { error: err })
+    res.render('error', { error: err });
   }).then(function () {
     res.sendStatus(200);
     return next();
@@ -107,7 +99,72 @@ router.post('/save', function (req, res, next) {
     res.status(500);
     res.render('error', { error: err })
   })
-  // res.send(JSON.stringify({ users: req.body}));
+  res.send(JSON.stringify({ users: req.body }));
 })
+
+router.post('/set-status', function (req, res, next) {
+
+  var email = req.body['email'];
+  let status = req.body['status'];
+  let isActive;
+  console.log(status);
+
+  if (status == '0') {
+    isActive = false;
+  } else {
+    isActive = true;
+  }
+
+  let adminUsersRef = db.collection('admin_users');
+  let query = adminUsersRef.where('email', '==', email).get().then(snapshot => {
+    if (snapshot.empty) {
+      console.log('No matching documents.');
+      return;
+    }
+
+    snapshot.forEach(doc => {
+      adminUsersRef.doc(doc.id).update({
+        isActive: isActive
+      }).then(function () {
+        res.sendStatus(200);
+
+      });
+    });
+  }).catch(err => {
+    console.log('Error getting documents', err);
+    res.sendStatus(500);
+  });
+});
+
+router.post('/update', function (req, res, next) {
+  let firstName = req.body['firstName'];
+  let lastName = req.body['lastName'];
+  let email = req.body['email'];
+  console.log(firstName);
+  console.log(lastName);
+  console.log(email);
+
+  let adminUsersRef = db.collection('admin_users');
+  let query = adminUsersRef.where('email', '==', email).get().then(snapshot => {
+    if (snapshot.empty) {
+      console.log('No matching documents.');
+      return;
+    }
+    console.log('hellooooo');
+
+    snapshot.forEach(doc => {
+      adminUsersRef.doc(doc.id).update({
+        firstName: firstName,
+        lastName: lastName
+      }).then(function () {
+        res.sendStatus(200);
+
+      });
+    });
+  }).catch(err => {
+    console.log('Error getting documents', err);
+    res.sendStatus(500);
+  });
+});
 
 module.exports = router;
