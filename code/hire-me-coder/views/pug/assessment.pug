@@ -24,19 +24,21 @@ block content
 	.row
 		.col-md-12
 			.tile
-				form(method='POST' action='/assessment/send-assessment')
+				//- form(method='POST' action='/assessment/send-assessment')
+				form(id='sendAssessmentForm')
 					.tile-body
 						.form-group
-							label.control-label Email
-							input.form-control(id='inputEmailBox', name='inputEmailBox', type="text", placeholder="Separate multiple addresses by comma \" , \"")
+							label.control-label Email Addresses:
+							input.form-control(id='inputEmailBox', name='inputEmailBox', type="text", placeholder="Separate multiple addresses by comma \" , \"" required)
 
 						.form-group
-							label.control-label Select Assessment Form
-							input.form-control(id='inputAssBox', name='inputAssBox', type="text", placeholder="Input the NAME of assessment form")
+
+							//- label.control-label Select Test
+							//- input.form-control(id='inputAssBox', name='inputAssBox', type="text", placeholder="Input the NAME of test form")
 						
 						.form-group
-							label.control-label Set Due Date
-							input.form-control(id='inputDateBox', name='inputDateBox', type="text", placeholder="Example: 23:59 DD/MM/2019")
+							label.control-label Expiry Date:
+							input.form-control(id='demoDate',type="text",placeholder="Select Date")
 
 					.tile-footer
 						button.btn.btn-primary(id='sendAssessButton', type="submit")
@@ -57,32 +59,5 @@ block content
 					div(id='status')
 
 block specific-js
-	script(src="jquery-3.2.1.min.js")
-	script(type='text/javascript').
-		$('#sendAssessButton').click(() => {
-			console.log('SendAssessment button clicked');
-			$('#status').html('Sending emails ...');
-		});
-
-		$(document).ready(() => {
-			$('#previewButton').click(() => {
-				$.ajax({
-					url: 'preview/',
-					type: 'GET',
-					dataType: 'text',
-					success: (data) => {
-						console.log('You received s ome data!', data);
-						var mails = 'Send to: ' + $('#inputEmailBox').val();
-						var tests = 'Assessment form name: ' + $('#inputAssBox').val();
-						var due = 'Due date: ' + $('#inputDateBox').val();
-						$('#mails').html(mails);
-						$('#tests').html(tests);
-						$('#due').html(due);
-					}
-				});
-			});
-
-			$(document).ajaxError(() => {
-				$('#status').html('Error: unknown ajaxError!');
-			});
-		});
+	script(src='/javascripts/assessment.js')
+	script(type='text/javascript', src="js/plugins/bootstrap-datepicker.min.js")

@@ -1,6 +1,9 @@
 const express = require('express');
 var generator = require('generate-password');
 const router = express.Router();
+const fb = require('../util/db');
+
+const db = fb.firestore();
 
 router.get('/send-assessment', function(req, res, next) {
     res.render('assessment');
@@ -8,7 +11,7 @@ router.get('/send-assessment', function(req, res, next) {
 });
 
 router.get('/preview', function(req, res) {
-    console.log('assessment/preiew response');
+    console.log('assessment/preview response');
     var message = 'Response to Ajax request.';
     res.send(message);
 });
@@ -69,5 +72,19 @@ router.post('/send-assessment', function (req, res, next) {
         });
     }
 });
+
+router.get('/test/view', function (req, res, next) {
+    db.collection('tests').get()
+    .then(function (snapshot) {
+        if (snapshot.empty) {
+            res.send("NO SERVERS AVAILABLE")
+          } else {
+            var docs = snapshot.docs.map(doc => doc.data());
+            res.send(JSON.stringify({ tests: docs }));
+          }
+    }).catch(error => {
+        res.status(500).send({error:error});
+    })
+})
 
 module.exports = router;
