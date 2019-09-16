@@ -15309,3 +15309,14 @@ be a descendant of the grid when it is being dragged.
   cursor: pointer;
 }
 
+
+.form-control-feedback {
+  color: rgb(6, 167, 41);
+  margin-bottom: 1em;
+  display: none;
+}
+.form-control-error {
+  color: rgb(202, 3, 43);
+  margin-bottom: 1em;
+  display: none;
+}
