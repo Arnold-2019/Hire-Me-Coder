@@ -22,8 +22,144 @@
     // var photoUrl_array=[];
     
     
+    // //create element and render question
+    // function renderQuestions(doc, tbodyid, type){    
+    //     // const thisQuestions = document.querySelector(string);
+    //     let tr = document.createElement('tr');
+    //     // let select = document.createElement('td');
+    //     // let checkBox = document.createElement('input');
+    //     let add_question = document.createElement('button');
+    //     let add = document.createElement('td');
+    //     let question_name = document.createElement('td');
+    //     let description = document.createElement('td');
+        
+
+
+    //     tr.setAttribute('data-id',doc.id);
+    //     // checkBox.type = "checkbox";
+    //     add_question.textContent = "Add";
+    //     question_name.textContent = doc.data().name;
+    //     description.textContent = doc.data().description;
+
+    //     function open_question(){
+    //         let question_name = document.createElement('p');
+    //         question_name.textContent = doc.data().name;
+    //         nick_modal_content.appendChild(question_name);
+
+    //         let question_description = document.createElement('p');
+    //         question_description.textContent = doc.data().description;
+    //         nick_modal_content.appendChild(question_description);
+    //         nick_modal.style.padding="45rem 20rem";
+    //         nick_modal.style.display="block";
+    //     }
+    //     question_name.addEventListener("click", (e)=> {
+    //         e.preventDefault();
+    //         open_question();
+    //     })
+    //     description.addEventListener("click", (e)=> {
+    //         e.preventDefault();
+    //         open_question();
+    //     })
+      
+
+    //     // select.appendChild(checkBox);
+    //     // tr.appendChild(select);
+    //     add.appendChild(add_question);
+        
+    //     tr.appendChild(question_name);
+    //     tr.appendChild(description);
+    //     tr.appendChild(add);
+              
+    //     tbodyid.appendChild(tr);
+
+
+        
+
+    //     add_question.addEventListener("click", (e)=>{
+    //         e.preventDefault();
+    //         if(!question_id_array.includes(doc.id)){
+    //             question_id_array.push(doc.id);
+    //             question_name_array.push(doc.data().name);
+    //             description_array.push(doc.data().description);
+                
+    //             let tr2 = document.createElement('tr');
+    //             let selected_question_type = document.createElement('td');
+    //             let selected_question_name = document.createElement('td');
+    //             let remove = document.createElement('td');
+    //             let removebtn = document.createElement('button');
+    //             tr2.id = doc.id;
+                
+    //             selected_question_type.textContent = type;
+    //             selected_question_name.textContent = doc.data().name;
+    //             removebtn.textContent = "remove";
+
+    //             remove.appendChild(removebtn);
+    //             tr2.appendChild(selected_question_type);
+    //             tr2.appendChild(selected_question_name);
+    //             tr2.appendChild(remove);
+                    
+    //             questions_selected.appendChild(tr2);
+    //             // function open_selected_question(){
+                    
+    //             // }
+    //             selected_question_name.addEventListener("click",(e)=>{
+    //                 e.preventDefault();
+    //                 let question_name = document.createElement('p');
+    //                 question_name.textContent = doc.data().name;
+    //                 nick_modal_content.appendChild(question_name);
+
+    //                 let question_description = document.createElement('p');
+    //                 question_description.textContent = doc.data().description;
+    //                 nick_modal_content.appendChild(question_description);
+    //                 nick_modal.style.padding="10rem 20rem";
+    //                 nick_modal.style.display="block";
+    //             })
+    //             selected_question_type.addEventListener("click",(e)=>{
+    //                 e.preventDefault();
+    //                 let question_name = document.createElement('p');
+    //                 question_name.textContent = doc.data().name;
+    //                 nick_modal_content.appendChild(question_name);
+
+    //                 let question_description = document.createElement('p');
+    //                 question_description.textContent = doc.data().description;
+    //                 nick_modal_content.appendChild(question_description);
+    //                 nick_modal.style.padding="10rem 20rem";
+    //                 nick_modal.style.display="block";
+    //             })
+
+    //             removebtn.addEventListener("click", (e)=>{
+    //                 e.preventDefault();
+    //                 $("#questions_selected tr#"+doc.id).remove();
+    //                 question_name_array.splice(question_id_array.indexOf(doc.id),1);
+    //                 description_array.splice(question_id_array.indexOf(doc.id),1);
+    //                 question_id_array.splice(question_id_array.indexOf(doc.id),1);
+    //             })
+    //         }
+    //     })
+
+
+        
+
+
+
+    //     // checkBox.addEventListener("change", (e)=>{
+    //     //     if(checkBox.checked){
+    //     //         question_id_array.push(doc.id);
+    //     //         question_name_array.push(doc.data().name);
+    //     //         description_array.push(doc.data().description);
+    //     //         // photoUrl_array.push(doc.data().photoUrl);
+    //     //     }
+    //     //     else{
+    //     //         if(question_id_array.includes(doc.id)){
+    //     //             question_id_array.splice(question_id_array.indexOf(doc.id),1);
+    //     //         }
+    //     //     }
+    //     // })
+    // }
+
+
     //create element and render question
-    function renderQuestions(doc, tbodyid, type){    
+    function renderQuestions(doc){    
         // const thisQuestions = document.querySelector(string);
         let tr = document.createElement('tr');
         // let select = document.createElement('td');
@@ -61,7 +197,6 @@
             open_question();
         })
       
-
         // select.appendChild(checkBox);
         // tr.appendChild(select);
         add.appendChild(add_question);
@@ -69,11 +204,16 @@
         tr.appendChild(question_name);
         tr.appendChild(description);
         tr.appendChild(add);
+
+        if (doc.data().type=="Descriptive") {
+            tbodyid_=descriptiveQuestions;
+        }
+        else if (doc.data().type=="Code") {
+            tbodyid_=codingQuestions;
+        }
+
               
-        tbodyid.appendChild(tr);
-
-
-        
+        tbodyid_.appendChild(tr);
 
         add_question.addEventListener("click", (e)=>{
             e.preventDefault();
@@ -89,7 +229,7 @@
                 let removebtn = document.createElement('button');
                 tr2.id = doc.id;
                 
-                selected_question_type.textContent = type;
+                selected_question_type.textContent = doc.data().type;
                 selected_question_name.textContent = doc.data().name;
                 removebtn.textContent = "remove";
 
@@ -137,37 +277,26 @@
             }
         })
 
-
-        
-
-
-
-        // checkBox.addEventListener("change", (e)=>{
-        //     if(checkBox.checked){
-        //         question_id_array.push(doc.id);
-        //         question_name_array.push(doc.data().name);
-        //         description_array.push(doc.data().description);
-        //         // photoUrl_array.push(doc.data().photoUrl);
-        //     }
-        //     else{
-        //         if(question_id_array.includes(doc.id)){
-        //             question_id_array.splice(question_id_array.indexOf(doc.id),1);
-        //         }
-        //     }
-        // })
     }
 
 
-    db.collection('descriptive_questions').get().then((snapshot) => {
-        snapshot.docs.forEach(doc => {         
-            renderQuestions(doc,descriptiveQuestions,"Descriptive");
-        })
-        return 1;
-    }).catch(error => { console.log('error') });
+    // db.collection('descriptive_questions').get().then((snapshot) => {
+    //     snapshot.docs.forEach(doc => {         
+    //         renderQuestions(doc,descriptiveQuestions,"Descriptive");
+    //     })
+    //     return 1;
+    // }).catch(error => { console.log('error') });
 
-    db.collection('code_questions').get().then((snapshot) => {
+    // db.collection('code_questions').get().then((snapshot) => {
+    //     snapshot.docs.forEach(doc => {         
+    //         renderQuestions(doc,codingQuestions,"Code");
+    //     })
+    //     return 1;
+    // }).catch(error => { console.log('error') });
+    
+    db.collection('questions').get().then((snapshot) => {
         snapshot.docs.forEach(doc => {         
-            renderQuestions(doc,codingQuestions,"Code");
+            renderQuestions(doc);
         })
         return 1;
     }).catch(error => { console.log('error') });
@@ -232,18 +361,32 @@
 
 
             let success_message = document.createElement('p');
-            let redirect_message = document.createElement('p');
+            // let redirect_message = document.createElement('p');
+            let go_manage_btn = document.createElement('button');
+            let go_create_btn = document.createElement('button');
+            go_manage_btn.textContent = "Go manage";
+            go_create_btn.textContent = "Create more";
 
             success_message.textContent="Create " +test_name.value+" complete!";
-            redirect_message.textContent="Redirecting to the manage tests page";
+            // redirect_message.textContent="Redirecting to the manage tests page";
 
             nick_modal_content.appendChild(success_message);
-            nick_modal_content.appendChild(redirect_message);
+            nick_modal_content.appendChild(go_create_btn);
+            nick_modal_content.appendChild(go_manage_btn);
+            // nick_modal_content.appendChild(redirect_message);
             nick_modal.style.display="block";
             nick_modal.style.padding="10rem 20rem";
 
+            go_manage_btn.addEventListener("click",(e)=>{
+                e.preventDefault();
+                location.href='/test/manage-test';
+            })
+            go_create_btn.addEventListener("click",(e)=>{
+                e.preventDefault();
+                location.href='/test/create-test';
+            })
 
-            location.href='/test/manage-test';
+            // location.href='/test/manage-test';
         }
 
 
@@ -260,6 +403,8 @@
         else {
             let test_name2 = document.createElement('p');
             test_name2.textContent = test_name.value;
+            test_name2.style.fontWeight = "bold";
+            test_name2.style.fontSize = "30px";
             nick_modal_content.appendChild(test_name2);
 
             // console.log(question_id_array);
@@ -267,6 +412,8 @@
                 let id = question_id_array[i];
                 let number = document.createElement('p');
                 number.textContent = "Question " + (i+1);
+                number.style.fontWeight = "bold";
+                number.style.fontSize = "20px";
                 nick_modal_content.appendChild(number);
 
                 let question_name = document.createElement('p');

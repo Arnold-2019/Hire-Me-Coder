@@ -61,24 +61,28 @@ html
 
 				ul.app-menu
 					li
+						a.app-menu__item(href='#' class={'active': activePage == 'Dashboard'})
+							i.app-menu__icon.fa.fa-tachometer
+							span.app-menu__label Danshboard
+					li
 						a.app-menu__item(href='/users/manage-users' class={'active': activePage == 'ManageUsers'})
-							i.app-menu__icon.fa.fa.fa-th-list
+							i.app-menu__icon.fa.fa-user-circle
 							span.app-menu__label Manage Users
 
 					li
 						a.app-menu__item(href='/questions/view' class={'active': activePage == 'CreateQuestions'})
-							i.app-menu__icon.fa.fa-th-list
+							i.app-menu__icon.fa.fa-file-code-o
 							span.app-menu__label Manage Questions
 
 					li
 						a.app-menu__item(href='/test/manage-test' class={'active': activePage == 'ManageTests'})
-							i.app-menu__icon.fa.fa-th-list
+							i.app-menu__icon.fa.fa-file-code-o
 							span.app-menu__label Manage Tests
 
 
 					li
 						a.app-menu__item(href='/assessment/send-assessment' class={'active': activePage == 'SendAssessment'})
-							i.app-menu__icon.fa.fa-th-list
+							i.app-menu__icon.fa.fa-file-code-o
 							span.app-menu__label Send Assessment
 
 					
@@ -88,7 +92,7 @@ html
 			.app-title
 				div
 					h1
-						i.fa.fa-th-list
+						i.fa.fa-file-code-o
 						|  Create Tests
 					
 
@@ -101,58 +105,64 @@ html
 						a(href='#') create-test
 
 			.row
-				.col-md-6
-					.tile
-						form(id="create_test_form")
-							h3.tile-title Create test
-							.tile-body
-								form.form-horizontal
-									.form-group.row
-										label.control-label.col-md-3 Test Name
-										.col-md-8
-											input.form-control(type="text", id="test_name", name="test_name", placeholder="New test name")
-											.form-control-error(id="name_error") Please enter new test name!
-											//- .form-control-error(id="blank_error") Please choose at least one question!
-											.form-control-feedback(id="create_success") Test created!
+				.tile
+					.row
+						.col-md-6
+					
+							form(id="create_test_form")
+								h3.tile-title Create test
+								.tile-body
+									form.form-horizontal
+										.form-group.row
+											label.control-label.col-md-3 Test Name
+											.col-md-8
+												input.form-control(type="text", id="test_name", name="test_name", placeholder="New test name")
+												.form-control-error(id="name_error") Please enter new test name!
+												//- .form-control-error(id="blank_error") Please choose at least one question!
+												.form-control-feedback(id="create_success") Test created!
 
-									.form-group.row
-										label.control-label.col-md-3 Created by
-										.col-md-8
-											input.form-control.col-md-8(type="text", id="created_by", name="created_by", placeholder="Your name")
-											.form-control-error(id="created_by_error") Please enter your name!
+										.form-group.row
+											label.control-label.col-md-3 Created by
+											.col-md-8
+												input.form-control.col-md-8(type="text", id="created_by", name="created_by", placeholder="Your name")
+												.form-control-error(id="created_by_error") Please enter your name!
 
-									.form-group.row
-										label.control-label.col-md-3 Description
-										.col-md-8
-											textarea.form-control(rows="4",type="text", id="test_description",placeholder="Enter description")
-											.form-control-error(id="test_description_error") Please enter description!
+										.form-group.row
+											label.control-label.col-md-3 Description
+											.col-md-8
+												textarea.form-control(rows="4",type="text", id="test_description",placeholder="Enter description")
+												.form-control-error(id="test_description_error") Please enter description!
+										
+										
+										.form-group.row
+											p Add questions from tables below.
 
-							.tile-footer
-								.row
-									.col-md-8.col-md-offset-3
-										button.btn.btn-primary(type="button", id="preview_test")
-											i.fa.fa-fw.fa-lg.fa-check-circle
-											| Preview
-										| &nbsp;&nbsp;&nbsp;
-										a.btn.btn-secondary(href="/test/manage-test")
-											i.fa.fa-fw.fa-lg.fa-times-circle
-											| Cancel
-										| &nbsp;&nbsp;&nbsp;
-										button.btn.btn-primary(type="button", id="createTest")
-											i.fa.fa-fw.fa-lg.fa-check-circle
-											| Create
-									
-	
-				.col-md-6
-					.tile
-						h3.tile-title Questions selected
-						table.table-nick.table-hover.table-bordered
-							thead
-								tr
-									th Question type
-									th Name
-									th 
-							tbody(id='questions_selected')
+								.tile-footer
+									.row
+										.col-md-8.col-md-offset-3
+											button.btn.btn-primary(type="button", id="preview_test")
+												i.fa.fa-fw.fa-lg.fa-check-circle
+												| Preview
+											| &nbsp;&nbsp;&nbsp;
+											a.btn.btn-secondary(href="/test/manage-test")
+												i.fa.fa-fw.fa-lg.fa-times-circle
+												| Cancel
+											| &nbsp;&nbsp;&nbsp;
+											button.btn.btn-primary(type="button", id="createTest")
+												i.fa.fa-fw.fa-lg.fa-check-circle
+												| Create
+										
+		
+						.col-md-6
+						
+							h3.tile-title Questions selected
+							table.table-nick.table-hover.table-bordered
+								thead
+									tr
+										th Question type
+										th Name
+										th 
+								tbody(id='questions_selected')
 
 			
 					
@@ -165,9 +175,9 @@ html
 						//- li.nav-item
 						//- 	a.nav-link#optionCode Code
 
-					button.btn.btn-primary.active#optionDescriptive
+					button.btn.active#optionDescriptive(style="color:green")
 						|  Descriptive
-					button.btn.btn-primary#optionCode
+					button.btn#optionCode
 						|  Code
 
 					div#desciptive_table(style="display:block")
@@ -175,8 +185,8 @@ html
 							.form-group.row
 								h3.tile-title Descriptive Questions
 								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 								
@@ -230,8 +240,8 @@ html
 							.form-group.row
 								h3.tile-title Coding Questions
 								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 								//- | &emsp;&emsp;&emsp;&emsp;

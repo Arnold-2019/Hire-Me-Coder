@@ -79,12 +79,17 @@
         function open_test(){
             let test_name = document.createElement('p');
             test_name.textContent = doc.data().test_name;
+            test_name.style.fontWeight = "bold";
+            test_name.style.fontSize = "30px";
             nick_modal_content.appendChild(test_name);
 
 
             for (i=0;i<doc.data().question_description.length;i++){
                 let number = document.createElement('p');
                 number.textContent = "Question " + (i+1);
+                number.style.fontWeight = "bold";
+                number.style.fontSize = "20px";
+
                 nick_modal_content.appendChild(number);
 
                 let question_name = document.createElement('p');

@@ -62,18 +62,22 @@ html
 
 				ul.app-menu
 					li
+						a.app-menu__item(href='#' class={'active': activePage == 'Dashboard'})
+							i.app-menu__icon.fa.fa-tachometer
+							span.app-menu__label Danshboard
+					li
 						a.app-menu__item(href='/users/manage-users' class={'active': activePage == 'ManageUsers'})
-							i.app-menu__icon.fa.fa-th-list
+							i.app-menu__icon.fa.fa-user-circle
 							span.app-menu__label Manage Users
 
 					li
 						a.app-menu__item(href='/questions/view' class={'active': activePage == 'CreateQuestions'})
-							i.app-menu__icon.fa.fa-th-list
+							i.app-menu__icon.fa.fa-file-code-o
 							span.app-menu__label Manage Questions
 
 					li
 						a.app-menu__item(href='#' class={'active': activePage == 'ManageTests'})
-							i.app-menu__icon.fa.fa-th-list
+							i.app-menu__icon.fa.fa-file-code-o
 							span.app-menu__label Manage Tests
 
 					//- li
@@ -83,7 +87,7 @@ html
 
 					li
 						a.app-menu__item(href='/assessment/send-assessment' class={'active': activePage == 'SendAssessment'})
-							i.app-menu__icon.fa.fa-th-list
+							i.app-menu__icon.fa.fa-file-code-o
 							span.app-menu__label Send Assessment
 
 					
@@ -93,7 +97,7 @@ html
 			.app-title
 				div
 					h1
-						i.fa.fa-th-list
+						i.fa.fa-file-code-o
 						|  Manage Tests
 					
 
@@ -145,8 +149,8 @@ html
 									//- 	| Delete Selected Tests
 
 									| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
