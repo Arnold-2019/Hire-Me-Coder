@@ -21,6 +21,7 @@ router.use(bodyParser.urlencoded({extended: true}));
 router.post('/send-assessment', function (req, res, next) {
     console.log('-----TEST LINE---- 3');
     var sender = 'noreply@maptek.com';
+    var numSentMails = 0;
     // var mails = req.param('inputEmailBox');
     var mails = req.body.emails;
     var due = req.body.dueDate;
@@ -68,14 +69,16 @@ router.post('/send-assessment', function (req, res, next) {
 
         transporter.sendMail(mailOptions, function(error, info){
             if (error) {
-                console.log(error);
-                res.send('failed');
+                console.log(numSentMails);
+                res.send(numSentMails);
             } else {
-                console.log('Email sent! \n' + info.response);
+                numSentMails += 1;
+                console.log('Email sent! \n' + numSentMails + 'mails sent');
                 // res.send('Assessments have been successfully sent to: \n' + mails);
             }
         });
     }
+    res.send(numSentMails);
 });
 
 router.get('/test/view', function (req, res, next) {

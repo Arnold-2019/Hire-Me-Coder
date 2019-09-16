@@ -85,11 +85,13 @@ $('#sendAssessButton').click(function (event) {
                 console.log('You received some data in ajaxPOST: ', data);
                 $('#status').html('Status: ' + data);
                 if(data){
-                    console.log('Send failed!');
-                    alert('Failed! Assessment did NOT send.');
+                    console.log(data + 'mails sent.');
+                    $('#status').html(data + 'mails sent.');
+                    // alert('Failed! Assessment did NOT send.');
                 } else {
                     console.log('Send successfully!');
-                    alert('Assessment sent successfully!');
+                    alert('Failed! Assessment did NOT send.');
+                    // alert('Assessment sent successfully!');
                 }
             }
         });
