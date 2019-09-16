@@ -1,5 +1,12 @@
 $(document).ready(function () {
     getTest();
+
+    $('#demoDate').datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true,
+        todayHighlight: true
+    });
+
 });
 
 
