@@ -61,12 +61,12 @@ html
 
 				ul.app-menu
 					li
-						a.app-menu__item(href='#' class={'active': activePage == 'ManageUsers'})
+						a.app-menu__item(href='/users/manage-users' class={'active': activePage == 'ManageUsers'})
 							i.app-menu__icon.fa.fa.fa-th-list
 							span.app-menu__label Manage Users
 
 					li
-						a.app-menu__item(href='#' class={'active': activePage == 'CreateQuestions'})
+						a.app-menu__item(href='/questions/view' class={'active': activePage == 'CreateQuestions'})
 							i.app-menu__icon.fa.fa-th-list
 							span.app-menu__label Manage Questions
 
@@ -77,7 +77,7 @@ html
 
 
 					li
-						a.app-menu__item(href='#' class={'active': activePage == 'SendAssessment'})
+						a.app-menu__item(href='/assessment/send-assessment' class={'active': activePage == 'SendAssessment'})
 							i.app-menu__icon.fa.fa-th-list
 							span.app-menu__label Send Assessment
 
@@ -292,7 +292,7 @@ html
 						
 									
 									
-		div.modal-nick#nick_modal
+		div.modal-nick#nick_modal(style="display:none")
 			div.modal-nick-content#nick_modal_content
 				div.modal-nick-close-bar
 					span#close_view X									
@@ -306,6 +306,10 @@ html
 		//- script(src="/js/jquery-3.2.1.min.js")
 		//- script(src="/js/bootstrap.min.js")
 		//- Search buttonn
+		//- script.
+		//- 	$(document).ready(function() {
+		//- 		$("#nick_modal").modal();
+		//- 	});
 		script.
 			$(document).ready(function(){
 				$('#search2').keyup(function(){
