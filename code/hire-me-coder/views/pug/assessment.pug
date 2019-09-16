@@ -32,13 +32,33 @@ block content
 							input.form-control(id='inputEmailBox', name='inputEmailBox', type="text", placeholder="Separate multiple addresses by comma \" , \"" required)
 
 						.form-group
-
-							//- label.control-label Select Test
-							//- input.form-control(id='inputAssBox', name='inputAssBox', type="text", placeholder="Input the NAME of test form")
-						
+								label(for='inputAssBox') Select test:
+								select.form-control(id='inputAssBox')
+									option test 1
+									option test 2
+									option test 3
+									option test 4
+									option test 5
+									
 						.form-group
 							label.control-label Expiry Date:
-							input.form-control(id='demoDate',type="text",placeholder="Select Date")
+							input.form-control(id='inputDateBox',type="text",placeholder="Select Date")
+
+						.form-group
+								label(for='inputTimeBox') Expiry Time:
+								select.form-control(id='inputTimeBox', placeholder="Select Time")
+									option 8:00 am
+									option 9:00 am
+									option 10:00 am
+									option 11:00 am
+									option 12:00 noon
+									option 1:00 pm
+									option 2:00 pm
+									option 3:00 pm
+									option 4:00 pm
+									option 5:00 pm
+									option 6:00 pm
+									option 7:00 pm
 
 					.tile-footer
 						button.btn.btn-primary(id='sendAssessButton', type="submit")
@@ -52,11 +72,24 @@ block content
 		.col-md-12
 			.tile
 				.tile-body
+					div(id='status')
+					p
 					div(id='mails')
 					div(id='tests')
 					div(id='due')
 					p
-					div(id='status')
+					h5(id='template')
+					p(id='p1')
+					p(id='p2')
+					p(id='p3')
+					p(id='p4')
+					p(id='p5')
+					p(id='p6')
+					p(id='p7')
+					p(id='p8')
+					p(id='p9')
+					p(id='p10')
+
 
 block specific-js
 	script(type='text/javascript', src="/js/plugins/bootstrap-datepicker.min.js")
