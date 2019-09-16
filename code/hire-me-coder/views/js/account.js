@@ -22,17 +22,16 @@
     firebase.initializeApp(firebaseConfig);
 
     // Get elements
-    const txtEmail = document.getElementById('email');
-    const txtPassword = document.getElementById('password');
-    const btnLogin = document.getElementById('btnLogin');
     const btnLogout = document.getElementById('btnLogout');
     const btnAdmin = document.getElementById('btnAdmin');
     const btnUpdatepassword = document.getElementById('btnUpdatePassword');
-    const loginGroup = document.getElementsByClassName('login-group')[0];
-    const logoutGroup = document.getElementsByClassName('logout-group')[0];
-    
-    
-      
+    // Get elements
+    var newPassword = document.getElementById('newPassword'); 
+    var confirmPassword = document.getElementById('confirmPassword'); 
+    const btnUpdate = document.getElementById('btnUpdate');
+    const update_password =document.getElementById('update_password');
+
+
     //Add logout event
     btnLogout.addEventListener('click', e=> {
         firebase.auth().signOut();
@@ -43,10 +42,50 @@
         location.href='/users';
     })
 
-    // Change pwd
-    btnUpdatepassword.addEventListener('click', e=> {
-        location.href='/login/updatePassword';
-    })
+    //Reset display function
+    function reset(){
+        document.getElementById('reset_success').style.display="none";
+        document.getElementById('different_error').style.display="none";
+        document.getElementById('digit_error').style.display="none";
+    }
+   // Change Password
+   update_password.addEventListener('submit', e => {
+        e.preventDefault();
+        var user = firebase.auth().currentUser;
+        var newPasswordValue = newPassword.value;
+        var confirmPasswordValue = confirmPassword.value;
+        if (newPasswordValue===confirmPasswordValue && newPasswordValue.length >=6){
+            
+        user.updatePassword(newPasswordValue).then(function() {
+            // Update successful.     
+                
+            console.log('new password ' + newPasswordValue);
+            reset();
+            document.getElementById('reset_success').style.display="block";
+            //    location.href='/login/account';
+            return newPasswordValue;
+            }).catch(function(error) {
+            // An error happened.
+            console.log(e.message);
+            });
+        } else {
+            if (newPasswordValue!==confirmPasswordValue && newPasswordValue.length >=6){
+                reset();
+                document.getElementById('different_error').style.display="block";
+                console.log('error ' + newPasswordValue);
+            }
+            else if (newPasswordValue===confirmPasswordValue && newPasswordValue.length <6){
+                reset();
+                document.getElementById('digit_error').style.display="block";
+            }
+            else {
+                reset();
+                document.getElementById('different_error').style.display="block";
+                document.getElementById('digit_error').style.display="block";
+            }
+            
+       }    
+   }); 
 
     // Add a realtime listner
     firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -58,6 +97,25 @@
             location.href='/login'
         }
     });
+
+
+    var close_view = document.getElementById('close_view');
+    close_view.addEventListener("click",(e)=>{
+        e.stopPropagation();
+        // $("#nick_modal_content p").remove();
+        nick_modal.style.display="none";
+        // update_password.style.display="none";
+    })
+
+    var btn_open_update =document.getElementById("btn_open_update");
+    btn_open_update.addEventListener("click",(e)=>{
+        e.stopPropagation();
+        nick_modal.style.display="block";
+    })
+
+
+
+    
     
     }());
 

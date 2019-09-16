@@ -1,0 +1,357 @@
+
+
+doctype html
+html
+	head
+		title Manage test
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js")
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-firestore.js")
+		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js")
+		//- script(src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+		//- script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+
+		// Main CSS
+		link(rel='stylesheet', type='text/css', href='/css/main.css')
+		// Font-icon css
+		link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+
+	body.app.sidebar-mini.rtl
+
+		// Navbar
+		header.app-header
+			a.app-header__logo(href='index.html') Hire-me Coder
+
+			// Sidebar toggle button
+			a.app-sidebar__toggle(href='#', data-toggle='sidebar', aria-label="Hide Sidebar")
+
+			// Navbar Right Menu
+			ul.app-nav
+
+				
+
+				
+				// User Menu
+				li.dropdown
+					a.app-nav__item(href='/login/account', data-toggle='dropdown' aria-label="Open Profile Menu")
+						i.fa.fa-user.fa-lg
+					ul.dropdown-menu.settings-menu.dropdown-menu-right
+						li
+							a.dropdown-item(href='page-user.html')
+								i.fa.fa-cog.fa-lg
+								|  Settings
+						li
+							a.dropdown-item(href='page-user.html')
+								i.fa.fa-user.fa-lg
+								|  Profile
+						li
+							a.dropdown-item(href='page-login.html')
+								i.fa.fa-sign-out.fa-lg
+								|  Logout
+
+		// Sidebar menu
+		.app-sidebar__overlay(data-toggle="sidebar")
+			aside.app-sidebar
+
+				.app-sidebar__user
+					div
+						p.app-sidebar__user-name Map Tek
+						p.app-sidebar__user-designation Admin user
+
+				ul.app-menu
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'ManageUsers'})
+							i.app-menu__icon.fa.fa-th-list
+							span.app-menu__label Manage Users
+
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'CreateQuestions'})
+							i.app-menu__icon.fa.fa-th-list
+							span.app-menu__label Manage Questions
+
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'ManageTests'})
+							i.app-menu__icon.fa.fa-th-list
+							span.app-menu__label Manage Tests
+
+					//- li
+					//- 	a.app-menu__item(href='/test/create-test' class={'active': activePage == 'CreateTests'})
+					//- 		i.app-menu__icon.fa.fa-pie-chart
+					//- 		span.app-menu__label Create Tests
+
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'SendAssessment'})
+							i.app-menu__icon.fa.fa-th-list
+							span.app-menu__label Send Assessment
+
+					
+
+		main.app-content(id="main_content")
+
+			.app-title
+				div
+					h1
+						i.fa.fa-th-list
+						|  Manage Tests
+					
+
+				ul.app-breadcrumb.breadcrumb
+					li.breadcrumb-item
+						i.fa.fa-home.fa-lg
+					li.breadcrumb-item
+						a(href='/test') test
+					li.breadcrumb-item
+						a(href='#') manage-test
+
+			//- .row
+			//- 	.col-md-12
+			//- 		.tile
+			//- 			h3.tile-title Existing Tests 
+					
+			//- 			table.table-questions
+
+
+			//- .row
+			//- 	.col-md-12
+			//- 		.tile
+			//- 			.row
+			//- 				.col-lg-6
+			//- 					form
+			//- 						.form-group
+			//- 							label(for='exampleSelect1') Example select
+			//- 							select#maxRows.form-control
+			//- 								option(value="5") 5
+			//- 								option(value="10") 10
+			//- 								option(value="25") 25
+			//- 								option(value="50") 50
+											
+									
+			.row
+				.col-md-12
+					.tile
+						.tile-body
+							
+							
+							form.form-horizontal
+								.form-group.row
+									a.btn.btn-primary(href="/test/create-test")
+										i.fa.fa-fw.fa-lg.fa-check-circle
+										| Create New Tests
+									| &nbsp;&nbsp;&nbsp;
+									//- button.btn.btn-danger(type="button", id="deleteTest")
+									//- 	i.fa.fa-fw.fa-lg.fa-times-circle
+									//- 	| Delete Selected Tests
+
+									| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+									
+									label.control-label.col-md-0 Search:
+									.col-md-2
+										input.form-control.form-control-sm(type="text",id="search")
+									
+
+
+
+
+										
+
+							table.table.table-hover.table-bordered#testsTable
+							
+									thead
+										tr
+											
+											
+											th Test Name
+												i.fa.fa-angle-double-down(id="sort_name",style="float: right;")
+											th Created On
+												i.fa.fa-angle-double-down(id="sort_date",style="float: right;")
+											th Created By
+												i.fa.fa-angle-double-down(id="sort_admin",style="float: right;")
+											th Description
+											th 
+										
+									
+										
+									tbody(id='tests')
+						//- .tile-footer
+						//- 	.bs-component
+						//- 		div(class="pagination-container")
+						//- 			nav
+						//- 				ul.pagination#pagination
+						//- 						li.page-item.disabled
+						//- 							a.page-link(href='#') «
+						//- 						li.page-item.active
+						//- 							a.page-link(href='#') 1
+						//- 						li.page-item
+						//- 							a.page-link(href='#') 2
+						//- 						li.page-item
+						//- 							a.page-link(href='#') 3
+						//- 						li.page-item
+						//- 							a.page-link(href='#') 4
+						//- 						li.page-item
+						//- 							a.page-link(href='#') 5
+						//- 						li.page-item
+						//- 							a.page-link(href='#') »
+										
+										
+										
+
+			
+			//- .row
+			//- 	.col-md-12
+			//- 		.tile
+			//- 			.row
+						
+			//- 				.tile-footer
+								
+								
+			//- 					button.btn.btn-primary(type="button", id="openTest")
+			//- 						i.fa.fa-fw.fa-lg.fa-check-circle
+			//- 						| Open Selected Tests
+								
+			//- 					| &nbsp;&nbsp;&nbsp;
+
+
+
+
+
+
+
+			
+
+		div.modal-nick#nick_modal
+			div.modal-nick-content#nick_modal_content
+				div.modal-nick-close-bar
+					span#close_view X
+			div.modal-nick-content#confirm(style="display:none")
+				.row
+					.col-md-8.col-md-offset-3
+						button.btn.btn-danger#confirm_delete(type="button")
+							i.fa.fa-fw.fa-lg.fa-times-circle
+							| Delete
+						| &nbsp;&nbsp;&nbsp;
+						button.btn.btn-secondary#cancel
+							i.fa.fa-fw.fa-lg.fa-times-circle
+							| Cancel
+
+
+	
+	
+
+				
+
+								
+								
+								
+		
+		//- Javascripts
+		script(src='/js/manage-test.js')
+		//- script(type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js")
+		//- script(src="/js/jquery-3.2.1.min.js")
+		//- script(src="/js/bootstrap.min.js")
+		//- script(src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+		script(src="https://code.jquery.com/jquery-3.4.1.min.js")
+		
+		script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
+		Search buttonn
+		script.
+			$(document).ready(function(){
+				$('#search').keyup(function(){
+					search_table($(this).val());
+				});
+
+				function search_table(value){
+					$('#tests tr').each(function(){
+						var found = 'false';
+						$(this).each(function(){
+							if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >=0){
+								found = 'true';
+							}
+						});
+						if(found == 'true'){
+							$(this).show();
+						}
+						else {
+							$(this).hide();
+						}
+					});
+				}
+			});
+		
+		//- script.
+		//- 	var table = "#testsTable";
+		//- 	$('#maxRows').on('change',function(){
+		//- 		$('.pagination').html('');
+		//- 		var trnum = 0;
+		//- 		var maxRows = parseInt($(this).val());
+		//- 		var totalRows = $(table+' tbody tr').length;
+		//- 		$(table+' tr:gt(0)').each(function(){
+		//- 			trnum++;
+		//- 			if (trnum>maxRows){
+		//- 				$(this).hide();
+		//- 			}
+		//- 			if(trnum<=maxRows){
+		//- 				$(this).show();
+		//- 			}
+		//- 		})
+		//- 		if (totalRows>maxRows){
+		//- 			var pagenum = Math.ceil(totalRows/maxRows);
+		//- 			for(var i=1;i<=pagenum;){
+		//- 				$('.pagination').append('<li page-item="'+i+'">\<span>'+ i++ +'<span class="page-link">(current)</span></span>\</li>').show()
+		//- 				//- $('.pagination').append('<li page-item="'+i+'">\<span>'+ i++ +'<a class="page-link">(current)</a></span>\</li>').show()
+		//- 				//- $('.pagination').append('<li page-item>\<span><a class="page-link">('+i+')</a>'+ i++ +'</span>\</li>').show()
+
+		//- 				//- let li = document.createElement('li');
+		//- 				//- let a = document.createElement('a');
+
+		//- 				//- li.class = "page-item";
+		//- 				//- a.class = "page-link";
+						
+		//- 				//- a.textContent = i;
+		//- 				//- i++;
+		//- 				//- li.appendChild(a);
+		//- 				//- pagination.appendChild(li);
+			
+		//- 			}
+		//- 		}
+		//- 		$('.pagination li:first-child').addClass('active');
+		//- 		$('pagination li').on('click',function(){
+		//- 			var pageNum = $(this).attr('page-item');
+		//- 			var trIndex = 0;
+		//- 			$('.pagination li').removeClass('active')
+		//- 			$(this).addClass('active')
+		//- 			$(table+' tr:gt(0)').each(function(){
+		//- 				trIndex++;
+		//- 				if(trIndex>(maxRows*pageNum) || trIndex<= ((maxRows*pageNum)-maxRows)){
+		//- 					$(this).hide();
+		//- 				}
+		//- 				else {
+		//- 					$(this).show();
+		//- 				}
+		//- 			})
+		//- 		})
+		//- 	})
+			//- $(function(){
+			//- 	$('table tr:eq(0)').prepend('<th>ID</th')
+			//- 	var id = 0;
+			//- 	$('table tr:gt(0)').each(function(){
+			//- 		id++;
+			//- 		$(this).prepend('<td>'+id+'</td>')
+			//- 	})
+			//- })
+
+			
+
+
+
+		
+
+		
+

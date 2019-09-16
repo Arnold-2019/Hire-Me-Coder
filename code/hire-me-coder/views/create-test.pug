@@ -1,0 +1,356 @@
+doctype html
+html
+	head
+		title Create test
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase.js")
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js")
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-firestore.js")
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase-storage.js")
+		//- script(src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js")
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+
+		// Main CSS
+		link(rel='stylesheet', type='text/css', href='/css/main.css')
+		// Font-icon css
+		link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+
+	body.app.sidebar-mini.rtl
+
+		// Navbar
+		header.app-header
+			a.app-header__logo(href='index.html') Hire-me Coder
+
+			// Sidebar toggle button
+			a.app-sidebar__toggle(href='#', data-toggle='sidebar', aria-label="Hide Sidebar")
+
+			// Navbar Right Menu
+			ul.app-nav
+
+				
+
+				
+				// User Menu
+				li.dropdown
+					a.app-nav__item(href='/login/account', data-toggle='dropdown' aria-label="Open Profile Menu")
+						i.fa.fa-user.fa-lg
+					ul.dropdown-menu.settings-menu.dropdown-menu-right
+						li
+							a.dropdown-item(href='page-user.html')
+								i.fa.fa-cog.fa-lg
+								|  Settings
+						li
+							a.dropdown-item(href='page-user.html')
+								i.fa.fa-user.fa-lg
+								|  Profile
+						li
+							a.dropdown-item(href='page-login.html')
+								i.fa.fa-sign-out.fa-lg
+								|  Logout
+
+		// Sidebar menu
+		.app-sidebar__overlay(data-toggle="sidebar")
+			aside.app-sidebar
+
+				.app-sidebar__user
+					div
+						p.app-sidebar__user-name Map Tek
+						p.app-sidebar__user-designation Admin user
+
+				ul.app-menu
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'ManageUsers'})
+							i.app-menu__icon.fa.fa.fa-th-list
+							span.app-menu__label Manage Users
+
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'CreateQuestions'})
+							i.app-menu__icon.fa.fa-th-list
+							span.app-menu__label Manage Questions
+
+					li
+						a.app-menu__item(href='/test/manage-test' class={'active': activePage == 'ManageTests'})
+							i.app-menu__icon.fa.fa-th-list
+							span.app-menu__label Manage Tests
+
+
+					li
+						a.app-menu__item(href='#' class={'active': activePage == 'SendAssessment'})
+							i.app-menu__icon.fa.fa-th-list
+							span.app-menu__label Send Assessment
+
+					
+
+		main.app-content
+
+			.app-title
+				div
+					h1
+						i.fa.fa-th-list
+						|  Create Tests
+					
+
+				ul.app-breadcrumb.breadcrumb
+					li.breadcrumb-item
+						i.fa.fa-home.fa-lg
+					li.breadcrumb-item
+						a(href='/test') test
+					li.breadcrumb-item
+						a(href='#') create-test
+
+			.row
+				.col-md-6
+					.tile
+						form(id="create_test_form")
+							h3.tile-title Create test
+							.tile-body
+								form.form-horizontal
+									.form-group.row
+										label.control-label.col-md-3 Test Name
+										.col-md-8
+											input.form-control(type="text", id="test_name", name="test_name", placeholder="New test name")
+											.form-control-error(id="name_error") Please enter new test name!
+											//- .form-control-error(id="blank_error") Please choose at least one question!
+											.form-control-feedback(id="create_success") Test created!
+
+									.form-group.row
+										label.control-label.col-md-3 Created by
+										.col-md-8
+											input.form-control.col-md-8(type="text", id="created_by", name="created_by", placeholder="Your name")
+											.form-control-error(id="created_by_error") Please enter your name!
+
+									.form-group.row
+										label.control-label.col-md-3 Description
+										.col-md-8
+											textarea.form-control(rows="4",type="text", id="test_description",placeholder="Enter description")
+											.form-control-error(id="test_description_error") Please enter description!
+
+							.tile-footer
+								.row
+									.col-md-8.col-md-offset-3
+										button.btn.btn-primary(type="button", id="preview_test")
+											i.fa.fa-fw.fa-lg.fa-check-circle
+											| Preview
+										| &nbsp;&nbsp;&nbsp;
+										a.btn.btn-secondary(href="/test/manage-test")
+											i.fa.fa-fw.fa-lg.fa-times-circle
+											| Cancel
+										| &nbsp;&nbsp;&nbsp;
+										button.btn.btn-primary(type="button", id="createTest")
+											i.fa.fa-fw.fa-lg.fa-check-circle
+											| Create
+									
+	
+				.col-md-6
+					.tile
+						h3.tile-title Questions selected
+						table.table-nick.table-hover.table-bordered
+							thead
+								tr
+									th Question type
+									th Name
+									th 
+							tbody(id='questions_selected')
+
+			
+					
+			.row
+				.tile
+					//- ul.nav.nav-tabs
+						//- li.nav-item
+						//- 	a.nav-link.active#optionDescriptive(style="color:green") Descriptive
+						//- | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						//- li.nav-item
+						//- 	a.nav-link#optionCode Code
+
+					button.btn.btn-primary.active#optionDescriptive
+						|  Descriptive
+					button.btn.btn-primary#optionCode
+						|  Code
+
+					div#desciptive_table(style="display:block")
+						.col-md-12
+							.form-group.row
+								h3.tile-title Descriptive Questions
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								
+								
+								label.control-label.col-md-0 Search:
+								.col-md-2
+									input.form-control.form-control-sm(type="text",id="search")
+
+							table.table-nick.table-hover.table-bordered
+								thead
+									tr
+										
+										th Question Name
+										th Description
+										th
+									
+								tbody(id='descriptiveQuestions')
+									//- tr
+									//- 	td     
+									//- 		input.form-check-input(type='checkbox')
+									//- 	td 
+									//- 		//- ul(id='questions')
+									//- 	td 
+									//- 		//- ul(id='description')
+							
+							//- .bs-component
+							//- 	div(class="pagination-container")
+							//- 		nav
+							//- 			ul.pagination#pagination
+							//- 					li.page-item.disabled
+							//- 						a.page-link(href='#') «
+							//- 					li.page-item.active
+							//- 						a.page-link(href='#') 1
+							//- 					li.page-item
+							//- 						a.page-link(href='#') 2
+							//- 					li.page-item
+							//- 						a.page-link(href='#') 3
+							//- 					li.page-item
+							//- 						a.page-link(href='#') 4
+							//- 					li.page-item
+							//- 						a.page-link(href='#') 5
+							//- 					li.page-item
+							//- 						a.page-link(href='#') »
+								
+								
+							
+
+				
+					div#code_table(style="display:none")
+						.col-md-12
+							.form-group.row
+								h3.tile-title Coding Questions
+								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+								//- | &emsp;&emsp;&emsp;&emsp;
+
+								
+								label.control-label.col-md-0 Search:
+								.col-md-2
+									input.form-control.form-control-sm(type="text",id="search2")
+						
+							table.table-nick.table-hover.table-bordered
+								thead
+									tr
+										
+										th Question Name
+										th Description
+										th
+								tbody(id='codingQuestions')
+									//- tr
+									//- 	td     
+									//- 		input.form-check-input(type='checkbox')
+									//- 	td 
+									//- 		//- ul(id='questions')
+									//- 	td 
+									//- 		//- ul(id='description')
+
+
+
+			//- .row
+			//- 	.col-md-12
+			//- 		.tile
+			//- 			.row
+			//- 				.col-lg-6
+										
+			//- 							form(id="create_test_form")
+			//- 								.form-group.row
+			//- 									label.control-label Create Test Name
+												
+			//- 									input.form-control(type="createTestName", id="test_name", name="test_name", placeholder="New test name")
+			//- 									.form-control-error(id="name_error") Please enter new test name!
+			//- 									//- .form-control-error(id="blank_error") Please choose at least one question!
+			//- 									.form-control-feedback(id="create_success") Test created!
+
+										
+			//- 								button.btn.btn-primary(type="submit", id="createTest")
+			//- 									i.fa.fa-fw.fa-lg.fa-check-circle
+			//- 									| Create
+			//- 								| &nbsp;&nbsp;&nbsp;
+			//- 								a.btn.btn-secondary(href="/test/manage-test")
+			//- 									i.fa.fa-fw.fa-lg.fa-times-circle
+			//- 									| Cancel
+			//- 								| &nbsp;&nbsp;&nbsp;
+			//- 								a.btn.btn-primary(href="/test/manage-test")
+			//- 									i.fa.fa-fw.fa-lg.fa-times-circle
+			//- 									| Manage Existing Tests
+			
+			
+			
+						
+									
+									
+		div.modal-nick#nick_modal
+			div.modal-nick-content#nick_modal_content
+				div.modal-nick-close-bar
+					span#close_view X									
+
+		//- Javascripts
+		script(src='/js/create-test.js')
+		//- script(type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js")
+		//- script(src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+		script(src="https://code.jquery.com/jquery-3.4.1.min.js")
+		script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
+		//- script(src="/js/jquery-3.2.1.min.js")
+		//- script(src="/js/bootstrap.min.js")
+		//- Search buttonn
+		script.
+			$(document).ready(function(){
+				$('#search2').keyup(function(){
+					search_table($(this).val());
+				});
+
+				function search_table(value){
+					$('#codingQuestions tr').each(function(){
+						var found = 'false';
+						$(this).each(function(){
+							if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >=0){
+								found = 'true';
+							}
+						});
+						if(found == 'true'){
+							$(this).show();
+						}
+						else {
+							$(this).hide();
+						}
+					});
+				}
+			});
+		script.
+			$(document).ready(function(){
+				$('#search').keyup(function(){
+					search_table($(this).val());
+				});
+
+				function search_table(value){
+					$('#descriptiveQuestions tr').each(function(){
+						var found = 'false';
+						$(this).each(function(){
+							if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >=0){
+								found = 'true';
+							}
+						});
+						if(found == 'true'){
+							$(this).show();
+						}
+						else {
+							$(this).hide();
+						}
+					});
+				}
+			});
+		
+

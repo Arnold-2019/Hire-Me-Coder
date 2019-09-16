@@ -24,6 +24,7 @@ router.get('/add-users', function(req, res, next) {
     snapshot.forEach((doc) => {
       console.log(doc.id, '=>', doc.data());
     });
+    return snapshot;
   })
   .catch((err) => {
     console.log('Error getting documents', err);

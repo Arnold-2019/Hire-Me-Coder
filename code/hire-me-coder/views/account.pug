@@ -1,16 +1,165 @@
+//- doctype html
+//- html
+//-   head
+//-     title= title
+//-     script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase.js") 
+//-     link(rel='stylesheet', href='https://bootswatch.com/4/darkly/bootstrap.min.css')
+//-   body
+
+//-     .main.container
+										
+//-             button.btn.btn-primary(type='submit', id='btnLogout') Log out
+//-             button.btn.btn-primary(type='submit', id='btnUpdatePassword') Update Password
+//-             button.btn.btn-primary(type='submit', id='btnAdmin') Go Admin
+						
+
+//-   script(src='/js/account.js')
+
+
+	
+
 doctype html
 html
-  head
-    title= title
-    script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase.js") 
-    link(rel='stylesheet', href='https://bootswatch.com/4/darkly/bootstrap.min.css')
-  body
+	head
+		title Account
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase.js")
 
-    .main.container
-                    
-            button.btn.btn-primary(type='submit', id='btnLogout') Log out
-            button.btn.btn-primary(type='submit', id='btnUpdatePassword') Update Password
-            button.btn.btn-primary(type='submit', id='btnAdmin') Go Admin
-            
 
-  script(src='/js/account.js')
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+
+		// Main CSS
+		link(rel='stylesheet', type='text/css', href='/css/main.css')
+		// Font-icon css
+		link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+
+	body.app.sidebar-mini.rtl
+
+		// Navbar
+		header.app-header
+			a.app-header__logo(href='index.html') Hire-me Coder
+
+			// Sidebar toggle button
+			a.app-sidebar__toggle(href='#', data-toggle='sidebar', aria-label="Hide Sidebar")
+
+			// Navbar Right Menu
+			ul.app-nav
+
+				li.app-search
+					input.app-search__input(type="search", placeholder="Search")
+					button.app-search__button: i.fa.fa-search
+
+				
+				// User Menu
+				li.dropdown
+					a.app-nav__item(href='#', data-toggle='dropdown' aria-label="Open Profile Menu")
+						i.fa.fa-user.fa-lg
+					ul.dropdown-menu.settings-menu.dropdown-menu-right
+						li
+							a.dropdown-item(href='page-user.html')
+								i.fa.fa-cog.fa-lg
+								|  Settings
+						li
+							a.dropdown-item(href='page-user.html')
+								i.fa.fa-user.fa-lg
+								|  Profile
+						li
+							a.dropdown-item(href='page-login.html')
+								i.fa.fa-sign-out.fa-lg
+								|  Logout
+
+		// Sidebar menu
+		.app-sidebar__overlay(data-toggle="sidebar")
+			aside.app-sidebar
+
+				.app-sidebar__user
+					div
+						p.app-sidebar__user-name Map Tek
+						p.app-sidebar__user-designation Admin user
+
+				ul.app-menu
+					li
+						a.app-menu__item(href='/login/account' class={'active': activePage == 'Account'})
+							i.app-menu__icon.fa.fa-pie-chart
+							span.app-menu__label Account
+
+					li
+						a.app-menu__item(href='/test/manage-test' class={'active': activePage == 'ManageTests'})
+							i.app-menu__icon.fa.fa-pie-chart
+							span.app-menu__label Manage Tests
+
+					//- li
+					//- 	a.app-menu__item(href='/test/create-test' class={'active': activePage == 'CreateTests'})
+					//- 		i.app-menu__icon.fa.fa-pie-chart
+					//- 		span.app-menu__label Create Tests
+
+
+
+
+		main.app-content
+
+			.app-title
+				div
+					h1
+						i.fa.fa-pie-chart
+						|  Account
+					
+
+				ul.app-breadcrumb.breadcrumb
+					li.breadcrumb-item
+						i.fa.fa-home.fa-lg
+					li.breadcrumb-item
+						a(href='/login') login
+					li.breadcrumb-item
+						a(href='#') acount
+			
+			
+			
+			.row
+				.col-md-12
+					
+						.tile
+							div
+								h3
+									
+									
+							.row
+								.col-lg-6
+											.tile-body
+													button.btn.btn-primary(type='button', id='btn_open_update')
+															i.fa.fa-fw.fa-lg.fa-check-circle
+															| Update Password
+			
+
+			
+			.row
+				.col-md-12
+					.tile
+						button.btn.btn-primary(type='submit', id='btnLogout') Log out
+						button.btn.btn-primary(type='submit', id='btnAdmin') Go Admin
+			
+			
+		div.modal-nick#nick_modal
+			div.modal-nick-content#nick_modal_content
+				div.modal-nick-close-bar
+					span#close_view X
+				form.form-group(id='update_password')
+					label.control-label New Password:
+					input.form-control(type='newPassword', name='newPassword', id='newPassword', placeholder='Enter Password')
+					label.control-label Confirm Password:
+					input.form-control(type='confirmPassword', name='confirmPassword', id='confirmPassword', placeholder='Enter Password')
+					.form-control-feedback(id="reset_success") Password is reset!
+					.form-control-error(id="digit_error") Password has to be at least 6 digits.
+					.form-control-error(id="different_error") Confirm password is different.
+					button.btn.btn-primary(type='submit', id='btnUpdate')
+						i.fa.fa-fw.fa-lg.fa-check-circle
+						| Update Password
+
+								
+						
+
+		//- Javascripts
+		script(src='/js/account.js')
+		
+

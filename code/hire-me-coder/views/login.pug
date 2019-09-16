@@ -1,26 +1,77 @@
+
+
+
 doctype html
 html
-  head
-    title= title
-    script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase.js") 
-    link(rel='stylesheet', href='https://bootswatch.com/4/darkly/bootstrap.min.css')
-  body
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
 
-    .main.container
-            
-        div.login-group(class="login-group")
-            div.form-group
-                label(for='email') Email:
-                input(type='email', name='email', id='email', placeholder='Enter Email')
-            div.form-group
-                label(for='password') Password:
-                input(type='password', name='password', id='password', placeholder='Enter Password')
-            
+		// Main CSS
+		link(rel='stylesheet', type='text/css', href='css/main.css')
+		// Font-icon css
+		link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase.js") 
+		title Login - MapTek
+
+	body
+		section.material-half-bg
+			.cover
+
+		section.login-content
+			.logo: h1 Hire-Me Coder
+
+			.login-box
+				form.login-form(id="login_form")
+					h3.login-head
+						i.fa.fa-lg.fa-fw.fa-user
+						| LOG IN
+					.form-group
+						label.control-label USERNAME
+						input.form-control(type="text", id="email",placeholder="Email", autofocus)
+
+					.form-group
+						label.control-label PASSWORD
+						input.form-control(type="password",id="password", placeholder="Password")
+					.form-control-error(id="login_error") The password is invalid or the user does not have a password.
+					.form-group
+						.utility
+							//- .animated-checkbox
+							//- 	label
+							//- 		input(type="checkbox")
+							//- 		span.label-text Stay Signed in
+							p.semibold-text.mb-2
+								a(href="#" data-toggle="flip") Forgot Password ?
+
+					.form-group.btn-container
+						button.btn.btn-primary.btn-block(id='btnLogin')
+							i.fa.fa-sign-in.fa-lg.fa-fw
+							| LOG IN
+
+				form.forget-form
+					h3.login-head
+						i.fa.fa-lg.fa-fw.fa-lock
+						| Forgot Password ?
+					.form-group
+						label.control-label EMAIL
+						input.form-control(type="text", placeholder="Email")
+
+					.form-group.btn-container
+						button.btn.btn-primary.btn-block
+							i.fa.fa-unlock.fa-lg.fa-fw
+							| RESET
+
+					.form-group.mt-3
+						p.semibold-text.mb-0
+							a(href="#" data-toggle="flip") <i class="fa fa-angle-left fa-fw"></i> Back to Login
+		
+		
+		
+		script(src='/js/login.js')
 
 
-            button.btn.btn-primary(type='submit', id='btnLogin') Log in
-            
-            
-        
 
-  script(src='/js/loginAuth.js')
+
+
+
