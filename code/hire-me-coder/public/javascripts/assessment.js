@@ -9,7 +9,6 @@ $(document).ready(function () {
 
 });
 
-
 function getTest() {
     let testSelect = [];
     $.ajax({
@@ -33,52 +32,12 @@ function getTest() {
     });
 }
 
-// $('#sendAssessButton').click(function (event) {
-//     console.log('submittt!!');
-//     var emails = $('#emailInput').val();
-
-//     // ajax call to do the email send
-//     if (emailValidations(emails)) {
-//         // ajax call to do the email send
-//         $('#status').html('Sending emails ...');
-//         $.ajax({
-//             url: 'send-assessment',
-//             type: 'POST',
-//             data: {
-//                     emails: $('#emailInput').val(),
-//                     testName: $('#testSelect').val(),
-//                     dueDate: $('#inputDateBox').val(),
-//                     dueTime: $('#inputTimeBox').val()
-//                   },
-//             success: (data) => {
-//                 console.log('You received some data in ajaxPOST: ', data);
-//                 $('#status').html('Status: ' + data);
-//                 if(data){
-//                     console.log(data + 'mails sent.');
-//                     $('#status').html(data + 'mails sent.');
-//                     // alert('Failed! Assessment did NOT send.');
-//                 } else {
-//                     console.log('Send successfully!');
-//                     alert('Failed! Assessment did NOT send.');
-//                     // alert('Assessment sent successfully!');
-//                 }
-//             }
-//         });
-//     } else {
-//         // pop up error message
-//         alert('Email address is invalid!')
-//     }
-// });
-
 function sendEmail(event) {
-    // event.preventDefault();
     console.log('submittt!!');
     var emails = $('#emailInput').val();
 
-    // ajax call to do the email send
     if (emailValidations(emails)) {
         // ajax call to do the email send
-        $('#status').html('Sending emails ...');
         $.ajax({
             url: 'send-assessment',
             type: 'POST',
@@ -89,8 +48,6 @@ function sendEmail(event) {
                     dueTime: $('#inputTimeBox').val()
                   },
             success: (data) => {
-                // alert('Emails sent successfully!');
-                // $('#status').html('Mails sent: ' + data);
                 swal({
                     title: 'Successful',
                     text: 'Assessment Invation has been successfully sent.',
@@ -103,9 +60,7 @@ function sendEmail(event) {
                 });
             }
         });
-        // $('#status').html('Emails sent successfully!');
     } else {
-        // pop up error message
         alert('Email address is invalid!');
     }
 }

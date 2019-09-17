@@ -24,12 +24,6 @@ block content
 	.row
 		.col-md-12
 			.tile
-				.tile-body
-					div(id='status')
-
-	.row
-		.col-md-12
-			.tile
 				.row
 					.col-lg-6
 						//- form(method='POST' action='/assessment/send-assessment')
@@ -49,7 +43,12 @@ block content
 								
 								.form-group
 									label.control-label Select Expiration Date:
-									input.form-control(id='inputDateBox',type='text', placeholder='Select Date' required)
+									.form-group
+										.input-group
+											input.form-control(id='inputDateBox',type='text', placeholder='Select Date' required)
+											.input-group-append
+												span.input-group-text
+													i.fa.fa-calendar
 								.form-group
 									label.control-label Select Expiration Time:
 									.form-group
@@ -63,11 +62,7 @@ block content
 									| Email Preview
 								button.btn.btn-secondary(id='resetInputsButton', type='button' style='margin-right:5px' onclick='this.form.reset();')
 									| Reset	
-								//- button.btn.btn-primary(id='sendAssessmentButton', type='submit' style='margin-right:5px')
-								//- 	i.fa.fa-fw.fa-lg.fa-check-circle
-								//- 	| Send Assessment
-								//- button.btn.btn-secondary(id='resetAssessButton', type='button' style='margin-right:5px')
-								//- 	| Reset
+							
 					.col-lg-6
 						form
 							.tile-body

@@ -22,7 +22,6 @@ router.post('/send-assessment', function (req, res, next) {
     console.log('-----TEST LINE---- 3');
     var sender = 'noreply@maptek.com';
     var numSentMails = 0;
-    // var mails = req.param('inputEmailBox');
     var mails = req.body.emails;
     var due = req.body.dueDate;
     var time = req.body.dueTime;
