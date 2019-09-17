@@ -31,7 +31,7 @@ block content
 							.tile-body
 								.form-group
 									label.control-label Enter Email Addresses:
-									input#emailInput.form-control(data-role="multiemail")
+									input#emailInput.form-control(data-role="multiemail" required)
 									//- input.form-control(id='inputEmailBox', name='inputEmailBox', type='text', placeholder='Separate multiple addresses by comma \' , \'' required)
 
 								.form-group
@@ -43,17 +43,35 @@ block content
 								
 								.form-group
 									label.control-label Select Expiration Date:
-									input.form-control(id='demoDate',type='text', placeholder='Select Date')
+									input.form-control(id='inputDateBox',type='text', placeholder='Select Date' required)
 								.form-group
+									label.control-label Select Expiration Time:
+									.form-group
+										.input-group
+											input.form-control(id='inputTimeBox',type='text', placeholder='Select Time' required)
+											.input-group-append
+												span.input-group-text
+													i.fa.fa-clock-o
 							.tile-footer
-								button.btn.btn-info(id='previewButton', type='button' style='margin-right:5px')
+								button.btn.btn-info(id='previewButton', type='submit' style='margin-right:5px' onclick='displayEmail()')
 									| Email Preview
+								//- button.btn.btn-primary(id='sendAssessmentButton', type='submit' style='margin-right:5px')
+								//- 	i.fa.fa-fw.fa-lg.fa-check-circle
+								//- 	| Send Assessment
+								//- button.btn.btn-secondary(id='resetAssessButton', type='button' style='margin-right:5px')
+								//- 	| Reset
+					.col-lg-6
+						form
+							.tile-body
+								.form-group
+									label.control-label Preview Email Message:
+									textarea#emailMessage.form-control(rows='15', disabled=true)
+							.tile-footer
 								button.btn.btn-primary(id='sendAssessmentButton', type='submit' style='margin-right:5px')
 									i.fa.fa-fw.fa-lg.fa-check-circle
 									| Send Assessment
 								button.btn.btn-secondary(id='resetAssessButton', type='button' style='margin-right:5px')
-									| Reset
-								
+									| Reset			
 	
 	.row
 		.col-md-12
