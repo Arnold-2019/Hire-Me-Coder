@@ -11,13 +11,25 @@ $(document).ready(function () {
 
 
 function getTest() {
+    let testSelect = [];
     $.ajax({
         url: '/assessment/test/view',
         type: 'GET',
+        dataType: "json",
+        contentType: "application/json;charset=utf-8",
         success: function (data) {
-            console.log(data[0].test_name);
+            console.log(data['tests']);
+            
+            let tests = data['tests'];
+            
+            tests.forEach(test => {
+                console.log(test['test_name']);
+                testSelect.push(test['test_name']);
+                $('#testSelect').append('<option value="' + test['test_name'] + '">' + test['test_name'] + '</option>');
+            })          
         }
-        
+    }).done({
+
     });
 }
 
@@ -62,7 +74,7 @@ $('#sendAssessmentForm').submit(function (event) {
     let emails = $('#emails').val();
 
     // email validation 
-    emailValidations(emails);
+    // emailValidations(emails);
 
     // ajax call to do the email send
 });
