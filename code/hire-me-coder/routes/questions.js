@@ -95,33 +95,7 @@ router.post('/save', multer.single("imageFile"), function (req, res, next) {
                 error: err
             });
         })
-
-        // let fileName = new Date().toISOString() + ".png";
-        // let photoURL = "https://firebasestorage.googleapis.com/v0/b/hireme-coder.appspot.com/o/" + fileName + "?alt=media";
-
-        // let fileUpload = bucket.file(fileName);
-
-        // fileUpload.save(new Buffer(imageFile.buffer)).then(
-        //     result => {
-        //         let docRef = db.collection('questions').doc();
-        //         docRef.set({
-        //             type: type,
-        //             name: testName,
-        //             description: description,
-        //             photoURL: photoURL,
-        //             photoRef: fileName
-        //         });
-        //     }).catch(err => {
-        //         res.status(500);
-        //         res.render('error', { error: err })
-        //     }).then(function () {
-        //         res.sendStatus(200);
-        //         return next();
-        //     })
-
     }
-
-
 });
 
 
@@ -148,5 +122,71 @@ const uploadImageToStorage = (file) => {
         blobStream.end(file.buffer);
     });
 }
+
+router.post('/delete', function (req, res, next) {
+    let testName = req.body['testName'];
+    console.log(testName);
+    let questionRef = db.collection('questions');
+    let query = questionRef.where('name', '==', testName).get().then(
+        snapshot => {
+            if (snapshot.empty) {
+                let message = 'No matching documents.';
+                res.sendStatus(500, { error: message })
+            }
+
+            snapshot.forEach(doc => {
+                questionRef.doc(doc.id).delete().then(function () {
+                    let message = 'Document has been successfully deleted';
+                    res.sendStatus(200, message);
+                }).catch(err => {
+                    res.sendStatus(500);
+                });
+            });
+        }
+    ).catch(err => {
+        res.sendStatus(500, { error: err });
+    });
+});
+
+router.post('/update', function (req, res, next) {
+    let oldQuestionName = req.body['oldQuestionName'];
+    let name = req.body['name'];
+    let description = req.body['description'];
+    let type = req.body['type'];
+    let updatedBy = req.body['updatedBy'];
+
+    console.log(name);
+    console.log(description);
+    console.log(type);
+    console.log(updatedBy);
+
+    let questionRef = db.collection('questions');
+    let query = questionRef.where('name', '==', oldQuestionName).get().then(snapshot => {
+        console.log('hello1');
+        if (snapshot.empty) {
+            let message = 'No matching documents.';
+            res.sendStatus(500, { error: message })
+        }
+
+        snapshot.forEach(doc => {
+            console.log('doc: ' + doc.id);
+            questionRef.doc(doc.id).update({
+                name: name,
+                description: description,
+                type: type,
+                updatedBy: updatedBy
+            }).then(function () {
+                console.log('success');
+                res.sendStatus(200);
+            }).catch(err => {
+                console.log('error ' + err);
+                res.sendStatus(500, { error: err });
+            });
+        });
+    }).catch(err => {
+        console.log('succes1' + err);
+        res.sendStatus(500, { error: err });
+    });
+})
 
 module.exports = router;

@@ -18,6 +18,10 @@ html
 		// Font-icon css
 		link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
 
+	
+	block variables
+	- var activePage = 'manage-tests'
+
 	body.app.sidebar-mini.rtl
 
 		// Navbar
@@ -30,9 +34,6 @@ html
 			// Navbar Right Menu
 			ul.app-nav
 
-				
-
-				
 				// User Menu
 				li.dropdown
 					a.app-nav__item(href='/login/account', data-toggle='dropdown' aria-label="Open Profile Menu")
@@ -56,41 +57,39 @@ html
 			aside.app-sidebar
 
 				.app-sidebar__user
+					//- img.app-sidebar__user-avatar(src='https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg', alt='User Image')
+					img.app-sidebar__user-avatar(src='https://cdn2.iconfinder.com/data/icons/user-icon-2-1/100/user_5-15-512.png', alt='User Image' width='50')
 					div
 						p.app-sidebar__user-name Map Tek
-						p.app-sidebar__user-designation Admin user
+						p.app-sidebar__user-designation Admin User
 
 				ul.app-menu
 					li
-						a.app-menu__item(href='#' class={'active': activePage == 'Dashboard'})
-							i.app-menu__icon.fa.fa-tachometer
-							span.app-menu__label Danshboard
+						a.app-menu__item(href='/index' class={'active': activePage == 'dashboard'})
+							i.app-menu__icon.fa.fa-home
+							span.app-menu__label Home
+
 					li
-						a.app-menu__item(href='/users/manage-users' class={'active': activePage == 'ManageUsers'})
+						a.app-menu__item(href='/users/manage-users' class={'active': activePage == 'users'})
 							i.app-menu__icon.fa.fa-user-circle
 							span.app-menu__label Manage Users
 
 					li
-						a.app-menu__item(href='/questions/view' class={'active': activePage == 'CreateQuestions'})
+						a.app-menu__item(href='/questions/view' class={'active': activePage == 'manage-questions'})
 							i.app-menu__icon.fa.fa-file-code-o
 							span.app-menu__label Manage Questions
 
 					li
-						a.app-menu__item(href='#' class={'active': activePage == 'ManageTests'})
+						a.app-menu__item(href='/test/manage-test' class={'active': activePage == 'manage-tests'})
 							i.app-menu__icon.fa.fa-file-code-o
 							span.app-menu__label Manage Tests
 
-					//- li
-					//- 	a.app-menu__item(href='/test/create-test' class={'active': activePage == 'CreateTests'})
-					//- 		i.app-menu__icon.fa.fa-pie-chart
-					//- 		span.app-menu__label Create Tests
-
 					li
-						a.app-menu__item(href='/assessment/send-assessment' class={'active': activePage == 'SendAssessment'})
-							i.app-menu__icon.fa.fa-file-code-o
+						a.app-menu__item(href='/assessment/send-assessment' class={'active': activePage == 'send-assessment'})
+							i.app-menu__icon.fa.fa-paper-plane-o
 							span.app-menu__label Send Assessment
 
-					
+
 
 		main.app-content(id="main_content")
 
@@ -99,7 +98,7 @@ html
 					h1
 						i.fa.fa-file-code-o
 						|  Manage Tests
-					
+
 
 				ul.app-breadcrumb.breadcrumb
 					li.breadcrumb-item
@@ -113,7 +112,7 @@ html
 			//- 	.col-md-12
 			//- 		.tile
 			//- 			h3.tile-title Existing Tests 
-					
+
 			//- 			table.table-questions
 
 
@@ -130,14 +129,14 @@ html
 			//- 								option(value="10") 10
 			//- 								option(value="25") 25
 			//- 								option(value="50") 50
-											
-									
+
+
 			.row
 				.col-md-12
 					.tile
 						.tile-body
-							
-							
+
+
 							form.form-horizontal
 								.form-group.row
 									a.btn.btn-primary(href="/test/create-test")
@@ -155,35 +154,35 @@ html
 									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
-									
+
 									label.control-label.col-md-0 Search:
 									.col-md-2
 										input.form-control.form-control-sm(type="text",id="search")
-									
 
 
 
 
-										
+
+
 
 							table.table.table-hover.table-bordered#testsTable
-							
-									thead
-										tr
-											
-											
-											th Test Name
-												i.fa.fa-angle-double-down(id="sort_name",style="float: right;")
-											th Created On
-												i.fa.fa-angle-double-down(id="sort_date",style="float: right;")
-											th Created By
-												i.fa.fa-angle-double-down(id="sort_admin",style="float: right;")
-											th Description
-											th 
-										
-									
-										
-									tbody(id='tests')
+
+								thead
+									tr
+
+
+										th Test Name
+											i.fa.fa-angle-double-down(id="sort_name",style="float: right;")
+										th Created On
+											i.fa.fa-angle-double-down(id="sort_date",style="float: right;")
+										th Created By
+											i.fa.fa-angle-double-down(id="sort_admin",style="float: right;")
+										th Description
+										th 
+
+
+
+								tbody(id='tests')
 						//- .tile-footer
 						//- 	.bs-component
 						//- 		div(class="pagination-container")
@@ -203,23 +202,23 @@ html
 						//- 							a.page-link(href='#') 5
 						//- 						li.page-item
 						//- 							a.page-link(href='#') »
-										
-										
-										
 
-			
+
+
+
+
 			//- .row
 			//- 	.col-md-12
 			//- 		.tile
 			//- 			.row
-						
+
 			//- 				.tile-footer
-								
-								
+
+
 			//- 					button.btn.btn-primary(type="button", id="openTest")
 			//- 						i.fa.fa-fw.fa-lg.fa-check-circle
 			//- 						| Open Selected Tests
-								
+
 			//- 					| &nbsp;&nbsp;&nbsp;
 
 
@@ -228,7 +227,7 @@ html
 
 
 
-			
+
 
 		div.modal-nick#nick_modal(style="display:none")
 			div.modal-nick-content#nick_modal_content
@@ -246,15 +245,15 @@ html
 							| Cancel
 
 
-	
-	
 
-				
 
-								
-								
-								
-		
+
+
+
+
+
+
+
 		//- Javascripts
 		script(src='/js/manage-test.js')
 		//- script(type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js")
@@ -262,7 +261,7 @@ html
 		//- script(src="/js/bootstrap.min.js")
 		//- script(src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
 		script(src="https://code.jquery.com/jquery-3.4.1.min.js")
-		
+
 		script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
 		//- Search buttonn
 		//- script.
@@ -292,7 +291,7 @@ html
 					});
 				}
 			});
-		
+
 		//- script.
 		//- 	var table = "#testsTable";
 		//- 	$('#maxRows').on('change',function(){
@@ -321,12 +320,12 @@ html
 
 		//- 				//- li.class = "page-item";
 		//- 				//- a.class = "page-link";
-						
+
 		//- 				//- a.textContent = i;
 		//- 				//- i++;
 		//- 				//- li.appendChild(a);
 		//- 				//- pagination.appendChild(li);
-			
+
 		//- 			}
 		//- 		}
 		//- 		$('.pagination li:first-child').addClass('active');
@@ -346,20 +345,20 @@ html
 		//- 			})
 		//- 		})
 		//- 	})
-			//- $(function(){
-			//- 	$('table tr:eq(0)').prepend('<th>ID</th')
-			//- 	var id = 0;
-			//- 	$('table tr:gt(0)').each(function(){
-			//- 		id++;
-			//- 		$(this).prepend('<td>'+id+'</td>')
-			//- 	})
-			//- })
-
-			
+		//- $(function(){
+		//- 	$('table tr:eq(0)').prepend('<th>ID</th')
+		//- 	var id = 0;
+		//- 	$('table tr:gt(0)').each(function(){
+		//- 		id++;
+		//- 		$(this).prepend('<td>'+id+'</td>')
+		//- 	})
+		//- })
 
 
 
-		
 
-		
+
+
+
+
 

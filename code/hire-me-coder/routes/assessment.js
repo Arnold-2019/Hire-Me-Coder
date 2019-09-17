@@ -1,6 +1,10 @@
 const express = require('express');
-var generator = require('generate-password');
+const bodyParser = require('body-parser');
+const generator = require('generate-password');
 const router = express.Router();
+const fb = require('../util/db');
+
+const db = fb.firestore();
 
 router.get('/send-assessment', function(req, res, next) {
     res.render('assessment');
@@ -8,17 +12,21 @@ router.get('/send-assessment', function(req, res, next) {
 });
 
 router.get('/preview', function(req, res) {
-    console.log('assessment/preiew response');
+    console.log('assessment/preview response');
     var message = 'Response to Ajax request.';
     res.send(message);
 });
 
+router.use(bodyParser.urlencoded({extended: true})); 
 router.post('/send-assessment', function (req, res, next) {
     console.log('-----TEST LINE---- 3');
     var sender = 'noreply@maptek.com';
-    var mails = req.param('inputEmailBox');
-    var tests = req.param('inputAssBox');
-    var due = req.param('inputDateBox');
+    var numSentMails = 0;
+    var mails = req.body.emails;
+    var due = req.body.dueDate;
+    var time = req.body.dueTime;
+    var test = req.body.testName;
+    console.log(mails, due, test);
 
     var maillist = mails.split(",");
     var numMails = maillist.length;
@@ -47,7 +55,7 @@ router.post('/send-assessment', function (req, res, next) {
                   'We have kindly created an account for you, and with this account ' +
                   'you can access your assessment form.\n\n' +
                   'Please submit your solutions by the DUE DATE: ' + 
-                  '                  ' + due + '\n\n' +
+                  '  ' + due + '  ' + time + '\n\n' +
                   'Your Account name is your email address and the defult initial password ' +
                   'is attached below. Realy recommend to update your Password after logging in.\n\n' +
                   'User name: ' + maillist[i] + '\n' +
@@ -60,14 +68,28 @@ router.post('/send-assessment', function (req, res, next) {
 
         transporter.sendMail(mailOptions, function(error, info){
             if (error) {
-                console.log(error);
-                res.send('Sent Assessment Failed!');
+                console.log(numSentMails);
             } else {
-                console.log('Email sent! \n' + info.response);
-                res.send('Assessments have been successfully sent to: \n' + mails);
+                numSentMails += 1;
+                console.log('Number of mails sent: ' + numSentMails + ' !');
             }
         });
     }
+    res.send(numSentMails + ' mails have been sent.');
 });
+
+router.get('/test/view', function (req, res, next) {
+    db.collection('tests').get()
+    .then(function (snapshot) {
+        if (snapshot.empty) {
+            res.send("NO SERVERS AVAILABLE")
+          } else {
+            var docs = snapshot.docs.map(doc => doc.data());
+            res.send(JSON.stringify({ tests: docs }));
+          }
+    }).catch(error => {
+        res.status(500).send({error:error});
+    })
+})
 
 module.exports = router;
