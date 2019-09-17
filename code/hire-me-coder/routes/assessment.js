@@ -21,10 +21,13 @@ router.use(bodyParser.urlencoded({extended: true}));
 router.post('/send-assessment', function (req, res, next) {
     console.log('-----TEST LINE---- 3');
     var sender = 'noreply@maptek.com';
+    var numSentMails = 0;
     // var mails = req.param('inputEmailBox');
     var mails = req.body.emails;
-    var tests = req.param('inputAssBox');
-    var due = req.param('inputDateBox');
+    var due = req.body.dueDate;
+    var time = req.body.dueTime;
+    var test = req.body.testName;
+    console.log(mails, due, test);
 
     var maillist = mails.split(",");
     var numMails = maillist.length;
@@ -53,7 +56,7 @@ router.post('/send-assessment', function (req, res, next) {
                   'We have kindly created an account for you, and with this account ' +
                   'you can access your assessment form.\n\n' +
                   'Please submit your solutions by the DUE DATE: ' + 
-                  '                  ' + due + '\n\n' +
+                  '  ' + due + '  ' + time + '\n\n' +
                   'Your Account name is your email address and the defult initial password ' +
                   'is attached below. Realy recommend to update your Password after logging in.\n\n' +
                   'User name: ' + maillist[i] + '\n' +
@@ -66,14 +69,16 @@ router.post('/send-assessment', function (req, res, next) {
 
         transporter.sendMail(mailOptions, function(error, info){
             if (error) {
-                console.log(error);
-                res.send('Sent Assessment Failed!');
+                console.log(numSentMails);
+                res.send(numSentMails);
             } else {
-                console.log('Email sent! \n' + info.response);
-                res.send('Assessments have been successfully sent to: \n' + mails);
+                numSentMails += 1;
+                console.log('Email sent! \n' + numSentMails + 'mails sent');
+                // res.send('Assessments have been successfully sent to: \n' + mails);
             }
         });
     }
+    res.send(numSentMails);
 });
 
 router.get('/test/view', function (req, res, next) {
