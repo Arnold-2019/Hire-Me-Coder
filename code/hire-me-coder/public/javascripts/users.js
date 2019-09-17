@@ -37,8 +37,6 @@ $("#addAdminForm").submit(function (event) {
             successAlert('Registered!', 'Admin user has been successfully added.', "save");
         }, error: function (e) {
             errorAlert();
-            loadAdminDetails();
-            location.reload();
         }
     }).done(function (params) {
 
@@ -69,7 +67,15 @@ function successAlert(title, message, actionType) {
 }
 
 function errorAlert(params) {
-    swal("Error", "User is already registered", "error");
+    swal({
+        title:"Error", 
+        text: "User is already registered", 
+        type:"error"
+    }, function() {
+        $('#registerModal').modal('hide');
+        location.reload();
+    });
+    
 }
 
 function resetSaveAdmin() {
@@ -150,8 +156,11 @@ $("#editAdminForm").submit(function (event) {
 
 function textValidation(event) {
     var charCode = (event.which) ? event.which : event.keyCode;
-    if (charCode != 46 && charCode > 31
-        && (charCode < 48 || charCode > 57))
+    // if (charCode != 46 && charCode > 31
+    //     && (charCode < 48 || charCode > 57))
+
+    if ((event.charCode > 64 && 
+        event.charCode < 91) || (event.charCode > 96 && event.charCode < 123))
         return true;
     return false;
 }

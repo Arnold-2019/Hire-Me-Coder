@@ -75,8 +75,6 @@ router.post('/save', function (req, res, next) {
   let password = "test123";
   let displayName = lastName + " " + lastName;
   
-
-
   fb.auth().createUser({
     email: email,
     password: password,
@@ -88,18 +86,18 @@ router.post('/save', function (req, res, next) {
       lastName: lastName,
       email: email,
       isActive: true
-    });
+    }).then(function () {
+      // res.send(JSON.stringify({ users: req.body }));
+      res.sendStatus(200);
+      return next();
+    }).catch(err => {
+      res.status(500);
+      res.render('error', { error: err })
+    })
   }).catch(err => {
     res.status(500);
     res.render('error', { error: err });
-  }).then(function () {
-    res.sendStatus(200);
-    return next();
-  }).catch(err => {
-    res.status(500);
-    res.render('error', { error: err })
   })
-  res.send(JSON.stringify({ users: req.body }));
 })
 
 router.post('/set-status', function (req, res, next) {
