@@ -150,7 +150,6 @@ router.post('/update', function (req, res, next) {
       console.log('No matching documents.');
       return;
     }
-    console.log('hellooooo');
 
     snapshot.forEach(doc => {
       adminUsersRef.doc(doc.id).update({
@@ -158,7 +157,6 @@ router.post('/update', function (req, res, next) {
         lastName: lastName
       }).then(function () {
         res.sendStatus(200);
-
       });
     });
   }).catch(err => {
