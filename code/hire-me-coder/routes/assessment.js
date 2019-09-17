@@ -70,15 +70,13 @@ router.post('/send-assessment', function (req, res, next) {
         transporter.sendMail(mailOptions, function(error, info){
             if (error) {
                 console.log(numSentMails);
-                res.send(numSentMails);
             } else {
                 numSentMails += 1;
-                console.log('Email sent! \n' + numSentMails + 'mails sent');
-                // res.send('Assessments have been successfully sent to: \n' + mails);
+                console.log('Number of mails sent: ' + numSentMails + ' !');
             }
         });
     }
-    res.send(numSentMails);
+    res.send(numSentMails + ' mails have been sent.');
 });
 
 router.get('/test/view', function (req, res, next) {

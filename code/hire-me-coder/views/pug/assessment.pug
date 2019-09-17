@@ -24,6 +24,12 @@ block content
 	.row
 		.col-md-12
 			.tile
+				.tile-body
+					div(id='status')
+
+	.row
+		.col-md-12
+			.tile
 				.row
 					.col-lg-6
 						//- form(method='POST' action='/assessment/send-assessment')
@@ -53,8 +59,10 @@ block content
 												span.input-group-text
 													i.fa.fa-clock-o
 							.tile-footer
-								button.btn.btn-info(id='previewButton', type='submit' style='margin-right:5px' onclick='displayEmail()')
+								button.btn.btn-info(id='previewButton', type='button' style='margin-right:5px' onclick='displayEmail()')
 									| Email Preview
+								button.btn.btn-secondary(id='resetInputsButton', type='button' style='margin-right:5px' onclick='this.form.reset();')
+									| Reset	
 								//- button.btn.btn-primary(id='sendAssessmentButton', type='submit' style='margin-right:5px')
 								//- 	i.fa.fa-fw.fa-lg.fa-check-circle
 								//- 	| Send Assessment
@@ -65,23 +73,13 @@ block content
 							.tile-body
 								.form-group
 									label.control-label Preview Email Message:
-									textarea#emailMessage.form-control(rows='15', disabled=true)
+									textarea#emailMessage.form-control(rows='16', disabled=true)
 							.tile-footer
-								button.btn.btn-primary(id='sendAssessmentButton', type='submit' style='margin-right:5px')
+								button.btn.btn-primary(id='sendAssessmentButton', type='button' style='margin-right:5px' onclick='sendEmail()')
 									i.fa.fa-fw.fa-lg.fa-check-circle
 									| Send Assessment
-								button.btn.btn-secondary(id='resetAssessButton', type='button' style='margin-right:5px')
+								button.btn.btn-secondary(id='resetDisplayButton', type='button' style='margin-right:5px' onclick='this.form.reset();')
 									| Reset			
-	
-	.row
-		.col-md-12
-			.tile
-				.tile-body
-					div(id='mails')
-					div(id='tests')
-					div(id='due')
-					p
-					div(id='status')
 
 block specific-js
 	script(type='text/javascript', src='/js/plugins/bootstrap-datepicker.min.js')
