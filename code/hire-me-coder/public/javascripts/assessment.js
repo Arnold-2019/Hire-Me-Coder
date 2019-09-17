@@ -93,7 +93,7 @@ function sendEmail(event) {
                 // $('#status').html('Mails sent: ' + data);
                 swal({
                     title: 'Successful',
-                    message: 'Assessment Invation has been successfully sent.',
+                    text: 'Assessment Invation has been successfully sent.',
                     type: 'success'
                 }, function () {
                     $('#sendAssessmentForm').get(0).reset();
