@@ -1,8 +1,7 @@
 extends layouts/_layout.pug
 
 block variables
-	- var activePage = 'blank-page'
-	- var activeGroup = 'pages'
+	- var activePage = 'manage-questions'
 	- var questions = questionResult
 
 block title
@@ -36,6 +35,7 @@ block content
 								th Type
 								th Question Name
 								th Created By
+								th Updated By
 								th Action
 						tbody
 							each question in questions
@@ -43,14 +43,15 @@ block content
 									td=question.type
 									td=question.name
 									td=question.createdBy
+									td=question.updatedBy
 									td 
 										button#viewQuestion.btn-primary.btn-sm(type='button' style='margin-right: 5px' onclick=`viewQuestion(${JSON.stringify(question)})`)
 											i.fa.fa-eye
-										button#editQuestion.btn-info.btn-sm(type='button' style='margin-right: 5px' onclick=`editQuestion(${JSON.stringify(question)})`)
+										button#updateQuestion.btn-info.btn-sm(type='button' style='margin-right: 5px' onclick=`updateQuestion(${JSON.stringify(question)})`)
 											i.fa.fa-pencil-square-o
 										button#deleteQuestion.btn-danger.btn-sm(type='button' style='margin-right: 5px' onclick=`deleteQuestion(${JSON.stringify(question)})`)
 											i.fa.fa-trash-o
-
+	// Create Question
 	.bs-component
 		form(id='createQuestionForm')
 			.modal(id='createQuestionModal' role='dialog')
@@ -66,10 +67,10 @@ block content
 									label.control-label.col-md-3 Type
 									.col-md-8
 										.form-check.form-check-inline
-											input.form-check-input(type='radio', id ='questionTypeRadioOpt' name='questionTypeRadioOpt' value='Code' checked)
+											input.form-check-input(type='radio', id ='newCodeRadio' name='questionTypeRadioOpt' value='Code' checked)
 											| Code
 										.form-check.form-check-inline
-											input.form-check-input(type='radio', id ='questionTypeRadioOpt' name='questionTypeRadioOpt' value='Descriptive')
+											input.form-check-input(type='radio', id ='newDescriptiveRadio' name='questionTypeRadioOpt' value='Descriptive')
 											| Descriptive
 								.form-group.row
 									label.control-label.col-md-3 Name
@@ -87,6 +88,7 @@ block content
 							button.btn.btn-primary(type='submit') Submit
 								button.btn.btn-secondary(type='button', data-dismiss='modal' id='cancelBtn') Cancel
 
+	// View Question
 	.bs-component
 		.modal(id='viewQuestionModal' role='dialog')
 				.modal-dialog.modal-dialog-centered(role='document')
@@ -113,6 +115,44 @@ block content
 								label.control-label.col-sm-3 Image
 								.col-md-8
 									img(id='problemImage' style='width:300px')
+
+	// update Question
+	.bs-component
+		form(id='updateQuestionForm')
+			.modal(id='updateQuestionModal' role='dialog')
+				.modal-dialog.modal-dialog-centered(role='document')
+					.modal-content
+						.modal-header
+							h5.modal-title
+								span#oldQuestionName.label-text
+							button.close(type='button', data-dismiss='modal', aria-label='Close')
+								span(aria-hidden='true') ×
+						.modal-body
+							.form-horizontal
+								.form-group.row
+									label.control-label.col-md-3 Type
+									.col-md-8
+										.form-check.form-check-inline
+											input.form-check-input(type='radio', id ='codeRadio' name='updateQuestionTypeRadioOpt' value='Code')
+											| Code
+										.form-check.form-check-inline
+											input.form-check-input(type='radio', id ='descriptiveRadio' name='updateQuestionTypeRadioOpt' value='Descriptive')
+											| Descriptive
+								.form-group.row
+									label.control-label.col-md-3 Name
+									.col-md-8
+										input#updateTestName.form-control(type='text', placeholder='Enter Question Name' required)
+								.form-group.row
+									label.control-label.col-md-3 Description
+									.col-md-8
+										textarea#updateDescription.form-control(rows='3' required)
+								.form-group.row
+									label.control-label.col-md-3 Image
+									.col-md-8
+										input#imageFile.form-control-file(name='imageFile' type='file')
+						.modal-footer
+							button.btn.btn-primary(type='submit') Update
+							button.btn.btn-secondary(type='button', data-dismiss='modal' id='cancelBtn') Cancel
 
 block specific-js
 	//- script.
