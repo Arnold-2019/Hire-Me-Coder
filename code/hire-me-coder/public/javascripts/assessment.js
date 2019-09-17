@@ -70,7 +70,8 @@ function getTest() {
 //     }
 // });
 
-function sendEmail() {
+function sendEmail(event) {
+    // event.preventDefault();
     console.log('submittt!!');
     var emails = $('#emailInput').val();
 
@@ -89,7 +90,17 @@ function sendEmail() {
                   },
             success: (data) => {
                 // alert('Emails sent successfully!');
-                $('#status').html('Mails sent: ' + data);
+                // $('#status').html('Mails sent: ' + data);
+                swal({
+                    title: 'Successful',
+                    message: 'Assessment Invation has been successfully sent.',
+                    type: 'success'
+                }, function () {
+                    $('#sendAssessmentForm').get(0).reset();
+                    $('#emailMessage').val("");
+                    document.getElementById('emailMessage').disabled = true;
+                    location.reload();
+                });
             }
         });
         // $('#status').html('Emails sent successfully!');
