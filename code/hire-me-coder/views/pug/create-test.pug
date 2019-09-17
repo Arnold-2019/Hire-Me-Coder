@@ -104,57 +104,166 @@ html
 					li.breadcrumb-item
 						a(href='#') create-test
 
-			.row
-				.tile
-					.row
-						.col-md-6
-					
-							form(id="create_test_form")
-								h3.tile-title Create test
-								.tile-body
-									form.form-horizontal
-										.form-group.row
-											label.control-label.col-md-3 Test Name
-											.col-md-8
-												input.form-control(type="text", id="test_name", name="test_name", placeholder="New test name")
-												.form-control-error(id="name_error") Please enter new test name!
-												//- .form-control-error(id="blank_error") Please choose at least one question!
-												.form-control-feedback(id="create_success") Test created!
+			
+			.tile
+				
+				.col-md-12
+			
+					form(id="create_test_form")
+						h3.tile-title Create test
+						.tile-body
+							form.form-horizontal
+								.form-group.row
+									label.control-label.col-md-3 Test Name
+									.col-md-8
+										input.form-control(type="text", id="test_name", name="test_name", placeholder="New test name")
+										.form-control-error(id="name_error") Please enter new test name!
+										//- .form-control-error(id="blank_error") Please choose at least one question!
+										.form-control-feedback(id="create_success") Test created!
 
-										.form-group.row
-											label.control-label.col-md-3 Created by
-											.col-md-8
-												input.form-control.col-md-8(type="text", id="created_by", name="created_by", placeholder="Your name")
-												.form-control-error(id="created_by_error") Please enter your name!
+								.form-group.row
+									label.control-label.col-md-3 Created by
+									.col-md-8
+										input.form-control.col-md-8(type="text", id="created_by", name="created_by", placeholder="Your name")
+										.form-control-error(id="created_by_error") Please enter your name!
 
-										.form-group.row
-											label.control-label.col-md-3 Description
-											.col-md-8
-												textarea.form-control(rows="4",type="text", id="test_description",placeholder="Enter description")
-												.form-control-error(id="test_description_error") Please enter description!
-										
-										
-										.form-group.row
-											p Add questions from tables below.
+								.form-group.row
+									label.control-label.col-md-3 Description
+									.col-md-8
+										textarea.form-control(rows="4",type="text", id="test_description",placeholder="Enter description")
+										.form-control-error(id="test_description_error") Please enter description!
+								
+								
+								.form-group.row
+									p Add questions from tables below.
 
-								.tile-footer
-									.row
-										.col-md-8.col-md-offset-3
-											button.btn.btn-primary(type="button", id="preview_test")
-												i.fa.fa-fw.fa-lg.fa-check-circle
-												| Preview
-											| &nbsp;&nbsp;&nbsp;
-											a.btn.btn-secondary(href="/test/manage-test")
-												i.fa.fa-fw.fa-lg.fa-times-circle
-												| Cancel
-											| &nbsp;&nbsp;&nbsp;
-											button.btn.btn-primary(type="button", id="createTest")
-												i.fa.fa-fw.fa-lg.fa-check-circle
-												| Create
+						.tile-footer
+							.row
+								.col-md-8.col-md-offset-3
+									button.btn.btn-primary(type="button", id="preview_test")
+										i.fa.fa-fw.fa-lg.fa-check-circle
+										| Preview
+									| &nbsp;&nbsp;&nbsp;
+									a.btn.btn-secondary(href="/test/manage-test")
+										i.fa.fa-fw.fa-lg.fa-times-circle
+										| Cancel
+									| &nbsp;&nbsp;&nbsp;
+									button.btn.btn-primary(type="button", id="createTest")
+										i.fa.fa-fw.fa-lg.fa-check-circle
+										| Create
 										
 		
-						.col-md-6
 						
+
+			
+					
+			.row
+				.col-md-6
+					.tile
+						div
+							//- ul.nav.nav-tabs
+								//- li.nav-item
+								//- 	a.nav-link.active#optionDescriptive(style="color:green") Descriptive
+								//- | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								//- li.nav-item
+								//- 	a.nav-link#optionCode Code
+
+							button.btn.active#optionDescriptive(style="color:green")
+								|  Descriptive
+							button.btn#optionCode
+								|  Code
+
+							div#desciptive_table(style="display:block")
+								
+								.form-group.row
+									h3.tile-title Descriptive Questions
+									| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									
+									
+									label.control-label.col-md-0 Search:
+									.col-md-2
+										input.form-control.form-control-sm(type="text",id="search")
+
+								table.table-nick.table-hover.table-bordered
+									thead
+										tr
+											
+											th Question Name
+											th Description
+											th
+										
+									tbody(id='descriptiveQuestions')
+										//- tr
+										//- 	td     
+										//- 		input.form-check-input(type='checkbox')
+										//- 	td 
+										//- 		//- ul(id='questions')
+										//- 	td 
+										//- 		//- ul(id='description')
+								
+								//- .bs-component
+								//- 	div(class="pagination-container")
+								//- 		nav
+								//- 			ul.pagination#pagination
+								//- 					li.page-item.disabled
+								//- 						a.page-link(href='#') «
+								//- 					li.page-item.active
+								//- 						a.page-link(href='#') 1
+								//- 					li.page-item
+								//- 						a.page-link(href='#') 2
+								//- 					li.page-item
+								//- 						a.page-link(href='#') 3
+								//- 					li.page-item
+								//- 						a.page-link(href='#') 4
+								//- 					li.page-item
+								//- 						a.page-link(href='#') 5
+								//- 					li.page-item
+								//- 						a.page-link(href='#') »
+										
+										
+									
+
+						
+							div#code_table(style="display:none")
+								
+								.form-group.row
+									h3.tile-title Coding Questions
+									| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+									//- | &emsp;&emsp;&emsp;&emsp;
+
+									
+									label.control-label.col-md-0 Search:
+									.col-md-2
+										input.form-control.form-control-sm(type="text",id="search2")
+							
+								table.table-nick.table-hover.table-bordered
+									thead
+										tr
+											
+											th Question Name
+											th Description
+											th
+									tbody(id='codingQuestions')
+										//- tr
+										//- 	td     
+										//- 		input.form-check-input(type='checkbox')
+										//- 	td 
+										//- 		//- ul(id='questions')
+										//- 	td 
+										//- 		//- ul(id='description')
+						
+				.col-md-6
+					.tile
+						div
+							
 							h3.tile-title Questions selected
 							table.table-nick.table-hover.table-bordered
 								thead
@@ -163,109 +272,6 @@ html
 										th Name
 										th 
 								tbody(id='questions_selected')
-
-			
-					
-			.row
-				.tile
-					//- ul.nav.nav-tabs
-						//- li.nav-item
-						//- 	a.nav-link.active#optionDescriptive(style="color:green") Descriptive
-						//- | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						//- li.nav-item
-						//- 	a.nav-link#optionCode Code
-
-					button.btn.active#optionDescriptive(style="color:green")
-						|  Descriptive
-					button.btn#optionCode
-						|  Code
-
-					div#desciptive_table(style="display:block")
-						.col-md-12
-							.form-group.row
-								h3.tile-title Descriptive Questions
-								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								
-								
-								label.control-label.col-md-0 Search:
-								.col-md-2
-									input.form-control.form-control-sm(type="text",id="search")
-
-							table.table-nick.table-hover.table-bordered
-								thead
-									tr
-										
-										th Question Name
-										th Description
-										th
-									
-								tbody(id='descriptiveQuestions')
-									//- tr
-									//- 	td     
-									//- 		input.form-check-input(type='checkbox')
-									//- 	td 
-									//- 		//- ul(id='questions')
-									//- 	td 
-									//- 		//- ul(id='description')
-							
-							//- .bs-component
-							//- 	div(class="pagination-container")
-							//- 		nav
-							//- 			ul.pagination#pagination
-							//- 					li.page-item.disabled
-							//- 						a.page-link(href='#') «
-							//- 					li.page-item.active
-							//- 						a.page-link(href='#') 1
-							//- 					li.page-item
-							//- 						a.page-link(href='#') 2
-							//- 					li.page-item
-							//- 						a.page-link(href='#') 3
-							//- 					li.page-item
-							//- 						a.page-link(href='#') 4
-							//- 					li.page-item
-							//- 						a.page-link(href='#') 5
-							//- 					li.page-item
-							//- 						a.page-link(href='#') »
-								
-								
-							
-
-				
-					div#code_table(style="display:none")
-						.col-md-12
-							.form-group.row
-								h3.tile-title Coding Questions
-								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								| &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								//- | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-								//- | &emsp;&emsp;&emsp;&emsp;
-
-								
-								label.control-label.col-md-0 Search:
-								.col-md-2
-									input.form-control.form-control-sm(type="text",id="search2")
-						
-							table.table-nick.table-hover.table-bordered
-								thead
-									tr
-										
-										th Question Name
-										th Description
-										th
-								tbody(id='codingQuestions')
-									//- tr
-									//- 	td     
-									//- 		input.form-check-input(type='checkbox')
-									//- 	td 
-									//- 		//- ul(id='questions')
-									//- 	td 
-									//- 		//- ul(id='description')
 
 
 
