@@ -9,11 +9,14 @@ var loginRouter = require('./routes/login');
 var usersRouter = require('./routes/users');
 var invitationRouter = require('./routes/assessment');
 var questionsRouter = require('./routes/questions');
+var testRouter = require('./routes/test');
+
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views/pug'));
 app.set('view engine', 'pug');
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -21,11 +24,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// nick pugs
+app.use(express.static('views/pug'));
+
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/users', usersRouter);
 app.use('/assessment', invitationRouter);
 app.use('/questions', questionsRouter);
+app.use('/test', testRouter);
 
 // firestore config
 const firebase = require('firebase-admin');
