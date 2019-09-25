@@ -1,0 +1,25 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = 'dashboard'
+	- var activeGroup = 'none'
+
+block content
+	.app-title
+		div
+			h1
+				i.fa.fa-home
+				|  Home Page
+
+		ul.app-breadcrumb.breadcrumb
+			li.breadcrumb-item
+				i.fa.fa-home.fa-lg
+			li.breadcrumb-item
+				a(href='#') Home
+	.row
+		.col-md-12
+			.tile
+				.tile-body
+					h1 Hire Me Coder System
+
+block specific-js

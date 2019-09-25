@@ -1,0 +1,168 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = 'manage-questions'
+	- var questions = questionResult
+
+block title
+	title Manage Questions
+
+block content
+	.app-title
+		div
+			h1
+				i.fa.fa-file-code-o
+				|  Manage Questions
+			p View Questions
+
+		ul.app-breadcrumb.breadcrumb
+			li.breadcrumb-item
+				i.fa.fa-home.fa-lg
+			li.breadcrumb-item
+				a(href='#') Manage Questions
+	.row
+		.col-lg-7
+			p.bs-component
+				button.btn.btn-primary(type='button' data-toggle='modal' data-target='#createQuestionModal') Create Test Question
+
+	.row
+		.col-md-12
+			.tile
+				.tile-body
+					table.table.table-hover.table-bordered#sampleTable
+						thead
+							tr
+								th Type
+								th Question Name
+								th Created By
+								th Updated By
+								th Action
+						tbody
+							each question in questions
+								tr
+									td=question.type
+									td=question.name
+									td=question.createdBy
+									td=question.updatedBy
+									td 
+										button#viewQuestion.btn-primary.btn-sm(type='button' style='margin-right: 5px' onclick=`viewQuestion(${JSON.stringify(question)})`)
+											i.fa.fa-eye
+										button#updateQuestion.btn-info.btn-sm(type='button' style='margin-right: 5px' onclick=`updateQuestion(${JSON.stringify(question)})`)
+											i.fa.fa-pencil-square-o
+										button#deleteQuestion.btn-danger.btn-sm(type='button' style='margin-right: 5px' onclick=`deleteQuestion(${JSON.stringify(question)})`)
+											i.fa.fa-trash-o
+	// Create Question
+	.bs-component
+		form(id='createQuestionForm')
+			.modal(id='createQuestionModal' role='dialog')
+				.modal-dialog.modal-dialog-centered(role='document')
+					.modal-content
+						.modal-header
+							h5.modal-title Create Question
+							button.close(type='button', data-dismiss='modal', aria-label='Close')
+								span(aria-hidden='true') ×
+						.modal-body
+							.form-horizontal
+								.form-group.row
+									label.control-label.col-md-3 Type
+									.col-md-8
+										.form-check.form-check-inline
+											input.form-check-input(type='radio', id ='newCodeRadio' name='questionTypeRadioOpt' value='Code' checked)
+											| Code
+										.form-check.form-check-inline
+											input.form-check-input(type='radio', id ='newDescriptiveRadio' name='questionTypeRadioOpt' value='Descriptive')
+											| Descriptive
+								.form-group.row
+									label.control-label.col-md-3 Name
+									.col-md-8
+										input#name.form-control(type='text', placeholder='Enter Question Name' required)
+								.form-group.row
+									label.control-label.col-md-3 Description
+									.col-md-8
+										textarea#description.form-control(rows='3' required)
+								.form-group.row
+									label.control-label.col-md-3 Image
+									.col-md-8
+										input#imageFile.form-control-file(name='imageFile' type='file')
+						.modal-footer
+							button.btn.btn-primary(type='submit') Submit
+								button.btn.btn-secondary(type='button', data-dismiss='modal' id='cancelBtn') Cancel
+
+	// View Question
+	.bs-component
+		.modal(id='viewQuestionModal' role='dialog')
+				.modal-dialog.modal-dialog-centered(role='document')
+					.modal-content
+						.modal-header
+							h5.modal-title
+								span#problemName.label-text
+							button.close(type='button', data-dismiss='modal', aria-label='Close')
+								span(aria-hidden='true') ×
+						.modal-body
+							.form-group.row
+								label.control-label.col-sm-3 Created By:
+								.col-md-8
+									span#createdBy.label-text
+							.form-group.row
+								label.control-label.col-sm-3 Type
+								.col-md-8
+									span#type.label-text
+							.form-group.row
+								label.control-label.col-sm-3 Description
+								.col-md-8
+									span#viewDescription.label-text
+							.form-group.row
+								label.control-label.col-sm-3 Image
+								.col-md-8
+									img(id='problemImage' style='width:300px')
+
+	// update Question
+	.bs-component
+		form(id='updateQuestionForm')
+			.modal(id='updateQuestionModal' role='dialog')
+				.modal-dialog.modal-dialog-centered(role='document')
+					.modal-content
+						.modal-header
+							h5.modal-title
+								span#oldQuestionName.label-text
+							button.close(type='button', data-dismiss='modal', aria-label='Close')
+								span(aria-hidden='true') ×
+						.modal-body
+							.form-horizontal
+								.form-group.row
+									label.control-label.col-md-3 Type
+									.col-md-8
+										.form-check.form-check-inline
+											input.form-check-input(type='radio', id ='codeRadio' name='updateQuestionTypeRadioOpt' value='Code')
+											| Code
+										.form-check.form-check-inline
+											input.form-check-input(type='radio', id ='descriptiveRadio' name='updateQuestionTypeRadioOpt' value='Descriptive')
+											| Descriptive
+								.form-group.row
+									label.control-label.col-md-3 Name
+									.col-md-8
+										input#updateTestName.form-control(type='text', placeholder='Enter Question Name' required)
+								.form-group.row
+									label.control-label.col-md-3 Description
+									.col-md-8
+										textarea#updateDescription.form-control(rows='3' required)
+								.form-group.row
+									label.control-label.col-md-3 Image
+									.col-md-8
+										input#imageFile.form-control-file(name='imageFile' type='file')
+						.modal-footer
+							button.btn.btn-primary(type='submit') Update
+							button.btn.btn-secondary(type='button', data-dismiss='modal' id='cancelBtn') Cancel
+
+block specific-js
+	//- script.
+	//- 	$('.bs-component [data-toggle='popover']').popover();
+	//- 	$('.bs-component [data-toggle='tooltip']').tooltip();	
+	script(type='text/javascript', src='/js/plugins/bootstrap-notify.min.js')
+	script(type='text/javascript', src='/js/plugins/sweetalert.min.js')
+	// Data table plugin
+	script(type='text/javascript', src='/js/plugins/jquery.dataTables.min.js')
+	script(type='text/javascript', src='/js/plugins/dataTables.bootstrap.min.js')
+	script(src='/javascripts/manage-questions.js')
+	script(type='text/javascript').
+		$('#sampleTable').DataTable();
