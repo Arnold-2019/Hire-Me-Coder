@@ -53,7 +53,7 @@ function sendEmail(event) {
                     text: 'Assessment Invation has been successfully sent.',
                     type: 'success'
                 }, function () {
-                    $('#sendAssessmentForm').get(0).reset();
+                    $('#send-ass-form').get(0).reset();
                     $('#emailMessage').val("");
                     document.getElementById('emailMessage').disabled = true;
                     location.reload();
@@ -95,7 +95,7 @@ function displayEmail() {
     'User name: ' + email[0] + '\n' +
     'Password: ********* \n\n' +
     'Please click the link below to login to your account.\n' +
-    '\" http://maptek.com/hiremecoder/candidateid/assessment-form \"\n\n' +
+    'http://maptek.com/hiremecoder/candidateid/assessment-form \n\n' +
     'Best regards,\n' +
     'MapTek Team';
     
@@ -105,4 +105,12 @@ function displayEmail() {
 
 $('#inputTimeBox').datetimepicker({
     format: 'LT'
+});
+
+// reset forms
+const reset = document.querySelector('#resetButton');
+const sendAssForm = document.querySelector('#send-ass-form');
+reset.addEventListener('click', (e) => {
+    e.preventDefault();
+    sendAssForm.reset();
 });
