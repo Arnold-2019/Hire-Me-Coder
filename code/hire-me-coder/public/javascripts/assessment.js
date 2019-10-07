@@ -41,23 +41,32 @@ function sendEmail(event) {
         $.ajax({
             url: 'send-assessment',
             type: 'POST',
+            dataType: 'text',
             data: {
                     emails: $('#emailInput').val(),
                     testName: $('#testSelect').val(),
                     dueDate: $('#inputDateBox').val(),
                     dueTime: $('#inputTimeBox').val()
                   },
-            success: (data) => {
-                swal({
-                    title: 'Successful',
-                    text: 'Assessment Invation has been successfully sent.',
-                    type: 'success'
-                }, function () {
-                    $('#send-ass-form').get(0).reset();
-                    $('#emailMessage').val("");
-                    document.getElementById('emailMessage').disabled = true;
-                    location.reload();
-                });
+            success: (res) => {
+                if (res === 'Active') {
+                    swal({
+                        title: 'Failed!',
+                        text: 'This user has in progressing assessment.',
+                        type: 'error'
+                    });
+                } else {
+                    swal({
+                        title: 'Successful',
+                        text: 'Assessment Invation has been successfully sent.',
+                        type: 'success'
+                    }, function () {
+                        $('#send-ass-form').get(0).reset();
+                        $('#emailMessage').val("");
+                        document.getElementById('emailMessage').disabled = true;
+                        location.reload();
+                    });
+                }
             }
         });
     } else {

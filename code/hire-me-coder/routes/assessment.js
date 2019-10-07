@@ -66,19 +66,23 @@ router.post('/send-assessment', function (req, res, next) {
                 console.log(emailAddress + ' is existing!');
                 isActive(emailAddress).then(act => {
                     if (act) {
-                        console.log(emailAddress + ' has in progressing assessment. (is active)')
+                        // alert(emailAddress + ' has in progressing assessment. (is active)');
+                        console.log(emailAddress + ' has in progressing assessment. (is active)');
+                        res.send('Active');
                     } else {
                         console.log(emailAddress + ': is NOT active!');
                         updateUser(emailAddress, due, time, test);
                         sendEmail(emailAddress,passWord,due, time);
-                        res.sendStatus(200);
+                        res.send('NotActive');
+                        // res.sendStatus(200);
                     }
                 })
             } else {
                 console.log(emailAddress + ': was created!');
                 createCandidate(emailAddress, passWord, due, time, test);
                 sendEmail(emailAddress, passWord, due, time);
-                res.sendStatus(200);
+                res.send('NotExist');
+                // res.sendStatus(200);
             }
         });
     }
@@ -135,7 +139,7 @@ async function updateUser(userEmail, due, time, test) {
         docs.forEach(document => {
             if (document.data().email === userEmail) {
                 // cannot get the doc and update info.
-                db.collection('candidate_users').doc(document.uid).update({
+                db.collection('candidate_users').doc(document.data().id).update({
                     dueDate: due,
                     dueTime: time,
                     testName: test
@@ -206,6 +210,7 @@ function createCandidate(emailAddress, passWord, due, time, test) {
     }).then(cred => {
         var candidateRef = db.collection('candidate_users').doc(cred.uid);
         candidateRef.set({
+            id: cred.uid,
             firstName: '',
             lastName: '',
             testName: test,
