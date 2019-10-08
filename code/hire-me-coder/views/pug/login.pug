@@ -1,53 +1,45 @@
-
-
-
 doctype html
 html
 	head
-		meta(charset='utf-8')
-		meta(http-equiv='X-UA-Compatible', content='IE=edge')
-		meta(name='viewport', content='width=device-width, initial-scale=1')
-
-		// Main CSS
-		link(rel='stylesheet', type='text/css', href='css/main.css')
-		// Font-icon css
-		link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
-		script(src="https://www.gstatic.com/firebasejs/6.5.0/firebase.js") 
-		title Login - MapTek
+		include includes/_head.pug
+		include includes/_javascript.pug
+		script(type='text/javascript', src='/js/plugins/bootstrap-notify.min.js')
+		script(src='/javascripts/login.js')
+		title Login - MapTek - Hire Me Coder
 
 	body
 		section.material-half-bg
 			.cover
 
 		section.login-content
-			.logo: h1 Hire-Me Coder
+			.logo: h1 Maptek - Hire Me Coder
 
 			.login-box
-				form.login-form(id="login_form")
+				form.login-form(id='loginForm')
 					h3.login-head
 						i.fa.fa-lg.fa-fw.fa-user
-						| LOG IN
+						| SIGN IN
 					.form-group
 						label.control-label USERNAME
-						input.form-control(type="text", id="email",placeholder="Email", autofocus)
+						input#email.form-control(type="text", placeholder="Email", autofocus)
 
 					.form-group
 						label.control-label PASSWORD
-						input.form-control(type="password",id="password", placeholder="Password")
-					.form-control-error(id="login_error") The password is invalid or the user does not have a password.
+						input#password.form-control(type="password", placeholder="Password")
+
 					.form-group
 						.utility
 							//- .animated-checkbox
-							//- 	label
-							//- 		input(type="checkbox")
-							//- 		span.label-text Stay Signed in
+								label
+									input(type="checkbox")
+									span.label-text Stay Signed in
 							p.semibold-text.mb-2
 								a(href="#" data-toggle="flip") Forgot Password ?
 
 					.form-group.btn-container
-						button.btn.btn-primary.btn-block(id='btnLogin')
+						button.btn.btn-primary.btn-block(type='button' onclick='login()')
 							i.fa.fa-sign-in.fa-lg.fa-fw
-							| LOG IN
+							| SIGN IN
 
 				form.forget-form
 					h3.login-head
@@ -55,23 +47,21 @@ html
 						| Forgot Password ?
 					.form-group
 						label.control-label EMAIL
-						input.form-control(type="text", placeholder="Email")
+						input#emailForReset.form-control(type="email", placeholder="Email")
 
 					.form-group.btn-container
-						button.btn.btn-primary.btn-block
+						button.btn.btn-primary.btn-block(type='button' onclick='resetPassword()')
 							i.fa.fa-unlock.fa-lg.fa-fw
 							| RESET
 
 					.form-group.mt-3
 						p.semibold-text.mb-0
 							a(href="#" data-toggle="flip") <i class="fa fa-angle-left fa-fw"></i> Back to Login
-		
-		
-		
-		script(src='/js/login.js')
 
 
-
-
-
-
+		script(type="text/javascript").
+			// Login Page Flipbox control
+			$('.login-content [data-toggle="flip"]').click(function() {
+				$('.login-box').toggleClass('flipped');
+				return false;
+			});

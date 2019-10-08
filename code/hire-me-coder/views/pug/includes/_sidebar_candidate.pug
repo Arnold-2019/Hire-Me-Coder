@@ -1,0 +1,18 @@
+.app-sidebar__overlay(data-toggle="sidebar")
+aside.app-sidebar
+
+	.app-sidebar__user
+		img.app-sidebar__user-avatar(src='https://cdn2.iconfinder.com/data/icons/user-icon-2-1/100/user_5-15-512.png', alt='User Image' width='50')
+		div
+			p.app-sidebar__user-name Map Tek
+			p.app-sidebar__user-designation Candidate
+
+	ul.app-menu
+		li
+			a.app-menu__item(href='/test/candidate' class={'active': activePage == 'dashboard'})
+				i.app-menu__icon.fa.fa-home
+				span.app-menu__label Home
+		li
+			a.app-menu__item(href='/users/view-profile' class={'active': activePage == 'dashboard'})
+				i.app-menu__icon.fa.fa-user
+				span.app-menu__label Profile

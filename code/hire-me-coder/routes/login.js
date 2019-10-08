@@ -1,57 +1,57 @@
 var express = require('express');
 var router = express.Router();
+var session = require('express-session');
+const fb = require('../util/db');
 
 
-// const flash = require('express-flash');
-// const session = require('express-session');
-
-// // initialise seession middleware - flash-express depends on it
-// router.use(session({
-//   secret : 'this is my long string',
-//   resave: false,
-//   saveUninitialized: true
-// }));
-
-// //initialise the flash middleware
-// router.use(flash());
-
+var db = fb.firestore();
 
 //Login page
-router.get('/', function(req, res, next) {
-  res.render('login', { layout: false });
+router.get('/', function (req, res, next) {
+  // res.render('login', { layout: false });
+  res.render('login');
 });
 
-router.get('/account', function(req, res, next){
+router.get('/account', function (req, res, next) {
   res.render('account', { layout: false });
 });
 
+router.post('/authenticate', function (req, res, next) {
+  res.setHeader('Content-Type', 'text/plain');
+  let userId = req.body['userId'];
+  var user;
+  db.collection('admin_users')
+    .doc(userId)
+    .get()
+    .then(snapshot => {
+      if (!snapshot.exists) {
+        user = { userId: userId, isAdmin: false };
+        req.session.user = user;
+        res.send({
+          success: false,
+          message: 'not admin'
+        });
+      } else {
+        user = { userId: userId, isAdmin: true };
+        req.session.user = user;
+        res.send({
+          success: true,
+          message: 'admin'
+        });
+      }
+    }).catch(err => {
+      res.sendStatus(500, { err: err })
+    })
+});
 
-
-// var serviceAccount = require('../firebase-service-account-key.json');
-
-// firebase.initializeApp({
-//   credential: firebase.credential.cert(serviceAccount),
-//   databaseURL: 'https://hireme-coder.firebaseio.com'
-// });
-
-// Create authentication middleware
-// function isAuthenticated(req,res,next){
-//   // check if user is logged in
-//   firebase.auth().onAuthStateChanged(firebaseUser => {
-//     if(firebaseUser) {
-//         next();
-//     } else {
-//         console.log('please logged in');
-//         res.render('login', { layout: false });
-//     }
-// });
-// }
-
-// router.get('/check',  isAuthenticated,function(req,res,next) {
-//   res.send('check');
-// });
-
-
+router.get('/login-success', function (req, res, next) {
+  console.log(req.session.user);
+  if (req.session.user.isAdmin) {
+    res.redirect('/index')
+  } else {
+    res.redirect('/test/candidate')
+  }
+})
 
 module.exports = router;
 

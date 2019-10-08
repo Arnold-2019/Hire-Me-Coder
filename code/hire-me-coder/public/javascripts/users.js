@@ -1,7 +1,16 @@
-var results;
 $(document).ready(function () {
-    // loadAdminDetails();
+    // Add a realtime listner
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser) {
+
+        } else {
+            console.log('not logged in');
+            location.href = '/login';
+        }
+    });
 });
+
+var results;
 
 function loadAdminDetails() {
     $.ajax({
@@ -55,12 +64,12 @@ function successAlert(title, message, actionType) {
         text: message,
         type: "success"
     }, function () {
-        if(actionType == 'save') {
+        if (actionType == 'save') {
             resetSaveAdmin();
         } else if (actionType == 'edit') {
             dismiss();
             resetEditAdmin();
-        }        
+        }
         loadAdminDetails();
         location.reload();
     });
@@ -68,14 +77,14 @@ function successAlert(title, message, actionType) {
 
 function errorAlert(params) {
     swal({
-        title:"Error", 
-        text: "User is already registered", 
-        type:"error"
-    }, function() {
+        title: "Error",
+        text: "User is already registered",
+        type: "error"
+    }, function () {
         $('#registerModal').modal('hide');
         location.reload();
     });
-    
+
 }
 
 function resetSaveAdmin() {
@@ -156,10 +165,8 @@ $("#editAdminForm").submit(function (event) {
 
 function textValidation(event) {
     var charCode = (event.which) ? event.which : event.keyCode;
-    // if (charCode != 46 && charCode > 31
-    //     && (charCode < 48 || charCode > 57))
 
-    if ((event.charCode > 64 && 
+    if ((event.charCode > 64 &&
         event.charCode < 91) || (event.charCode > 96 && event.charCode < 123))
         return true;
     return false;
