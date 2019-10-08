@@ -19,6 +19,7 @@
     var question_id_array =[];
     var question_name_array =[];
     var description_array=[];
+    var question_type_array=[];
     // var photoUrl_array=[];
     
     
@@ -221,6 +222,7 @@
                 question_id_array.push(doc.id);
                 question_name_array.push(doc.data().name);
                 description_array.push(doc.data().description);
+                question_type_array.push(doc.data().type);
                 
                 let tr2 = document.createElement('tr');
                 let selected_question_type = document.createElement('td');
@@ -273,6 +275,7 @@
                     question_name_array.splice(question_id_array.indexOf(doc.id),1);
                     description_array.splice(question_id_array.indexOf(doc.id),1);
                     question_id_array.splice(question_id_array.indexOf(doc.id),1);
+                    question_type_array.splice(question_id_array.indexOf(doc.id),1);
                 })
             }
         })
@@ -351,8 +354,35 @@
                 created_by: created_by.value,
                 test_description: test_description.value,
                 question_name: question_name_array,
-                question_description: description_array
+                question_description: description_array,
+                question_type: question_type_array,
+                // test_final_id: docRef.id
             });
+            
+            
+            // db.collection('tests_final').add({
+            //     testName: test_name.value,
+            //     createdOn: firebase.firestore.Timestamp.fromDate(new Date()),
+            //     createdBy: created_by.value
+            // })
+            // .then(function(docRef){
+            //     for (i=0;i<question_id_array.length;i++){
+            //         if (question_type_array[i]==="Code"){
+            //             db.collection('tests_final').doc(docRef.id).collection('code_questions').add({
+            //                 description: description_array[i],
+            //                 name: question_name_array[i]
+            //             })
+            //         }
+            //         else if (question_type_array[i]==="Descriptive"){
+            //             db.collection('tests_final').doc(docRef.id).collection('descriptive_questions').add({
+            //                 description: description_array[i],
+            //                 name: question_name_array[i]
+            //             })
+            //         }
+            //     }
+            // });
+
+
             document.getElementById('name_error').style.display="none";
             document.getElementById('created_by_error').style.display="none";
             document.getElementById('test_description_error').style.display="none";
@@ -451,7 +481,7 @@
     var desciptive_table = document.getElementById("desciptive_table");
     var code_table = document.getElementById("code_table");
     optionDescriptive.addEventListener("click",(e)=>{
-        e.stopPropagation();
+        // e.stopPropagation();
         if (desciptive_table.style.display==="none"){
             desciptive_table.style.display="block";
             code_table.style.display="none";
@@ -462,7 +492,7 @@
         }
     })
     optionCode.addEventListener("click",(e)=>{
-        e.stopPropagation();
+        // e.stopPropagation();
         if (desciptive_table.style.display==="block"){
             desciptive_table.style.display="none";
             code_table.style.display="block";

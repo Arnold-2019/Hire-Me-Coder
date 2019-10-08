@@ -6,7 +6,6 @@ var db = fb.firestore();
 
 router.get('/manage-users', function (req, res, next) {
   var isAdmin = req.session.user.isAdmin;
-
   if (!isAdmin) {
     res.redirect('/unauthorised');
   }
