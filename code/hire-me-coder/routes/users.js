@@ -174,7 +174,7 @@ router.get('/view-profile', function (req, res, next) {
   console.log(userId);
   var user;
 
-  if(isAdmin) {
+  if (isAdmin) {
     db.collection('admin_users')
       .doc(userId)
       .get()
@@ -185,25 +185,25 @@ router.get('/view-profile', function (req, res, next) {
           user = doc.data();
           console.log(user);
           // res.send(JSON.stringify({users:user}));
-          res.render('profile', { user: user, isAdmin : isAdmin });
+          res.render('profile', { user: user, isAdmin: isAdmin });
         }
       })
-    } else {
-      db.collection('candidate_users')
-        .doc(userId)
-        .get()
-        .then(doc => {
-          if (doc.empty) {
-            res.sendStatus(404, { message: 'No Record Found.' })
-          } else {
-            user = doc.data();
-            console.log(user);
-            // res.send(JSON.stringify({users:user}));
-            res.render('profile', { user: user, isAdmin : isAdmin });
-          }
-        }).catch(err => {
-          res.sendStatus(500, { error: err })
-        })
+  } else {
+    db.collection('candidate_users')
+      .doc(userId)
+      .get()
+      .then(doc => {
+        if (doc.empty) {
+          res.sendStatus(404, { message: 'No Record Found.' })
+        } else {
+          user = doc.data();
+          console.log(user);
+          // res.send(JSON.stringify({users:user}));
+          res.render('profile', { user: user, isAdmin: isAdmin });
+        }
+      }).catch(err => {
+        res.sendStatus(500, { error: err })
+      })
   }
 });
 
@@ -211,16 +211,31 @@ router.post('/save-profile', function (req, res, next) {
   var firstName = req.body.firstName;
   var lastName = req.body.lastName;
   var userId = req.session.user.userId;
+  var isAdmin = req.session.user.isAdmin;
 
-  db.collection('candidate_users')
-    .doc(userId)
-    .update({
-      firstName: firstName,
-      lastName: lastName
-    }).then(function () {
-      res.sendStatus(200);
+  if (isAdmin) {
+    db.collection('admin_users')
+      .doc(userId)
+      .update({
+        firstName: firstName,
+        lastName: lastName
+      }).then(function () {
+        res.sendStatus(200);
 
-    });
+      });
+  } else {
+    db.collection('candidate_users')
+      .doc(userId)
+      .update({
+        firstName: firstName,
+        lastName: lastName
+      }).then(function () {
+        res.sendStatus(200);
+
+      });
+  }
+
+
 
 })
 

@@ -29,7 +29,13 @@ function updateProfile() {
     var lastName = $('#lastName').val();
 
     if (firstName.trim() == '' || lastName.trim() == '') {
-        $.notify('Invalid input', 'error');
+        $.notify({
+            title: 'Error!',
+            icon: 'fa fa-exclamation-circle',
+            message: 'Invalid Input.'
+        },{
+            type: 'danger'
+        });
     } else {
         $.ajax({
             url: '/users/save-profile',
@@ -58,7 +64,7 @@ function udpatePassword() {
         $.notify({
             title: 'Error!',
             icon: 'fa fa-exclamation-circle',
-            message: 'YPassword does not match.'
+            message: 'Passwords do not match.'
         },{
             type: 'danger'
         });
