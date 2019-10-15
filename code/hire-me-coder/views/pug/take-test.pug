@@ -1,0 +1,52 @@
+extends layouts/_layout.pug
+
+block variables
+	- var activePage = 'blank-page'
+	- var activeGroup = 'pages'
+	- var test = test
+	- var questions = questions
+
+block title
+	title Test
+
+block content
+	.app-title
+		div
+			h1
+				i.fa.fa-dashboard
+				|  Test
+			p End Date
+
+		//- ul.app-breadcrumb.breadcrumb
+		//- 	li.breadcrumb-item
+		//- 		i.fa.fa-home.fa-lg
+		//- 	li.breadcrumb-item
+		//- 		a(href='#') Blank Page
+
+	.row
+		.col-md-12
+			.tile
+				form
+					h3.tile-title
+						span#questionName.label-text
+					.tile-body
+						.form-group
+							span#questionDescription.label-text
+						.form-group
+							textarea#answer.form-control(rows='15' required)
+					.tile-footer
+						button#previousButton.btn.btn-secondary(href="#" style='margin-right:5px' type='button' onclick='previous()' disabled=true)
+							i.fa.fa-fw.fa-lg.fa-arrow-left
+							| Previous
+						button#nextButton.btn.btn-info(style='margin-right:5px' type='button' onclick='next()')
+							i.fa.fa-fw.fa-lg.fa-arrow-right
+							| Next
+						button#submitButton.btn.btn-primary(style='margin-right:5px' type='button' onclick='submitTest()')
+							i.fa.fa-fw.fa-lg.fa-paper-plane
+							| Submit
+						button.btn.btn-warning(type='button' onclick='saveDraft()')
+							i.fa.fa-fw.fa-lg.fa-times-circle
+							| Save and Exit
+	block specific-js
+		script(src='/javascripts/take-test.js')
+		script(type='text/javascript', src='/js/plugins/sweetalert.min.js')

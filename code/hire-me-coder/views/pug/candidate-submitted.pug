@@ -1,0 +1,33 @@
+extends layouts/_layout.pug
+
+block variables
+  - var activePage = 'blank-page'
+  - var activeGroup = 'pages'
+
+block title
+  title Test
+
+block content
+  .app-title
+    .div
+      h1
+        i.fa.fa-dashboard
+        |  Maptek Assessment
+      //- p End Date
+
+    //- ul.app-breadcrumb.breadcrumb
+    //- 	li.breadcrumb-item
+    //- 		i.fa.fa-home.fa-lg
+    //- 	li.breadcrumb-item
+    //- 		a(href='#') Blank Page
+
+  .tile.mb-4
+    .page-header
+      .row
+        .col-lg-12
+          h2.mb-3.line-head(style='color:green') Test Completed
+        .row
+        .col-lg-12
+          p Thank you for taking and completing the exam.
+            br
+            | The admin is now assessing your answers and will give feedback to you shortly.

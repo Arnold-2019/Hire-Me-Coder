@@ -21,6 +21,12 @@ const multer = Multer({
 router.get('/view', function (req, res, next) {
     // var element = {}, question = [];
     var questions;
+    var isAdmin = req.session.user.isAdmin;
+    console.log(isAdmin);
+
+    if (!isAdmin) {
+        res.redirect('/unauthorised');
+    }
 
     var questionPromise = new Promise((resolve, reject) => {
 
@@ -41,7 +47,7 @@ router.get('/view', function (req, res, next) {
 
     Promise.all([questionPromise]).then(function () {
         // res.send(JSON.stringify({ questions: questions }));
-        res.render('manage-questions', { questionResult: questions });
+        res.render('manage-questions', { questionResult: questions, isAdmin: isAdmin });
     });
 
 });

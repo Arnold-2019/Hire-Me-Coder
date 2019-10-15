@@ -1,4 +1,13 @@
 $(document).ready(function () {
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if(firebaseUser) {
+            
+        } else {
+            console.log('not logged in');
+            location.href='/login';
+        }
+    });
+    
     getTest();
 
     $('#inputDateBox').datepicker({
@@ -17,12 +26,9 @@ function getTest() {
         dataType: "json",
         contentType: "application/json;charset=utf-8",
         success: function (data) {
-            console.log(data['tests']);
-            
             let tests = data['tests'];
             
             tests.forEach(test => {
-                console.log(test['test_name']);
                 testSelect.push(test['test_name']);
                 $('#testSelect').append('<option value="' + test['test_name'] + '">' + test['test_name'] + '</option>');
             })          

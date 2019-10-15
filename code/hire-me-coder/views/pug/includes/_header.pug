@@ -89,15 +89,14 @@ header.app-header
 			ul.dropdown-menu.settings-menu.dropdown-menu-right
 				li
 					//- a.dropdown-item(href='page-user.html')
-					a.dropdown-item
-						i.fa.fa-cog.fa-lg
-						|  Settings
+					//- a.dropdown-item
+					//- 	i.fa.fa-cog.fa-lg
+					//- 	|  Settings
 				li
-					//- a.dropdown-item(href='page-user.html')
-					a.dropdown-item
+					a.dropdown-item(href='/users/view-profile')
 						i.fa.fa-user.fa-lg
 						|  Profile
-				li
+				li#logout
 					//- a.dropdown-item(href='page-login.html')
 					a.dropdown-item
 						i.fa.fa-sign-out.fa-lg
