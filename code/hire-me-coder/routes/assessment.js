@@ -74,7 +74,7 @@ router.post('/send-assessment', function (req, res, next) {
     // date 
     var dueDate = req.body.dueDate;
     var dueTime = req.body.dueTime;
-
+   
     var dateTime = parseDateTime(dueDate, dueTime);
     var timestamp = fb.firestore.Timestamp.fromDate(dateTime);
 
