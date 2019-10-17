@@ -98,7 +98,7 @@ function submitTest() {
     checkQuestionAnwer();
     swal({
         title: 'Warning',
-        text: 'Are you sure you want to submit the test?',
+        text: 'You cannot change your answers after submiting!',
         type: 'warning',
         showCancelButton: true,
         confirmButtonText: "Yes",
@@ -130,8 +130,8 @@ function submitTest() {
 
 function saveDraft() {
     swal({
-        title: 'Cancel',
-        text: 'Are you sure you want to cancel without submitting?',
+        title: 'Save',
+        text: 'Are you sure you want to save and exit?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonText: "Yes",
