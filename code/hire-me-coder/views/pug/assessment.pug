@@ -25,20 +25,16 @@ block content
 			.tile
 				.row
 					.col-lg-6
-						//- form(method='POST' action='/assessment/send-assessment')
-						form(id='sendAssessmentForm')
+						form(id='send-ass-form')
 							.tile-body
 								.form-group
 									label.control-label Enter Email Addresses:
 									input#emailInput.form-control(data-role="multiemail" required)
-									//- input.form-control(id='inputEmailBox', name='inputEmailBox', type='text', placeholder='Separate multiple addresses by comma \' , \'' required)
 
 								.form-group
 									label.control-label Select Test:
 									select#testSelect.form-control
 										option.selected -- Select --
-										//- <option selected>-- Select --</option>
-									//- input.form-control(id='inputAssBox', name='inputAssBox', type='text', placeholder='Input the NAME of test form')
 								
 								.form-group
 									label.control-label Select Expiration Date:
@@ -59,8 +55,8 @@ block content
 							.tile-footer
 								button.btn.btn-info(id='previewButton', type='button' style='margin-right:5px' onclick='displayEmail()')
 									| Email Preview
-								button.btn.btn-secondary(id='resetInputsButton', type='button' style='margin-right:5px' onclick='this.form.reset();')
-									| Reset	
+								//- button.btn.btn-secondary(id='resetInputsButton', type='button' style='margin-right:5px' onclick='resetSendAssPage()')
+								//- 	| Reset	
 							
 					.col-lg-6
 						form
@@ -72,7 +68,7 @@ block content
 								button.btn.btn-primary(id='sendAssessmentButton', type='button' style='margin-right:5px' onclick='sendEmail()')
 									i.fa.fa-fw.fa-lg.fa-check-circle
 									| Send Assessment
-								button.btn.btn-secondary(id='resetDisplayButton', type='button' style='margin-right:5px' onclick='this.form.reset();')
+								button.btn.btn-secondary(id='resetButton', type='button' style='margin-right:5px' onclick='this.form.reset();')
 									| Reset			
 
 block specific-js
@@ -82,4 +78,3 @@ block specific-js
 	script(type='text/javascript', src='/js/plugins/bootstrap-multiEmail.js')
 	script(type='text/javascript', src="/js/plugins/sweetalert.min.js")
 	script(src='/javascripts/assessment.js')
-

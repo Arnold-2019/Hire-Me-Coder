@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const fb = require('../util/db');
+var db = fb.firestore();
 
+router.get('/index', function (req, res, next) {
+  res.render('index', {isAdmin: true});
+});
 
-
-// app.use('/users', usersRouter);
-
-// /* GET home page. */
-router.get('/index', function(req, res, next) {
-  res.render('index');
+router.get('/unauthorised', function (req, res, next) {
+  res.render('unauthorised');
 });
 
 module.exports = router;

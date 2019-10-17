@@ -1,0 +1,60 @@
+extends layouts/_layout.pug
+
+block variables
+  - var activePage = 'blank-page'
+  - var activeGroup = 'pages'
+  - var dueDateRes = dueDate
+
+block title
+  title Test
+
+block content
+  .app-title
+    .div
+      h1
+        i.fa.fa-dashboard
+        |  Maptek Assessment #{helloRes}
+      //- p End Date
+
+    //- ul.app-breadcrumb.breadcrumb
+    //- 	li.breadcrumb-item
+    //- 		i.fa.fa-home.fa-lg
+    //- 	li.breadcrumb-item
+    //- 		a(href='#') Blank Page
+
+  .tile.mb-4
+    .page-header
+      .row
+        .col-lg-12
+          h2.mb-3.line-head Maptek invites you to take a programming test
+        .row
+        .col-lg-12
+          h3 Before you begin
+          .bs-component
+            ol
+              li There are two types of questions. You can solve them in any order.
+              li The first type of question is coding. You are expected to provide your answer in Java or C# format.
+              li The second type of question is descriptive. Try to answer as accurately as possible.
+              li You may save the test and resume until  
+                b(style='color: red') #{dueDateRes}.
+              li You cannot access this test once the due date has passed.
+              li Submit the test once you have finished answering all the questions.
+              li You can reset your password by going to your profile page.
+
+  .tile.mb-4
+    .page-header
+      .row
+        .col-lg-12
+          h2.mb-3.line-head Are you ready?
+        .row
+        .col-lg-12
+          .animated-checkbox
+            label
+                input#termsCheck(type="checkbox")
+                span.label-text I have read and accepted Maptek's Terms of Service, Privacy Policy, and Code of Honour.
+        .col-lg-5
+            p.bs.component
+              button.btn.btn-primary.btn-lg.btn-block(type='button' disabled = true id ='startTestButton' onclick = 'startTest()') Start the test
+
+  block specific-js
+    script(src='/javascripts/candidate.js')

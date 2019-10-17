@@ -1,0 +1,81 @@
+extends layouts/_layout.pug
+
+block variables
+  - var activePage = 'user-page'
+  - var activeGroup = 'pages'
+  - var userRes = user
+
+block title
+  title User Profile
+
+block content
+
+  .row.user
+    //- .col-md-12
+      .profile
+        .info
+          img.user-img(src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg")
+          h4 John Doe
+          p FrontEnd Developer
+        .cover-image
+
+    .col-md-3
+      .tile.p-0
+        ul.nav.flex-column.nav-tabs.user-tabs
+          li.nav-item
+            a.nav-link.active(href='#user-settings' data-toggle='tab') Profile
+          li.nav-item
+            a.nav-link(href='#user-timeline' data-toggle='tab') Settings
+
+    .col-md-9
+      .tab-content
+        #user-timeline.tab-pane.fade
+          .tile.user-settings
+            h4.line-head Change Password
+            form#changePasswordForm
+              .row
+                .col-md-8.mb-4
+                  label Current Password
+                  input#currentPassword.form-control(type="password")
+              .row
+                .col-md-8.mb-4
+                  label New Password
+                  input#newPassword.form-control(type='password', placeholder='Minimum of 6 and maximum of 10 characters' maxlength='10')
+              .row
+                .col-md-8.mb-4
+                  label Retype New Password
+                  input#confirmPassword.form-control(type='password', placeholder='Minimum of 6 and maximum of 10 characters' maxlength='10')
+                .clearfix
+              .row.mb-10
+                .col-md-12
+                  button.btn.btn-primary(type="button" onclick='udpatePassword()')
+                    i.fa.fa-fw.fa-lg.fa-check-circle
+                    |  Save
+
+        #user-settings.tab-pane.active
+          .tile.user-settings
+            h4.line-head Profile
+            form
+              .row.mb-4
+                .col-md-4
+                  label First Name
+                  input#firstName.form-control(type="text", value=userRes['firstName'] onkeypress='return textValidation(event)' maxlength='10')
+
+                .col-md-4
+                  label Last Name
+                  input#lastName.form-control(type="text", , value=userRes['lastName'] onkeypress='return textValidation(event)' maxlength='10')
+
+              .row
+                .col-md-8.mb-4
+                  label Email
+                  input#email.form-control(type="text", value= userRes['email'], disabled=true)
+                .clearfix
+              .row.mb-10
+                .col-md-12
+                  button.btn.btn-primary(type="button", onclick='updateProfile()')
+                    i.fa.fa-fw.fa-lg.fa-check-circle
+                    |  Save
+block specific-js
+  script(src='/javascripts/profile.js')
+  script(type='text/javascript', src='/js/plugins/bootstrap-notify.min.js')
+  script(type='text/javascript', src="/js/plugins/sweetalert.min.js")

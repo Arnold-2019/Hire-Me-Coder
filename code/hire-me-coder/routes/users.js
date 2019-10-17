@@ -5,13 +5,18 @@ const fb = require('../util/db');
 var db = fb.firestore();
 
 router.get('/manage-users', function (req, res, next) {
+  var isAdmin = req.session.user.isAdmin;
+  if (!isAdmin) {
+    res.redirect('/unauthorised');
+  }
+
   db.collection('admin_users').get()
     .then(function (snapshot) {
       if (snapshot.empty) {
         res.send("NO SERVERS AVAILABLE")
       } else {
         var docs = snapshot.docs.map(doc => doc.data());
-        res.render('manage-users', { result: docs });
+        res.render('manage-users', { result: docs, isAdmin: isAdmin });
         // res.send(JSON.stringify({ users: docs }));
       }
     }).catch(function (err) {
@@ -74,7 +79,7 @@ router.post('/save', function (req, res, next) {
   let email = req.body["email"];
   let password = "test123";
   let displayName = lastName + " " + lastName;
-  
+
   fb.auth().createUser({
     email: email,
     password: password,
@@ -162,5 +167,76 @@ router.post('/update', function (req, res, next) {
     res.sendStatus(500);
   });
 });
+
+router.get('/view-profile', function (req, res, next) {
+  var userId = req.session.user.userId;
+  var isAdmin = req.session.user.isAdmin;
+  console.log(userId);
+  var user;
+
+  if (isAdmin) {
+    db.collection('admin_users')
+      .doc(userId)
+      .get()
+      .then(doc => {
+        if (doc.empty) {
+          res.sendStatus(404, { message: 'No Record Found.' })
+        } else {
+          user = doc.data();
+          console.log(user);
+          // res.send(JSON.stringify({users:user}));
+          res.render('profile', { user: user, isAdmin: isAdmin });
+        }
+      })
+  } else {
+    db.collection('candidate_users')
+      .doc(userId)
+      .get()
+      .then(doc => {
+        if (doc.empty) {
+          res.sendStatus(404, { message: 'No Record Found.' })
+        } else {
+          user = doc.data();
+          console.log(user);
+          // res.send(JSON.stringify({users:user}));
+          res.render('profile', { user: user, isAdmin: isAdmin });
+        }
+      }).catch(err => {
+        res.sendStatus(500, { error: err })
+      })
+  }
+});
+
+router.post('/save-profile', function (req, res, next) {
+  var firstName = req.body.firstName;
+  var lastName = req.body.lastName;
+  var userId = req.session.user.userId;
+  var isAdmin = req.session.user.isAdmin;
+
+  if (isAdmin) {
+    db.collection('admin_users')
+      .doc(userId)
+      .update({
+        firstName: firstName,
+        lastName: lastName
+      }).then(function () {
+        res.sendStatus(200);
+
+      });
+  } else {
+    db.collection('candidate_users')
+      .doc(userId)
+      .update({
+        firstName: firstName,
+        lastName: lastName
+      }).then(function () {
+        res.sendStatus(200);
+
+      });
+  }
+
+
+
+})
 
 module.exports = router;

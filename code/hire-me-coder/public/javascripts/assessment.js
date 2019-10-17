@@ -1,4 +1,13 @@
 $(document).ready(function () {
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if(firebaseUser) {
+            
+        } else {
+            console.log('not logged in');
+            location.href='/login';
+        }
+    });
+    
     getTest();
 
     $('#inputDateBox').datepicker({
@@ -17,12 +26,9 @@ function getTest() {
         dataType: "json",
         contentType: "application/json;charset=utf-8",
         success: function (data) {
-            console.log(data['tests']);
-            
             let tests = data['tests'];
             
             tests.forEach(test => {
-                console.log(test['test_name']);
                 testSelect.push(test['test_name']);
                 $('#testSelect').append('<option value="' + test['test_name'] + '">' + test['test_name'] + '</option>');
             })          
@@ -53,7 +59,7 @@ function sendEmail(event) {
                     text: 'Assessment Invation has been successfully sent.',
                     type: 'success'
                 }, function () {
-                    $('#sendAssessmentForm').get(0).reset();
+                    $('#send-ass-form').get(0).reset();
                     $('#emailMessage').val("");
                     document.getElementById('emailMessage').disabled = true;
                     location.reload();
@@ -95,7 +101,7 @@ function displayEmail() {
     'User name: ' + email[0] + '\n' +
     'Password: ********* \n\n' +
     'Please click the link below to login to your account.\n' +
-    '\" http://maptek.com/hiremecoder/candidateid/assessment-form \"\n\n' +
+    'http://maptek.com/hiremecoder/candidateid/assessment-form \n\n' +
     'Best regards,\n' +
     'MapTek Team';
     
@@ -105,4 +111,12 @@ function displayEmail() {
 
 $('#inputTimeBox').datetimepicker({
     format: 'LT'
+});
+
+// reset forms
+const reset = document.querySelector('#resetButton');
+const sendAssForm = document.querySelector('#send-ass-form');
+reset.addEventListener('click', (e) => {
+    e.preventDefault();
+    sendAssForm.reset();
 });

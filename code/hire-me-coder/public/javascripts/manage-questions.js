@@ -1,4 +1,16 @@
 "use strict";
+$(document).ready(function () {
+    // Add a realtime listner
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if(firebaseUser) {
+            
+        } else {
+            console.log('not logged in');
+            location.href='/login';
+        }
+    });
+})
+
 $('#createQuestionForm').submit(function (event) {
     event.preventDefault();
     // let type = $('#questionTypeRadioOpt').val();
