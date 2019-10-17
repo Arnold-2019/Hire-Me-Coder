@@ -42,32 +42,49 @@ function sendEmail(event) {
     console.log('submittt!!');
     var emails = $('#emailInput').val();
 
-    if (emailValidations(emails)) {
-        // ajax call to do the email send
-        $.ajax({
-            url: 'send-assessment',
-            type: 'POST',
-            data: {
-                    emails: $('#emailInput').val(),
-                    testName: $('#testSelect').val(),
-                    dueDate: $('#inputDateBox').val(),
-                    dueTime: $('#inputTimeBox').val()
-                  },
-            success: (data) => {
-                swal({
-                    title: 'Successful',
-                    text: 'Assessment Invation has been successfully sent.',
-                    type: 'success'
-                }, function () {
-                    $('#send-ass-form').get(0).reset();
-                    $('#emailMessage').val("");
-                    document.getElementById('emailMessage').disabled = true;
-                    location.reload();
-                });
-            }
+    if (timeValidation()) {
+        swal({
+            title: 'Invalid Time!',
+            text: 'The expiry time should be later than the current time.',
+            type: 'error'
         });
     } else {
-        alert('Email address is invalid!');
+        if (emailValidations(emails)) {
+            // ajax call to do the email send
+            $.ajax({
+                url: 'send-assessment',
+                type: 'POST',
+                dataType: 'text',
+                data: {
+                        emails: $('#emailInput').val(),
+                        testName: $('#testSelect').val(),
+                        dueDate: $('#inputDateBox').val(),
+                        dueTime: $('#inputTimeBox').val()
+                      },
+                success: (res) => {
+                    if (res === 'Active') {
+                        swal({
+                            title: 'Failed!',
+                            text: 'This user has in progressing assessment.',
+                            type: 'error'
+                        });
+                    } else {
+                        swal({
+                            title: 'Successful',
+                            text: 'Assessment Invation has been successfully sent.',
+                            type: 'success'
+                        }, function () {
+                            $('#send-ass-form').get(0).reset();
+                            $('#emailMessage').val("");
+                            document.getElementById('emailMessage').disabled = true;
+                            location.reload();
+                        });
+                    }
+                }
+            });
+        } else {
+            alert('Email address is invalid!');
+        }
     }
 }
 
@@ -79,6 +96,61 @@ function emailValidations(emails) {
         }
     }
     return true;
+}
+
+function timeValidation() {
+    var flag = false;
+    var due = $('#inputDateBox').val();
+    var time = $('#inputTimeBox').val();
+    dueTime = formatTime(due, time);
+    var dueTime = new Date(dueTime);
+    var currentTime = new Date();
+    console.log('expiryTime: ' + dueTime);
+    console.log('curTime: ' + currentTime);
+    
+    if (dueTime.getTime() < currentTime.getTime()) {
+        flag = true;
+    }
+
+    console.log('The time have been set is expiried? ' + flag);
+    return flag;
+}
+
+function formatTime(date, time) {
+    dateArr = date.split('/')
+    d = dateArr[0]
+    m = dateArr[1]
+    y = dateArr[2]
+
+    timeArr = time.split(' ')
+    time = timeArr[0]
+    time_arr = time.split(':')
+    hour = time_arr[0]
+    minute = time_arr[1]
+    switch (timeArr[1]) {
+        case 'PM':
+            hour = (Number(hour) + 12).toString(10)
+    }
+    time = hour + ':' + minute + ':00'
+
+    month = ''
+    switch (m) {
+        case '01': month = 'January'; break;
+        case '02': month = 'February'; break;
+        case '03': month = 'March'; break;
+        case '04': month = 'April'; break;
+        case '05': month = 'May'; break;
+        case '06': month = 'June'; break;
+        case '07': month = 'July'; break;
+        case '08': month = 'August'; break;
+        case '09': month = 'September'; break;
+        case '10': month = 'October'; break;
+        case '11': month = 'November'; break;
+        case '12': month = 'Desember'
+    }
+
+    dueTime = month + ' ' + d + ', ' + y + ' ' + time
+    return dueTime
 }
 
 function displayEmail() {
