@@ -112,7 +112,7 @@ function timeValidation() {
         flag = true;
     }
 
-    console.log('The time have been set is expiried? ' + flag);
+    console.log('The time have been set is expired? ' + flag);
     return flag;
 }
 

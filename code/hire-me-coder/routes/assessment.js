@@ -14,7 +14,7 @@ router.get('/send-assessment', function (req, res, next) {
         res.redirect('/unauthorised');
     }
 
-    res.render('assessment', {isAdmin: isAdmin});
+    res.render('assessment', { isAdmin: isAdmin });
     console.log('-----TEST LINE---- 1');
     db.collection('candidate_users').get().then(docs => {
         docs.forEach(doc => {
@@ -66,7 +66,7 @@ function parseDateTime(date, time) {
 router.use(bodyParser.urlencoded({ extended: true }));
 router.post('/send-assessment', function (req, res, next) {
     console.log('-----TEST LINE---- 2');
-    var sender = 'noreply@maptek.com';
+    
     var numSentMails = 0;
     var mails = req.body.emails;
     var testName = req.body.testName;
@@ -74,7 +74,7 @@ router.post('/send-assessment', function (req, res, next) {
     // date 
     var dueDate = req.body.dueDate;
     var dueTime = req.body.dueTime;
-   
+
     var dateTime = parseDateTime(dueDate, dueTime);
     var timestamp = fb.firestore.Timestamp.fromDate(dateTime);
 
@@ -83,14 +83,129 @@ router.post('/send-assessment', function (req, res, next) {
 
     var newDate = new fb.firestore.Timestamp(sec, nano).toDate();
 
-    var maillist = mails.split(",");
-    var numMails = maillist.length;
+    var emails = mails.split(",");
+    var emailsLength = emails.length;
 
-    var passwords = generator.generateMultiple(numMails, {
+    var passwords = generator.generateMultiple(emailsLength, {
         length: 10,
         numbers: true
     });
 
+    var userId;
+    var testId;
+    var ctr = 0;
+
+    emails.forEach(async (email) => {
+        console.log(email);
+        console.log(passwords[ctr]);
+        var userId = await createUserAuth(email, passwords[ctr]);
+        var testId = await createCandidateUserAccount(userId, email, testName, timestamp);
+        await addTestQuestions(userId, testName);
+        await sendEmail(email, passwords[ctr], dateTime);
+        ctr++;
+    }).then(() => {
+        console.log('done!');
+    })
+
+
+});
+
+function createUserAuth(emailAddress, password) {
+    var userId = "";
+    return new Promise((resolve, reject) => {
+        fb.auth().createUser({
+            email: emailAddress,
+            password: password,
+            displayName: ""
+        }).then((doc) => {
+            userId = doc.uid;
+            resolve(userId);
+        });
+    });
+}
+
+function createCandidateUserAccount(userId, emailAddress, testName, timestamp) {
+    console.log('User ID:' + userId);
+    var testId;
+    return new Promise((resolve, reject) => {
+        var candidateRef = db.collection('candidate_users').doc(userId);
+        candidateRef.set({
+            firstName: '',
+            lastName: '',
+            email: emailAddress,
+            isActive: false
+        }).then(() => {
+            db.collection('candidate_users')
+                .doc(userId)
+                .collection('tests')
+                .doc()
+                .set({
+                    dueDate: timestamp,
+                    isActive: false,
+                    isLatest: true,
+                    isSubmitted: false,
+                    testName: testName
+                }).then((doc) => {
+                    testId = doc.uid;
+                    resolve(testId);
+                });
+        });
+    });
+}
+
+function addTestQuestions(userId, testName) {
+    var testId = '';
+    return new Promise((resolve, reject) => {
+        db.collection('candidate_users')
+            .doc(userId)
+            .collection('tests')
+            .where('testName', '==', testName)
+            .get()
+            .then(testSnapshot => {
+                if (testSnapshot.empty) {
+                    console.log('empty');
+                } else {
+                    testSnapshot.forEach(testDoc => {
+                        testId = testDoc.id;
+                        db.collection('tests')
+                            .where('test_name', '==', testName)
+                            .get()
+                            .then(snapshot => {
+                                if (snapshot.empty) {
+                                    console.log('empty')
+                                } else {
+                                    var ctr = 0;
+                                    snapshot.forEach((doc) => {
+                                        var testObject = JSON.parse(JSON.stringify(doc.data()));
+                                        var questionArr = testObject['question_description'];
+                                        questionArr.forEach(question => {
+                                            db.collection('candidate_users')
+                                                .doc(userId)
+                                                .collection('tests')
+                                                .doc(testId)
+                                                .collection('questions')
+                                                .doc()
+                                                .set({
+                                                    name: testObject['question_name'][ctr],
+                                                    description: question,
+                                                    type: 'code',
+                                                    answer: ""
+                                                });
+                                            ctr++;
+                                        })
+                                    })
+                                }
+                            }).then(() => {
+                                resolve('done');
+                            })
+                    })
+                }
+            })
+    });
+}
+
+function sendEmail(emailAddress, password, dateTime) {
+    var sender = 'noreply@maptek.com';
     var nodemailer = require('nodemailer');
 
     var transporter = nodemailer.createTransport({
@@ -100,125 +215,37 @@ router.post('/send-assessment', function (req, res, next) {
             pass: 'Sep_group5'
         }
     });
-
-    var userId;
-    var testId;
-
-    for (var i = 0; i < numMails; i++) {
-        var emailAddress = maillist[i];
-        var password = passwords[i];
-
-        fb.auth().createUser({
-            email: emailAddress,
-            password: password,
-            displayName: ""
-        }).then(cred => {
-            userId = cred.uid;
-            var candidateRef = db.collection('candidate_users').doc(userId);
-            candidateRef.set({
-                firstName: '',
-                lastName: '',
-                email: emailAddress,
-                isActive: false
-            }).then(() => {
-                db.collection('candidate_users')
-                    .doc(userId)
-                    .collection('tests')
-                    .doc()
-                    .set({
-                        dueDate: timestamp,
-                        isActive: false,
-                        isLatest: true,
-                        isSubmitted: false,
-                        testName: testName
-                    }).then(() => {
-                        db.collection('candidate_users')
-                            .doc(userId)
-                            .collection('tests')
-                            .where('testName', '==', testName)
-                            .get()
-                            .then(testSnapshot => {
-                                if (testSnapshot.empty) {
-                                    console.log('empty');
-                                } else {
-                                    testSnapshot.forEach(testDoc => {
-                                        testId = testDoc.id;
-                                        console.log('Test ID: ' + testId);
-                                        db.collection('tests')
-                                            .where('test_name', '==', testName)
-                                            .get()
-                                            .then(snapshot => {
-                                                if (snapshot.empty) {
-                                                    console.log('empty');
-                                                    res.send("empty")
-                                                } else {
-                                                    var cntr = 0;
-                                                    snapshot.forEach(doc => {
-                                                        var testObject = JSON.parse(JSON.stringify(doc.data()));
-                                                        var questionArr = testObject['question_description'];
-                                                        questionArr.forEach(question => {
-                                                            db.collection('candidate_users')
-                                                                .doc(userId)
-                                                                .collection('tests')
-                                                                .doc(testId)
-                                                                .collection('questions')
-                                                                .doc()
-                                                                .set({
-                                                                    name: testObject['question_name'][cntr],
-                                                                    description: question,
-                                                                    type: 'code',
-                                                                    answer: ""
-                                                                });
-                                                            cntr++;
-                                                        })
-                                                    })
-                                                    console.log(dateTime);
-                                                    var mailOptions = {
-                                                        from: sender,
-                                                        to: emailAddress,
-                                                        subject: 'MapTek Invitation!',
-                                                        text: 'Welcome,\n\n' +
-                                                            'We have created an account for you! ' +
-                                                            'You can now access your assessment form.\n\n' +
-                                                            'Please submit your solutions by the DUE DATE: ' +
-                                                            // '  ' + due + '  ' + time + '\n\n' +
-                                                            dateTime + '\n\n' +
-                                                            'Your Username is your email address and the default initial password ' +
-                                                            'is indicated below. You will be prompted to change your password after your first login.\n\n' +
-                                                            'Username: ' + emailAddress + '\n' +
-                                                            'Password: ' + password + '\n\n' +
-                                                            'Please click the link below to login to your account.\n\n' +
-                                                            'https://hireme-coder.firebaseapp.com/login\n\n' +
-                                                            'Best regards,\n' +
-                                                            'MapTek Team'
-                                                    };
-
-                                                    transporter.sendMail(mailOptions, function (error, info) {
-                                                        if (error) {
-                                                            console.log(numSentMails);
-                                                        } else {
-                                                            numSentMails += 1;
-                                                            console.log('Number of mails sent: ' + numSentMails);
-                                                        }
-                                                    });
-
-                                                    res.sendStatus(202);
-                                                }
-                                            }).then(() => {
-                                            })
-                                    })
-                                }
-                            })
-                    })
-            }).catch(err => {
-                ``
-                res.sendStatus(500, { error: err });
-            })
-        }).catch(err => {
-            console.log(err.message);
-        })
-    }
-});
+    return new Promise((resolve, reject) => {
+        var mailOptions = {
+            from: sender,
+            to: emailAddress,
+            subject: 'MapTek Invitation!',
+            text: 'Welcome,\n\n' +
+                'We have created an account for you! ' +
+                'You can now access your assessment form.\n\n' +
+                'Please submit your solutions by the DUE DATE: ' +
+                // '  ' + due + '  ' + time + '\n\n' +
+                dateTime + '\n\n' +
+                'Your Username is your email address and the default initial password ' +
+                'is indicated below. You may change your password under Profile Page. \n\n' +
+                'Username: ' + emailAddress + '\n' +
+                'Password: ' + password + '\n\n' +
+                'Please click the link below to login to your account.\n\n' +
+                'https://hireme-coder.firebaseapp.com/login\n\n' +
+                'Best regards,\n' +
+                'MapTek Team'
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(numSentMails);
+            } else {
+                numSentMails += 1;
+                console.log('Number of mails sent: ' + numSentMails);
+            }
+        });
+    });
+    resolve();
+}
 
 router.get('/sample', function (req, res, next) {
     let testName = req.body['testName'];
