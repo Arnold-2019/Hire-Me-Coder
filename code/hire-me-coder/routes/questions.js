@@ -52,7 +52,7 @@ router.get('/view', function (req, res, next) {
 
 });
 
-router.post('/save', multer.single("imageFile"), function (req, res, next) {
+router.post('/save', multer.single("file"), function (req, res, next) {
     console.log('hello world!!!');
 
     let type = req.body['type'];
@@ -60,8 +60,10 @@ router.post('/save', multer.single("imageFile"), function (req, res, next) {
     let description = req.body['description'];
     let createdBy = req.body['createdBy'];
     let imageFile = req.file;
+    console.log(imageFile);
 
     if (!imageFile) {
+        console.log('file is empty');
         let docRef = db.collection('questions').doc();
         docRef.set({
             type: type,
@@ -78,6 +80,7 @@ router.post('/save', multer.single("imageFile"), function (req, res, next) {
             res.render('error', { error: err })
         })
     } else {
+        console.log('file is not empty');
         uploadImageToStorage(imageFile).then((url) => {
             let docRef = db.collection('questions').doc();
             docRef.set({

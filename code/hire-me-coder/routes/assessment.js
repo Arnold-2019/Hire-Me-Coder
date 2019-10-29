@@ -186,8 +186,9 @@ function addTestQuestions(userId, testName) {
                                                 .set({
                                                     name: testObject['question_name'][ctr],
                                                     description: question,
-                                                    type: 'code',
-                                                    answer: ""
+                                                    type: ['question_type'][ctr],
+                                                    answer: "",
+
                                                 });
                                             ctr++;
                                         })

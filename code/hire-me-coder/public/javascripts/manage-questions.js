@@ -13,12 +13,14 @@ $(document).ready(function () {
 
 $('#createQuestionForm').submit(function (event) {
     event.preventDefault();
-    // let type = $('#questionTypeRadioOpt').val();
     let name = $('#name').val();
     let description = $('#description').val();
     let imageFile = document.getElementById("imageFile");
     // let imageFile = $('#imageFile');
-    let createdBy = 'Khate Damaso';
+    let createdBy = 'Mary Miller';
+
+    console.log(imageFile.value);
+    console.log(imageFile.files.length);
 
     let code = $('#newCodeRadio');
     let descriptive = $('#newDescriptiveRadio');
@@ -31,12 +33,17 @@ $('#createQuestionForm').submit(function (event) {
     }
 
     const data = new FormData();
+    
 
-    if (imageFile.lenght > 0) {
+    if (imageFile.files.length > 0) {
         var isValid = validateImageFile(imageFile.value);
         if (isValid) {
 
-            data.append('file', imageFile);
+            data.append('file', imageFile.files[0]);
+            data.append('type', type);
+            data.append('testName', name);
+            data.append('description', description);
+            data.append('createdBy', createdBy);
 
             console.log('upload imageee!');
             $.ajax({
@@ -45,13 +52,6 @@ $('#createQuestionForm').submit(function (event) {
                 data: data,
                 processData: false,
                 contentType: false,
-                data: {
-                    "type": type,
-                    "testName": name,
-                    "description": description,
-                    // "imageFile": imageFile[0],
-                    "createdBy": createdBy,
-                },
                 success: function (data) {
                     successAlert();
                 }, error: function (err) {
