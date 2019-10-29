@@ -35,6 +35,7 @@ function populate() {
     let desc = questions[questionIndex]['description'];
     let answer = questions[questionIndex]['answer'];
     let type = questions[questionIndex]['type'];
+    $('#answer').val(answer);
     if (type == 'Code') {
         document.getElementById('code').style.display = "block";
         document.getElementById('answer').style.display = "none";
@@ -44,7 +45,6 @@ function populate() {
     }
     $('#questionName').text(name);
     $('#questionDescription').text(desc);
-    $('#answer').val(answer);
     
 }
 
@@ -76,17 +76,19 @@ function previous() {
 }
 
 function checkQuestionAnwer() {
-    let oldAnswer = questions[questionIndex]['answer'];
-    let newAnswer = $('#answer').val();
-    if (oldAnswer != newAnswer) {
-        let questionName = $('#questionName').text();
-        console.log(questionName);
-        saveQuestionAnswer(questionName, newAnswer);
-        getTest();
-    }
+    // let oldAnswer = questions[questionIndex]['answer'];
+    // let newAnswer = $('#answer').val();
+    // if (oldAnswer != newAnswer) {
+    // }
+    let answer = $('#answer').val();
+    let questionName = $('#questionName').text();
+    console.log(questionName);
+    saveQuestionAnswer(questionName, answer);
+    getTest();
 } 
 
 function saveQuestionAnswer(questionName, answer) {
+    console.log(answer);
     $.ajax({
         url: '/test/candidate/question/save',
         type: 'POST',
