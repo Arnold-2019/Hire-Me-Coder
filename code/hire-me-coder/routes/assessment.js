@@ -103,11 +103,9 @@ router.post('/send-assessment', function (req, res, next) {
         await addTestQuestions(userId, testName);
         await sendEmail(email, passwords[ctr], dateTime);
         ctr++;
-    }).then(() => {
-        console.log('done!');
-    })
+    });
 
-
+    res.sendStatus(200);
 });
 
 function createUserAuth(emailAddress, password) {
