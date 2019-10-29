@@ -36,7 +36,8 @@ block content
 							input#imageFile.form-control-file(name='imageFile' type='file' style='display:none')
 						.form-group
 							textarea#answer.form-control(rows='15' style='display:none')
-						div(data-pym-src="https://www.jdoodle.com/embed/v0/2?stdin=0&arg=0" id='code' style='display:none')
+						//- div(data-pym-src="https://www.jdoodle.com/embed/v0/2?stdin=0&arg=0" id='code' style='display:none')
+						iframe(id='code' style='display:none' height="400px" width="100%" src="https://repl.it/@KhateDamaso/PeacefulSoupyMaps?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals")
 					.tile-footer
 						button#previousButton.btn.btn-secondary(href="#" style='margin-right:5px' type='button' onclick='previous()' disabled=true)
 							i.fa.fa-fw.fa-lg.fa-arrow-left
