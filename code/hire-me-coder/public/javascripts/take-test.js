@@ -34,9 +34,18 @@ function populate() {
     let name = questions[questionIndex]['name'];
     let desc = questions[questionIndex]['description'];
     let answer = questions[questionIndex]['answer'];
+    let type = questions[questionIndex]['type'];
+    if (type == 'Code') {
+        document.getElementById('code').style.display = "block";
+        document.getElementById('answer').style.display = "none";
+    } else {
+        document.getElementById('code').style.display = "none";
+        document.getElementById('answer').style.display = "block";
+    }
     $('#questionName').text(name);
     $('#questionDescription').text(desc);
     $('#answer').val(answer);
+    
 }
 
 
@@ -75,7 +84,7 @@ function checkQuestionAnwer() {
         saveQuestionAnswer(questionName, newAnswer);
         getTest();
     }
-}
+} 
 
 function saveQuestionAnswer(questionName, answer) {
     $.ajax({

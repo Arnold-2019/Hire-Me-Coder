@@ -176,6 +176,7 @@ function addTestQuestions(userId, testName) {
                                     snapshot.forEach((doc) => {
                                         var testObject = JSON.parse(JSON.stringify(doc.data()));
                                         var questionArr = testObject['question_description'];
+                                        var questionTypeArr = testObject['question_type'];
                                         questionArr.forEach(question => {
                                             db.collection('candidate_users')
                                                 .doc(userId)
@@ -186,7 +187,7 @@ function addTestQuestions(userId, testName) {
                                                 .set({
                                                     name: testObject['question_name'][ctr],
                                                     description: question,
-                                                    type: ['question_type'][ctr],
+                                                    type: testObject['question_type'][ctr],
                                                     answer: "",
 
                                                 });
