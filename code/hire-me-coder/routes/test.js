@@ -164,9 +164,7 @@ router.post('/candidate/question/save', function (req, res, next) {
     })
 });
 
-router.post('/candidate/submit', function (req, res, next) {
-  console.log('hellloooooooo!');
-  
+router.post('/candidate/submit', function (req, res, next) {  
   let userId = req.body['userId'];
   let testId = req.body['testId'];
   let candidateTestRef = db.collection('candidate_users');
