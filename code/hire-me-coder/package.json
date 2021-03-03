@@ -34,7 +34,7 @@
     "multer": "^1.4.2",
     "nodemailer": "^6.3.0",
     "popper.js": "^1.14.7",
-    "pug": "^2.0.4"
+    "pug": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.6",
